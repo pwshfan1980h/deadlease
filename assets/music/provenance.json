@@ -1,0 +1,14 @@
+{
+  "title": "Under Pressure",
+  "creator": "Deadlease / original procedural synthesizer composition",
+  "source": "scripts/build-battle-music.mjs",
+  "bpm": 72,
+  "bars": 8,
+  "duration": 26.66665625,
+  "sampleRate": 32000,
+  "channels": 2,
+  "peak": 0.67,
+  "file": "under-pressure.wav",
+  "sha256": "90e2fea0dabbb8c67903788dfd3f3f64dfded6d0d06f739d725821ccc2a90d01",
+  "notes": "Generated sine harmonics, deterministic filtered noise, synthesized percussion. No borrowed samples or music."
+}

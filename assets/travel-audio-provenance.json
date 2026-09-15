@@ -1,0 +1,92 @@
+{
+  "creator": "Deadlease / original procedural Foley",
+  "source": "scripts/build-travel-audio.mjs",
+  "sampleRate": 22050,
+  "format": "16-bit mono PCM",
+  "files": {
+    "travel-stone-1": {
+      "sha256": "d7225713bcb6f95acbb1aad84b62e8f0ad924a5e0847d6268cf0bbb0b10bbedf",
+      "peak": 8550
+    },
+    "travel-stone-2": {
+      "sha256": "dc15def7fdacdec9fd0440ad0789952346336e08407effabe001eaeeb903a974",
+      "peak": 9885
+    },
+    "travel-stone-3": {
+      "sha256": "f20c54145927dc767cef625229b15cb07b219ff7009798edf17f3e3886f5a0f6",
+      "peak": 8849
+    },
+    "travel-metal-1": {
+      "sha256": "7c0c926032c902c9a309311f3972cc2b95e0f1b9b31fafb81f71d16fa487080f",
+      "peak": 7880
+    },
+    "travel-metal-2": {
+      "sha256": "9eaeb6a38624fd42078c9770898c62abe3fe69d9ff34ad7b1d0d65501011c7e0",
+      "peak": 7428
+    },
+    "travel-metal-3": {
+      "sha256": "e742f54712346ef2699e0b4a8b244213639034029128caefb600533d26a6f643",
+      "peak": 8182
+    },
+    "travel-water-1": {
+      "sha256": "efad80bd4848f136a549ffd9a9f4241edb2e92a5cae38546d6317437b126a5e9",
+      "peak": 9825
+    },
+    "travel-water-2": {
+      "sha256": "db24615a1e7815f17ef5fe65f74fef992d31a8be99aaf9f228d0f19d1b31561c",
+      "peak": 8788
+    },
+    "travel-water-3": {
+      "sha256": "79c43f26a609f8e62281d3a53fd72b9e3dea92eaf02e179bd431e8fbdbe62afd",
+      "peak": 11356
+    },
+    "travel-mud-1": {
+      "sha256": "6645a7f63752db845b904cb5a842a9ec8378ca58909bb150ebe02488246ef870",
+      "peak": 9524
+    },
+    "travel-mud-2": {
+      "sha256": "85799022ab9847f0a31d9db0e68450c1113a585340f6e1b3c51055481882574c",
+      "peak": 9691
+    },
+    "travel-mud-3": {
+      "sha256": "ddfa7752163ae1cad5aaaef9a25983240d723aa117c4a201a0311043b834f0fc",
+      "peak": 9816
+    },
+    "travel-glass-1": {
+      "sha256": "8df70dd91a1328053572cbfb9e52ac321a4640f57f033d3e7c1384b199d8be65",
+      "peak": 6019
+    },
+    "travel-glass-2": {
+      "sha256": "3e1152c2aadfaa77aa39bf89bdf464060c7a40647d35fae28ea7daee8e4a0593",
+      "peak": 6858
+    },
+    "travel-glass-3": {
+      "sha256": "de976adc321e62e5c7a1cdd2cc10ff7bd40e71d43d030df4e7139a94ae827435",
+      "peak": 6445
+    },
+    "travel-ladder-1": {
+      "sha256": "694346c808be15cd8d46b7185109dfd07a390eeb240e81597d95627f0c5aaf36",
+      "peak": 7655
+    },
+    "travel-ladder-2": {
+      "sha256": "a1eb7e6b10d10d1fda9f3f69760668018c895b29c52623d56e79ef4e50c18925",
+      "peak": 7398
+    },
+    "travel-ladder-3": {
+      "sha256": "d30bbf19ac877a90dbe54eee66a640539a526212ed406f197c6c978d477e048b",
+      "peak": 8113
+    },
+    "travel-refuge-1": {
+      "sha256": "c934e15e7ad9b5cf906b07d87ca63c69ebe2d2f32265aec26351e2eb366372b7",
+      "peak": 4239
+    },
+    "travel-danger-1": {
+      "sha256": "e664e7e2b810a157b22a9ad6633a99da854dee09163e98885384fe1bf8ca8210",
+      "peak": 6001
+    },
+    "travel-radiation-1": {
+      "sha256": "7feef695176480e43e75c436202cd0b81a1c919015412593541ca7bf607e19a1",
+      "peak": 2038
+    }
+  }
+}

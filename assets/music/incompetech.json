@@ -1,0 +1,15 @@
+{
+  "title": "Dark Fog",
+  "creator": "Kevin MacLeod",
+  "site": "https://incompetech.com",
+  "source": "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1300031",
+  "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dark%20Fog.mp3",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "isrc": "USUAN1300031",
+  "bpm": 71,
+  "file": "dark-fog.mp3",
+  "sha256": "a357b85ec02c52c17e4c677ca19037d742985045993db8f2226c7eab646ae86e",
+  "changes": "Original MP3 unmodified. Runtime volume adjustment, looping, and encounter fade in/out.",
+  "retrieved": "2026-09-15"
+}

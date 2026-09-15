@@ -1,0 +1,27 @@
+{
+  "creator": "Helton Yan",
+  "packs": [
+    "https://heltonyan.itch.io/retro-mecha-sfx",
+    "https://heltonyan.itch.io/pixelcombat"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceCommit": "666a715cd4504fd3bdfd9c5cacf579ca12e3f88e",
+  "changes": "Moonsec converted the originals to 16-bit mono 44.1 kHz. No further edits, trimming or normalization; copied byte-for-byte.",
+  "files": {
+    "helton-rapid": {
+      "source": "rapid.wav",
+      "title": "Mecha Laser Machine Gun",
+      "sha256": "78825051d84bc5459e3944fd582cebcd36fa0b5c63fe96bb5e145fe3cb8e922c"
+    },
+    "helton-hit": {
+      "source": "hit.wav",
+      "title": "Mecha Laser Pistol hit",
+      "sha256": "91eab804c1ccaa8770e488f49ba17fe5ec921b46cbef2dd1b9df0310ee050b5c"
+    },
+    "helton-death": {
+      "source": "death.wav",
+      "title": "Explosion Forced Shutdown",
+      "sha256": "71ca84a3fbbce7327dc9d392eef4a197b333f94e3c89ca7926eb51066669d904"
+    }
+  }
+}
