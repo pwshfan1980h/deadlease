@@ -47,3 +47,7 @@ https://creativecommons.org/licenses/by/4.0/
 - The MP3 is unmodified. Playback volume adjustment, looping and encounter fades are applied in-game.
 
 Music has a separate persistent volume control, fades at encounter boundaries and resumes without restarting each combat turn. Mute stops all channels. The earlier generated Under Pressure asset and generator are retained, but Dark Fog is the active battle track.
+
+## Painted inventory objects and backpacks
+
+`items/noir-inventory-atlas.png` and `items/noir-backpacks.png` were generated for Deadlease using OpenAI's built-in image generation tool (September 2026). Industrial noir art direction: worn canvas, iron, brass, bone and rust. Runtime displays item regions from the original sheets and rotates the presentation for packing. No external stock art is used for these assets. Exact authoring prompts are retained in the source project at `design/inventory-art-prompt.txt` and `design/backpack-art-prompt.txt`.
