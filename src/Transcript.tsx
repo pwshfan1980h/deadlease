@@ -6,7 +6,7 @@ import {theftObjects} from './roomObjects';
 /** Presentation affiliations only. Hostile identity always overrides faction color. */
 export type NameTone='neutral'|'enemy'|'clinic'|'commons'|'syndicate'|'union';
 const identities:Record<string,NameTone>={
- 'clinic clerk':'clinic','clinic orderly':'clinic',clerk:'clinic',
+ 'Dr. Pell':'clinic','Ripper Voss':'clinic', 'clinic clerk':'clinic','clinic orderly':'clinic',clerk:'clinic',
  Moth:'neutral',Pell:'clinic','Lantern watch':'neutral',Iona:'neutral',technician:'neutral',broker:'neutral',Hal:'neutral','Drainwatch Hal':'neutral',Sera:'neutral','Dockwatch Sera':'neutral',Fen:'neutral','Warden Fen':'neutral',Vale:'neutral','Keeper Vale':'neutral',Orra:'neutral','Warden Orra':'neutral',Sen:'neutral',archivist:'neutral',Ada:'neutral',postkeeper:'neutral',warden:'neutral','freight watch':'neutral','kiosk watch':'neutral',
  Rusk:'union','Steward Rusk':'union','Cinder Union':'union',Commons:'commons',Syndicate:'syndicate',
 };

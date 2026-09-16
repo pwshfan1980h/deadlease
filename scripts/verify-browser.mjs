@@ -19,7 +19,7 @@ async function compact(){
  for(const selector of ['.command-form','.log']){
   const box=await page.locator(selector).boundingBox();assert(box&&box.y>=0&&box.y+box.height<=800,selector+' must fit 1280x800');
  }
- const painted=page.locator('.vignette .scene-painting');if(await painted.count()){await page.waitForFunction(()=>document.querySelector('.scene-painting img')?.naturalWidth>0);const scene=await painted.boundingBox();assert(scene.width>256&&scene.height>=150)}else if(await page.locator('.vignette canvas').count()){const scene=await page.locator('.vignette canvas').boundingBox();assert.equal(scene.width,256);assert.equal(scene.height,144)}
+ const painted=page.locator('.vignette .scene-painting');if(await painted.count()){await page.waitForFunction(()=>document.querySelector('.scene-painting img')?.naturalWidth>0);const scene=await painted.boundingBox();assert(scene.width>=140&&scene.height>=120)}else if(await page.locator('.vignette canvas').count()){const scene=await page.locator('.vignette canvas').boundingBox();assert.equal(scene.width,256);assert.equal(scene.height,144)}
  assert.equal(await page.locator('.masthead').count(),0);
 }
 async function crops(){

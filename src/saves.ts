@@ -1,3 +1,4 @@
+import {newBody,ailments,implants} from './medicine';
 import {runRecord,legacyRunId} from './runs';
 import {enemyRole} from './enemyBehavior';
 import {missions,missionKey,missionRefs,missionActive,missionDone,missionProgress} from './missions';
@@ -57,7 +58,8 @@ export function decode(raw:string):Game{
  if(typeof raw!=='string'||new TextEncoder().encode(raw).length>B.maxSaveBytes)fail('file exceeds one megabyte');
  const parsed=JSON.parse(raw);object(parsed);const wasV2=parsed.version===2;if(wasV2)migrateV2(parsed);
  if(parsed.version===3){keys(parsed,Object.keys(createGame()).filter(k=>!['run','bleed'].includes(k)));integer(parsed.rng,1,4294967295);parsed.run=runRecord(parsed.rng,legacyRunId(raw));parsed.bleed=0;parsed.version=4;if(parsed.encounter){object(parsed.encounter);if(!wasV2)keys(parsed.encounter,['id','name','level','hp','maxHP','damage','armor','phase']);parsed.encounter.heat=0;parsed.encounter.morale='fighting'}}
- const g=parsed as unknown as Game;if(g.version!==4)fail('unsupported version (browser v2, v3 or v4 required; Python saves are separate)');
+ if(parsed.version===4){object(parsed.player);keys(parsed.player,Object.keys(createPlayer('Mara')).filter(k=>k!=='body'&&(k!=='pack'||Object.hasOwn(parsed.player as object,'pack'))));parsed.player.body=newBody();parsed.version=5;}
+ const g=parsed as unknown as Game;if(g.version!==5)fail('unsupported version (browser v2, v3, v4 or v5 required; Python saves are separate)');
  keys(g,Object.keys(createGame()));keys(g.run,['id','seed','status','cause','endedTurn','kills','revivals']);
  if(typeof g.run.id!=='string'||!/^[a-zA-Z0-9-]{1,80}$/.test(g.run.id))fail('run identity');integer(g.run.seed,1,4294967295);integer(g.run.kills);integer(g.run.revivals);integer(g.bleed,0,3);
  if(!['alive','dead'].includes(g.run.status)||typeof g.run.cause!=='string'||g.run.cause.length>120)fail('run status');
@@ -66,6 +68,7 @@ export function decode(raw:string):Game{
  if(typeof p.className!=='string')fail('class name');
  const ref=createPlayer(p.name,p.origin,p.className,p.bonus);const legacyPack=!Object.hasOwn(p,'pack');if(legacyPack)p.pack={bag:'canvas satchel',layout:{}};keys(p,Object.keys(ref));if(p.name!==ref.name)fail("noncanonical name");keys(p.stats,[...STATS]);keys(p.skills,[...SKILLS]);
  if(JSON.stringify(STATS.map(s=>p.stats[s]))!==JSON.stringify(STATS.map(s=>ref.stats[s])))fail('attributes');
+ keys(p.body,['ailments','implants','commission','voucher']);refs(p.body.ailments,Object.keys(ailments));object(p.body.implants);for(const [id,n] of Object.entries(p.body.implants)){if(!Object.hasOwn(implants,id))fail('implant');integer(n,1,3)}if(!['none','active','done'].includes(p.body.commission)||typeof p.body.voucher!=='boolean'||(p.body.voucher&&p.body.commission!=='done'))fail('medical commission');
  integer(p.level,1,10);integer(p.xp);if(p.xp<xpForLevel(p.level)||(p.level<10&&p.xp>=xpForLevel(p.level+1)))fail('XP/level mismatch');
  integer(p.hp,g.run.status==='dead'?0:1,maxHP(p));if(g.run.status==='dead'&&p.hp!==0)fail('dead run health');integer(p.stamina,0,maxStamina(p));integer(p.radiation,0,100);integer(p.credits);integer(p.debt);integer(p.points,0,9);
  let spent=0;for(const skill of SKILLS){integer(p.skills[skill],ref.skills[skill],B.skillCap);spent+=p.skills[skill]-ref.skills[skill]}

@@ -1,3 +1,4 @@
+import {createPortal} from 'react-dom';
 import {useEffect,useState,useId,useRef} from 'react';
 import {mapGeometry} from './visual-data';
 import {rooms,zones,type Room} from './world';
@@ -5,8 +6,10 @@ import type {Game} from './engine';
 import {Sprite,retainAreaAtlases} from './sprites';
 import {scenePaintings,enemyPaintings,biomePaintings} from './paintings';
 function Painting({src,label,className}:{src:string;label:string;className:string}){
+ const [preview,setPreview]=useState(false);const roomArt=className==='scene-painting';
+ useEffect(()=>{if(!preview)return;const hide=()=>setPreview(false);const escape=(e:KeyboardEvent)=>{if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation()}hide()};window.addEventListener('blur',hide);window.addEventListener('keydown',escape,true);return()=>{window.removeEventListener('blur',hide);window.removeEventListener('keydown',escape,true)}},[preview]);
  const dialog=useRef<HTMLDialogElement>(null);
- return <><button className={'painting-open '+className} aria-label={'Enlarge '+label} onClick={()=>dialog.current?.showModal()}><img src={src} alt={label}/><span className="painting-hint">Type view to enlarge</span></button><dialog ref={dialog} className="art-dialog" aria-label={label} onClick={e=>{if(e.target===e.currentTarget)dialog.current?.close()}}><button className="art-close" onClick={()=>dialog.current?.close()} autoFocus>Close artwork ×</button><img src={src} alt={label}/><p>{label}</p></dialog></>;
+ return <><button className={'painting-open '+className} aria-label={'Enlarge '+label} onPointerEnter={e=>{if(roomArt&&e.pointerType==='mouse'&&!document.querySelector('dialog[open]'))setPreview(true)}} onPointerLeave={()=>setPreview(false)} onFocus={()=>{if(roomArt&&!document.querySelector('dialog[open]'))setPreview(true)}} onBlur={()=>setPreview(false)} onClick={()=>{setPreview(false);dialog.current?.showModal()}}><img src={src} alt={label}/><span className="painting-hint">Type view to enlarge</span></button>{roomArt&&preview&&createPortal(<aside className="scene-hover-preview" role="tooltip" aria-label={label+' preview'}><img src={src} alt={label}/><span>{label}</span></aside>,document.body)}<dialog ref={dialog} className="art-dialog" aria-label={label} onClick={e=>{if(e.target===e.currentTarget)dialog.current?.close()}}><button className="art-close" onClick={()=>dialog.current?.close()} autoFocus>Close artwork ×</button><img src={src} alt={label}/><p>{label}</p></dialog></>;
 }
 export function Scene({room,palette,caption=true}:{room:Room;palette:string;caption?:boolean}){
  useEffect(()=>{retainAreaAtlases(room,palette)},[room,palette]);

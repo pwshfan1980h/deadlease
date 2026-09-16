@@ -1,13 +1,15 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T04:27:07.864375+00:00",
-  "environment": "Standalone source worktree; dependencies from its existing clean npm ci installation",
+  "verifiedAt": "2026-09-16T16:52:52.020811+00:00",
+  "environment": "Standalone source worktree with previously installed dependencies",
   "checks": [
     "npm run build",
     "npm run audit:assets"
   ],
+  "schema": 5,
   "locationPaintings": 149,
   "requiresSiblingPythonProject": false,
-  "jsBundle": "assets/index-BpWTbJ2G.js",
-  "cssBundle": "assets/index-8Q3foliC.css"
+  "jsBundle": "./assets/index-DsC95BdW.js",
+  "cssBundle": "./assets/index-dnSjCQXs.css",
+  "logSha256": "e1f1360c8fa10c1a6265c1765a74d66a3d9120782f4dfb928ade4f1fd030934b"
 }

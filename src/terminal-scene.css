@@ -95,3 +95,84 @@ html,body,.app{cursor:auto!important}
  .playing .terminal .log p,.playing .terminal .command-form input{font-size:1rem;line-height:1.6}
  .playing .terminal .log{padding:8px 18px}.playing .terminal .command-form{padding:8px 18px}
 }
+/* Transcript-led layout: the room is a thumbnail beside the survivor record. */
+#root:has(.playing){display:block;min-height:100dvh}
+.app.playing{width:100%;max-width:1440px;height:100dvh;min-height:600px;padding:0 16px 12px;margin:auto;display:flex;flex-direction:column}
+.playing .play-grid{display:grid;grid-template-columns:240px minmax(0,1fr);grid-template-rows:150px auto minmax(0,1fr);gap:8px;flex:1;min-height:0}
+.playing .room-panel{grid-column:1;grid-row:1;width:100%;height:150px;min-height:0;flex:none;overflow:hidden}
+.playing .room-title{padding:8px;background:linear-gradient(#000d,transparent)}
+.playing .room-title h2{font-size:.85rem}.playing .room-title .pill{font-size:.5rem}
+.playing .player-card{grid-column:2;grid-row:1;order:unset;min-height:0;display:grid;grid-template-columns:minmax(140px,1fr) minmax(100px,1fr) minmax(100px,1fr) 55px;gap:8px 16px;padding:12px;background:#0b0e0d;align-content:center}
+.playing .player-identity{grid-column:1;grid-row:1 / span 2;margin:0}
+.playing .player-identity .portrait,.playing .level-number,.playing .loadout{display:none}
+.playing .player-identity h3{font-size:1.1rem}.playing .player-identity .small{font-size:.65rem}
+.playing .resource{margin:0}.playing .resource label strong{color:#f0e8db}
+.playing .resource meter{height:10px;margin-top:6px;background:#281517}
+.playing .resource meter::-webkit-meter-bar{background:#281517;border-radius:2px}
+.playing .resource meter::-webkit-meter-optimum-value{background:#df4b4f}
+.playing .resource meter::-moz-meter-bar{background:#df4b4f}
+.playing .resource.stamina meter::-webkit-meter-bar{background:#292613}
+.playing .resource.stamina meter::-webkit-meter-optimum-value{background:#e9c746}
+.playing .resource.stamina meter::-moz-meter-bar{background:#e9c746}
+.playing .rad{display:flex;align-items:center;gap:6px;color:#d4c66a;font-size:.85rem}.playing .rad>span{font-size:1.7rem}
+.playing .wallet{grid-column:2 / -1;margin:0;padding:0;border:0;justify-content:flex-start;gap:18px;font-size:.65rem}
+.playing .body-status{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:5px 14px;font-size:.67rem}
+.ailment{color:#ff9292}.implant{color:#8dbfe1}
+.playing .room-occupants{grid-column:1 / -1;grid-row:2;display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;min-width:0}
+.playing .scene-contents{position:static;display:flex;align-items:center;gap:12px;flex-wrap:wrap;max-width:none}
+.playing .room-occupants .room-presence{position:static;margin:0;padding:4px 0;max-width:none;background:none;box-shadow:none;font-size:.8rem;display:flex;gap:12px}
+.playing .ground-items{padding:0;background:none;display:flex;gap:12px;max-height:70px;flex-wrap:wrap;font-size:.8rem}
+.playing .room-occupants .scene-hazard{position:static;font-size:.65rem}
+.playing .room-occupants .encounter{position:static;width:auto;flex:1;min-width:0;margin:0;padding:6px 10px;background:#111313;box-shadow:none}
+.playing .enemy-title{gap:12px;font-size:.82rem}.playing .enemy-title p{font-size:.75rem}
+.playing .enemy-painting{width:64px;height:64px}
+.playing .terminal{grid-column:1 / -1;grid-row:3;order:unset;display:flex;flex-direction:column;min-height:0;flex:none;margin:0}
+.playing .terminal .log{flex:1;height:auto;min-height:0;overflow:auto}
+.playing .terminal .command-form{position:static;flex:none}.playing .terminal .command-options,.playing .terminal .panel-commands,.playing .terminal .command-hint{flex:none}
+.scene-hover-preview{position:fixed;z-index:90;inset:0;display:grid;place-content:center;background:#000c;pointer-events:none;padding:30px}
+.scene-hover-preview img{display:block;width:min(1152px,90vw);height:auto;max-height:80dvh;object-fit:contain;box-shadow:0 12px 90px #000}
+.scene-hover-preview span{color:#e7e0d2;background:#080b0c;padding:10px 14px;font-family:ui-monospace,monospace}
+@media(max-width:800px){
+ .app.playing{padding:0 10px 8px;min-height:640px}.playing .play-grid{grid-template-columns:140px minmax(0,1fr);grid-template-rows:180px auto minmax(0,1fr);gap:8px}
+ .playing .room-panel{height:180px}.playing .room-title h2{font-size:.72rem}
+ .playing .player-card{grid-template-columns:1fr 1fr;gap:8px;padding:8px}.playing .player-identity{grid-column:1 / -1;grid-row:auto}.playing .player-identity h3{font-size:.9rem}.playing .player-identity .eyebrow{font-size:.5rem}.playing .player-identity .small{font-size:.55rem}
+ .playing .wallet{grid-column:1 / -1;gap:8px;font-size:.53rem}.playing .rad{position:absolute;right:20px;top:45px;font-size:.7rem}.playing .rad>span{font-size:1.1rem}
+ .playing .resource label{font-size:.5rem}.playing .body-status{font-size:.55rem;max-height:45px;overflow:auto}.playing .room-occupants .room-presence,.playing .ground-items{font-size:.65rem}
+ .playing .enemy-painting{width:48px;height:48px}.playing .enemy-title p{font-size:.65rem}.playing .terminal .log p{font-size:.85rem}
+}
+.playing .terminal .transcript-combat{min-width:0;max-width:calc(100% - 36px)}
+.playing .terminal .command-options{min-width:0;max-width:100%;flex-wrap:wrap;white-space:normal}
+@media(min-width:801px) and (max-height:800px){
+ .playing .play-grid{grid-template-rows:120px auto minmax(0,1fr)}
+ .playing .room-panel{height:120px}.playing .player-card{padding:8px 12px;gap:6px 16px}
+}
+/* Room life and encounters belong to the transcript; art stays in the compact header. */
+.playing .play-grid{grid-template-rows:150px minmax(0,1fr)}
+.playing .terminal{grid-row:2}
+.playing .terminal .room-occupants{display:block;margin:14px 0 8px;padding-top:10px;border-top:1px solid #152318}
+.playing .terminal .room-occupants .encounter{margin-top:12px;padding:12px;background:#080d09}
+.playing .terminal .enemy-painting{width:144px;height:144px}
+.playing .terminal .enemy-title{align-items:center;gap:20px}
+.playing .terminal .log .enemy-title p{font-size:.9rem;line-height:1.45;margin:6px 0}
+.playing .terminal .enemy-title strong{font-size:1rem}
+.playing .terminal .transcript-combat{margin:8px 0 16px;max-width:100%;display:flex;gap:8px 16px}
+.playing .terminal .ability-commands{display:flex;flex-wrap:wrap;gap:6px 12px}
+.playing .terminal .log .ability-commands p{margin:0;font-size:.7rem;display:flex;align-items:center;gap:8px}
+.playing .terminal .command-options{gap:6px;margin:0}
+.playing .terminal .world-actions{margin:10px 0 8px}
+.playing .terminal button{border:1px solid #294a2a;border-radius:2px;background:#0a160b;color:#b2f197;padding:5px 10px;font:inherit;font-size:.75rem;line-height:1.35}
+.playing .terminal button:hover:not(:disabled){background:#1b321b;border-color:#89ce70;color:#d8ffca}
+.playing .terminal button:disabled{color:#697a60;border-color:#1d2b1b}
+.playing .terminal .painting-open{padding:0;border:0;background:transparent}
+.playing .terminal .panel-commands{padding-top:8px;padding-bottom:6px;gap:6px}
+.playing .terminal .panel-commands button{font-size:.65rem;padding:3px 8px}
+.playing .terminal .scene-contents{gap:8px 18px}.playing .terminal .ground-items{color:#b1b4b2}
+@media(min-width:801px) and (max-height:800px){.playing .play-grid{grid-template-rows:120px minmax(0,1fr)}}
+@media(max-width:800px){
+ .playing .play-grid{grid-template-rows:180px minmax(0,1fr)}
+ .playing .terminal .enemy-painting{width:84px;height:84px}.playing .terminal .enemy-title{gap:12px;align-items:start}
+ .playing .terminal .enemy-title strong{font-size:.8rem}.playing .terminal .log .enemy-title p{font-size:.75rem}
+ .playing .terminal button{font-size:.7rem;padding:5px 8px}.playing .terminal .panel-commands button{font-size:.58rem;padding:3px 6px}
+}
+.playing .player-card{position:relative}
+@media(max-width:800px){.playing .player-card .rad{right:8px;top:8px}}

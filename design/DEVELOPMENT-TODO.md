@@ -6,7 +6,23 @@ Visual priority override (latest user playtest): finish the scene/UI pass below 
 
 Build in this order: room interactions → enemy behavior → backpack synergies → courier reputation → discoveries → tutorial. Complete a playable, tested increment in each phase before expanding it. The tutorial comes last so it teaches the finished controls and mechanics.
 
-## Current priority — scene and terminal presentation
+## Current priority — transcript space and medical progression
+
+User accepted the improved readability/art, then requested a transcript-led layout and lasting conditions as a money sink.
+
+- [x] Small room painting beside player data; large transient hover/focus preview; tall transcript by default.
+- [x] Put inhabitants, ground items and illustrated encounters inside the transcript; restore clickable actions alongside typing, preserving hidden prose opportunities.
+- [x] Red HP gauge, yellow stamina gauge, radiation number with ☢ symbol; visible condition/implant labels.
+- [x] Six lasting conditions from attack families and radiation, with defensive counterplay and paid treatment.
+- [x] Dr. Pell and Ripper Voss, three implant paths with three ranks, and the Spare Parts mission as an alternative to buying an upgrade.
+- [ ] v5 migration, persistence and resource-accounting tests; responsive UI/focus tests; full regression gate and public verification.
+- [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
+
+Verification: 154 unit tests, production build, asset audit and 14 browser suites pass. Source mirror builds independently. Live Pages verification follows publication.
+
+Rules and commands: [MEDICINE.md](MEDICINE.md).
+
+## Previous pass — scene and terminal presentation
 
 User withdrew the 3440×1440 design target. Use a centered frame near 4:3 (up to 1440×1080), preserving the large scene / compact player data / transcript stack. Ordinary desktop windows come first; ultrawide gets quiet gutters. Keep complete 16:9 paintings visible inside the scene.
 

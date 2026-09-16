@@ -12,9 +12,9 @@ The active delivery is closed on death and its parcel removed. Other inventory a
 
 ### Saving and migration
 
-Browser schema is now **v4**: `run` records identity, initial seed, status, cause, terminal turn, kills and rescues; `bleed` tracks the status duration. Encounters add `heat` and `morale`.
+The run milestone introduced **v4** (now extended by **v5** medical state; see [MEDICINE.md](MEDICINE.md)): `run` records identity, initial seed, status, cause, terminal turn, kills and rescues; `bleed` tracks the status duration. Encounters add `heat` and `morale`.
 
-Versions 2 and 3 migrate without discarding living characters, pack positions, earned rewards, encounter HP or phase. New effects begin neutral. Reading does not rewrite legacy bytes. The next successful save writes v4. Pre-change v3 living and combat fixtures live in `tests/fixtures/run-migration/`.
+Versions 2 and 3 migrate without discarding living characters, pack positions, earned rewards, encounter HP or phase. New effects begin neutral. Reading does not rewrite legacy bytes. The next successful save now writes v5, retaining the v4 run fields. Pre-change v3 living and combat fixtures live in `tests/fixtures/run-migration/`.
 
 An accepted terminal write stores the slot and `ended:<run-id>` together in one IndexedDB transaction. The first terminal record is immutable. Load resolves an older living slot to that ended record. Import, explicit recovery and ordinary save all reject a living state with a sealed identity. A stale tab cannot overwrite the seal, even if it has not received the one-second notification poll. Conflicting bytes remain in quarantine. A dead screen blocks New patient while recording or after a storage failure; **Retry saving record** explicitly recovers the terminal autosave and quarantines previous bytes. Export remains available on failure.
 

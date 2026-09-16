@@ -62,7 +62,7 @@ export function PauseMenu({name,location,prefs,onPrefs,onResume,onTitle,onSave,o
     <p><code>north / south / east / west / up / down</code><br/>Use the map or look around to find exits.</p>
     <p><code>look · inspect … · talk … · read board · jobs</code><br/>Explore, talk, and find paid work. Board jobs are courier contracts; people offer missions. Type missions to check them.</p>
     <p><code>attack · aim · brace · cover · heal · flee</code><br/>Fight using the actions and abilities below the transcript.</p>
-    <p><code>fish · pick … · hack …</code><br/>Space handles timing. Fishing needs a hook and reel press; locks need three pins; terminals use short and long holds. Damaging special abilities offer a critical timing window.</p>
+    <p><code>status · talk doctor · treat … · implants · upgrade …</code><br/>Doctors repair lasting injuries for credits. Implants improve this run independently of levels. Spare Parts earns one free rank.</p><p><code>fish · pick … · hack …</code><br/>Space handles timing. Fishing needs a hook and reel press; locks need three pins; terminals use short and long holds. Damaging special abilities offer a critical timing window.</p>
     <p><code>inventory · skills · journal · help</code><br/>Open your equipment, progression, journal, or full command reference. Inventory shows its own packing and rotation controls.</p>
    </section>}
    {page==='saves'&&<section className="pause-saves">

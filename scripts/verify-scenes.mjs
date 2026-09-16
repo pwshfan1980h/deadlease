@@ -47,10 +47,10 @@ try{
  for(const [width,height] of [[1440,1080],[1280,800],[1024,720],[3440,1440],[390,844]]){
   await page.setViewportSize({width,height});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   const frame=await page.locator('.playing').boundingBox(),scene=await page.locator('.room-panel').boundingBox(),player=await page.locator('.player-card').boundingBox(),terminal=await page.locator('.terminal').boundingBox();
-  assert(scene.y+scene.height<=player.y+.5);assert(player.y+player.height<=terminal.y+.5);assert(frame.width<=1441);if(width>800){const command=await input.boundingBox();assert(command.y+command.height<=height,'input remains within viewport');assert(scene.height>=250)}
+  assert(Math.abs(scene.y-player.y)<1);assert(scene.x+scene.width<=player.x);assert(player.y+player.height<=terminal.y+.5);assert(frame.width<=1441);if(width>800){const command=await input.boundingBox();assert(command.y+command.height<=height,'input remains within viewport');assert(scene.height<=180);assert(terminal.height>scene.height*2);assert((await page.locator('.log').boundingBox()).height>=280)}
   assert(await page.locator('.scene-painting img').evaluate(i=>getComputedStyle(i).objectFit==='contain'));await shot(width+'-combat');
  }
- checks.push('Scene, compact player strip, green terminal fit standard, short, ultrawide and mobile widths; full art preserved; visible mouse fallback');
+ checks.push('Thumbnail beside player data and tall green terminal fit standard, short, ultrawide and mobile widths; full art preserved; visible mouse fallback');
  await page.setViewportSize({width:1024,height:720});await page.keyboard.press('Escape');await page.getByRole('button',{name:'Settings',exact:true}).press('Enter');
  await page.getByRole('dialog').getByLabel('Text size').selectOption('18');await page.getByRole('dialog').getByLabel('Palette').selectOption('tidal');await page.keyboard.press('Escape');await page.keyboard.press('Escape');
  assert.equal(await page.locator('.log p').first().evaluate(e=>getComputedStyle(e).fontSize),'18px');assert.equal(await color('.log'),'rgb(167, 249, 135)');

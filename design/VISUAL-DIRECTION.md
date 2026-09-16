@@ -2,15 +2,15 @@
 
 ## Current playtest direction
 
-The user rejected the previous text-heavy, low-contrast presentation. This pass is a candidate for hands-on review, not a claim that the visual direction is approved.
-
-The game uses a centered frame near 4:3, capped at 1440×1080. It scales to the available desktop height. Wide monitors keep dark gutters rather than stretching the transcript across the screen. On narrow screens the same stack flows vertically. The complete 16:9 location painting remains visible without cropping.
+The user approved the increased clarity and new art, then asked for more transcript space. The current candidate uses a compact room thumbnail beside the player data and a tall transcript beneath it. The frame is capped at 1440px wide and fills the viewport height; wide monitors keep quiet gutters.
 
 Reading order:
 
-1. Large room painting, room name, immediate inhabitants, threats, and loose items.
-2. Compact player identity and resource strip.
-3. Black transcript, command input, and typed command references.
+1. Small room painting/name beside identity, red HP gauge, yellow stamina gauge, ☢ radiation count, money and lasting condition/implant labels.
+2. Tall black transcript containing room inhabitants, plain grey loose items, and an illustrated current encounter with enemy intent.
+3. Clickable exploration/combat actions within the transcript; panel buttons and the typed command line below. Both inputs run the same engine.
+
+Hover or keyboard focus on the room thumbnail opens a large, uncropped preview. Leaving, blurring or Escape dismisses it; the preview never steals input focus. Clicking or typing `view` still opens the explicit artwork dialog, including on touch screens. The transcript does not resize on hover: its space is always available.
 
 Room arrivals announce the place and any immediate threat. `look around` reveals the authored description, opportunities, warnings, and directions. The minimap remains the main navigation reference. Deep details stay out of the permanent room panel.
 
@@ -22,7 +22,7 @@ Room arrivals announce the place and any immediate threat. `look around` reveals
 - Neutral character names: blue. Hostile names: red. Clinic, Commons, Union, and Syndicate affiliations retain separate colors.
 - Names and items are rendered as escaped React text. Matching is case-insensitive and respects word boundaries.
 
-The pointer is visible as a fallback. Typing still drives movement, conversations, and combat. Inventory dragging and existing puzzle/timing controls retain their supported mouse behavior.
+The user restored clickable buttons. Both buttons and typing drive movement, conversations and combat. Hidden valuable actions stay discoverable through prose rather than prominent buttons. Inventory dragging and existing puzzle/timing controls retain their supported mouse behavior.
 
 ## Paintings and continuity
 

@@ -25,7 +25,8 @@
     "test:theft": "node --import ./scripts/register-ts.mjs scripts/verify-theft.mjs",
     "test:interactions": "node --import ./scripts/register-ts.mjs scripts/verify-interactions.mjs",
     "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs",
-    "test:scenes": "node --import ./scripts/register-ts.mjs scripts/verify-scenes.mjs"
+    "test:scenes": "node --import ./scripts/register-ts.mjs scripts/verify-scenes.mjs",
+    "test:medicine": "node --import ./scripts/register-ts.mjs scripts/verify-medicine.mjs"
   },
   "dependencies": {
     "react": "19.2.7",

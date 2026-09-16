@@ -1,3 +1,4 @@
+import {newBody,rank,impaired,type Body} from './medicine';
 import {reconcilePack,type Pack} from './backpack';
 import {BALANCE as B,SKILLS,type Skill,type Stat} from './config';
 export const origins=['Baseline','Splice','Radborn'] as const;
@@ -6,7 +7,7 @@ export type EffectKind='damage'|'heal'|'shield'|'interrupt'|'cleanse'|'stamina'|
 export interface Effect {kind:EffectKind;power:number}
 export interface Ability {id:string;name:string;className:string;level:number;cost:number;cooldown:number;description:string;effects:Effect[]}
 export interface ClassDef {description:string;weapon:string;skills:Partial<Record<Skill,number>>;abilities:string[];passive:string}
-export interface Player {name:string;origin:Origin;className:string;bonus:Skill;stats:Record<Stat,number>;skills:Record<Skill,number>;inventory:Record<string,number>;pack:Pack;weapon:string;armor:string|null;abilities:string[];hp:number;stamina:number;radiation:number;credits:number;debt:number;xp:number;level:number;points:number}
+export interface Player {body:Body;name:string;origin:Origin;className:string;bonus:Skill;stats:Record<Stat,number>;skills:Record<Skill,number>;inventory:Record<string,number>;pack:Pack;weapon:string;armor:string|null;abilities:string[];hp:number;stamina:number;radiation:number;credits:number;debt:number;xp:number;level:number;points:number}
 export const abilities:Record<string,Ability>={};
 export const classes:Record<string,ClassDef>={};
 type Tier=[string,number,number,string,Effect[]];
@@ -76,15 +77,15 @@ cls('Sump Apostle','Turn exposure into endurance with siphons and cleansing.','s
  ['Deep hunger',6,4,'Siphon 32 HP and recover 8 stamina.',[e('leech',32),e('stamina',8)]],
  ['Estuary heart',10,5,'Siphon 48 HP, remove 50 radiation, and gain 20 shield.',[e('leech',48),e('cleanse',50),e('shield',20)]]
 ]);
-export function maxHP(p:Player){return B.hpBase+B.hpGrit*p.stats.Grit+B.hpLevel*(p.level-1)}
-export function maxStamina(p:Player){return B.staminaBase+B.staminaGrit*p.stats.Grit+B.staminaLevel*(p.level-1)}
+export function maxHP(p:Player){return B.hpBase+B.hpGrit*p.stats.Grit+B.hpLevel*(p.level-1)+12*rank(p,'dermal weave')-(impaired(p,'marrow rot')?10:0)-(impaired(p,'radiation sickness')?6:0)}
+export function maxStamina(p:Player){return B.staminaBase+B.staminaGrit*p.stats.Grit+B.staminaLevel*(p.level-1)+6*rank(p,'adrenal regulator')-(impaired(p,'torn ligaments')?6:0)-(impaired(p,'nerve burns')?4:0)}
 export function xpForLevel(level:number){return B.xpStep*(level-1)*level/2}
 export function createPlayer(name:string,origin:string='Baseline',className='Enforcer',bonus:string='Tech'):Player{
  if(!/^[\p{L}\p{N} _-]{1,20}$/u.test(name.trim())||!origins.includes(origin as Origin)||!Object.hasOwn(classes,className)||!SKILLS.includes(bonus as Skill))throw Error('Choose a valid name (1–20 letters/numbers), origin, class and skill.');
  const c=classes[className];const stats={Grit:4,Reflex:4,Wits:4,Nerve:4};
  if(origin==='Splice'){stats.Reflex++;stats.Nerve--}if(origin==='Radborn'){stats.Grit++;stats.Reflex--}
  const skills=Object.fromEntries(SKILLS.map(k=>[k,c.skills[k]??0])) as Record<Skill,number>;if(origin==='Baseline')skills[bonus as Skill]++;
- const p:Player={name:name.trim(),origin:origin as Origin,className,bonus:bonus as Skill,stats,skills,inventory:{[c.weapon]:1,'medical supplies':className==='Street Medic'?5:3},pack:{bag:'canvas satchel',layout:{}},weapon:c.weapon,armor:null,abilities:[c.abilities[0]],hp:0,stamina:0,radiation:0,credits:20,debt:0,xp:0,level:1,points:0};
+ const p:Player={body:newBody(),name:name.trim(),origin:origin as Origin,className,bonus:bonus as Skill,stats,skills,inventory:{[c.weapon]:1,'medical supplies':className==='Street Medic'?5:3},pack:{bag:'canvas satchel',layout:{}},weapon:c.weapon,armor:null,abilities:[c.abilities[0]],hp:0,stamina:0,radiation:0,credits:20,debt:0,xp:0,level:1,points:0};
  if(className==='Enforcer')p.inventory.knife=1;if(className==='Scavenger')p.inventory['lock tools']=1;
  p.hp=maxHP(p);p.stamina=maxStamina(p);reconcilePack(p);return p;
 }

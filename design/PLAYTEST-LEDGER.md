@@ -1,6 +1,18 @@
 # FREEBORN — playtest accountability
 
-## Current priority: scene and terminal pass
+## Current priority: transcript and lasting conditions
+
+- [ ] Judge the compact room/player header and tall transcript at your normal window size.
+- [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.
+- [ ] Check red HP, yellow stamina, ☢ radiation and lasting-condition labels.
+- [ ] Try both clicking and typing travel/combat actions. Enemy art, inhabitants and grey ground items should be part of the transcript; resizing should retain the latest entry when you were following it.
+- [ ] At the clinic type `talk doctor`, `accept spare parts`; return with three salvage and `report spare parts`, then choose `upgrade dermal weave` (or another offered implant).
+- [ ] After a severe unguarded hit, check `status`. Rest should not cure the condition. A doctor should quote and charge the treatment price; `treat <condition>` repairs only that condition.
+- [ ] Compare income, treatment costs and implant power. Report whether injuries feel consequential or too frequent/punishing.
+
+Human acceptance: **pending**. Rules and prices: [MEDICINE.md](MEDICINE.md).
+
+## Previous pass: scene and terminal
 
 User feedback received: previous room descriptions, UI contrast, scene size and art were unsatisfactory. This feedback sets the current priority; it is not a sign-off on the replacement visuals.
 
