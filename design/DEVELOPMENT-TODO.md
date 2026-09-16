@@ -16,7 +16,7 @@ User withdrew the 3440×1440 design target. Use a centered frame near 4:3 (up to
 - [x] Install unique generated paintings for all 149 locations. Per-room prompts, hashes, dimensions and generation receipts live under `design/location-art/`; runtime and provenance maps cover every room without biome fallbacks.
 - [x] Inspect all 149 scenes in 17 contact sheets, correct misleading ladders and permanent foreground enemies, and review neighboring/vertical routes. Browser checks verify every image decodes and delayed travel blocks duplicate movement and map invocation.
 - [x] Complete production build, asset audit, 145 unit tests and all 13 browser suites. Standard/short desktop, 18px text, ultrawide and mobile checks pass; reports are in `design/verification/`.
-- [ ] Update playtest evidence, commit source, publish tested build, and run public smoke checks.
+- [x] Record evidence and commit/push source (`56fd3b9`); publish Pages build `eec035a` and pass live hash checks, keyboard intake, downward travel, revival and persistent-death smoke tests. See `design/verification/deployment.json`.
 - [ ] User visual acceptance: scene scale, terminal readability, item color distinction, encounter overlays, scene continuity. Automated tests do not establish acceptance.
 
 ## Roguelike identity and run length

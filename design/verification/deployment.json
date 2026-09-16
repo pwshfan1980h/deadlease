@@ -1,17 +1,17 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T02:48:21.966Z",
+  "verifiedAt": "2026-09-16T04:30:48.720Z",
   "url": "https://pwshfan1980h.github.io/deadlease/",
-  "pagesCommit": "39447ffdd90d8cd2c8984e98e6bf2b617271b98d",
+  "pagesCommit": "eec035a4e33e52a396f674c5eb280c64261f8dd7",
   "sourceBranch": "source",
   "assets": [
     {
-      "path": "./assets/index-CuHVATOR.js",
-      "sha256": "22b91f841e656dc7486122492ba005e4b2ceca9ab6a6c3e2ab276ae7d808aeb0"
+      "path": "./assets/index-BpWTbJ2G.js",
+      "sha256": "7a92b431adb3ce9ee89c2ab0ed4431d8db501f9ebe8643e3d45cc613d730729f"
     },
     {
-      "path": "./assets/index-uqB0SGXf.css",
-      "sha256": "77479d12f28348510b17e24865e67e7e3798575cab32787f25b9d51013b000ca"
+      "path": "./assets/index-8Q3foliC.css",
+      "sha256": "01a6d8a2cbd1512180e5c55ce98f7dd6cf41ad47cd66ac535a44af467b772be8"
     },
     {
       "path": "./assets/items/stitch-drone.png",
@@ -20,10 +20,27 @@
     {
       "path": "./assets/sounds/attack-revive.wav",
       "sha256": "d4b61b62a2d1946b16302551878a3a779d2c0beb87dd79a9085e04bf4a390b15"
+    },
+    {
+      "path": "./assets/locations/clinic.jpg",
+      "sha256": "fb26ee952765eebb0a1709ca43048677ff22c488ae9263e08a549fe7743df433"
+    },
+    {
+      "path": "./assets/locations/sewer-0.jpg",
+      "sha256": "366d70434161d4a3799ec53e38d6020557195c065d4f7b3805ae8a9eca98246b"
+    },
+    {
+      "path": "./assets/locations/bellwether-1.jpg",
+      "sha256": "4e6a3c662d1397f06953ae689c7ca5d7049d29481176218ae03f12ef1f1271a3"
+    },
+    {
+      "path": "./assets/location-art-provenance.json",
+      "sha256": "9f1dd875ea803b9bfc45603fbb02095c6a5df5c3fac046a9dc443586c8cc0c09"
     }
   ],
   "checks": [
-    "Public JS/CSS/drone image/revival sound exactly match tested build hashes",
+    "Public JS/CSS, sampled room paintings, complete location provenance, drone image and revival sound exactly match tested build hashes",
+    "Green-on-black terminal, visible pointer, complete landscape art at 1280×800",
     "Fresh keyboard clinic intake and downward sewer travel",
     "Packed drone consumes one and continues combat",
     "Unpacked drone does not rescue; death persists through reload"

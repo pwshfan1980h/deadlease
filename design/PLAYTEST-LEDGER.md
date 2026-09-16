@@ -4,6 +4,8 @@
 
 User feedback received: previous room descriptions, UI contrast, scene size and art were unsatisfactory. This feedback sets the current priority; it is not a sign-off on the replacement visuals.
 
+Published candidate: Pages `eec035a`, implementation source `56fd3b9`. All 149 room paintings installed and visually reviewed; 145 unit tests, 13 browser suites, production build, asset audit and public smoke checks pass. Reports: `verification/full-verification.json`, `verification/scene-verification.json`, `verification/deployment.json`.
+
 - [ ] Start a new patient. Judge the large scene / compact player strip / terminal proportions in your usual window.
 - [ ] Walk south. Before `look around`, check that the room stays concise; after it, check the manhole clue. Go `down`, then `up`, and judge whether the paintings feel connected.
 - [ ] Find loose loot. It should be immediately listed in grey. `take all` should remove it from the list.
