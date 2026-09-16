@@ -2,6 +2,8 @@
 
 ## Current priority: transcript and lasting conditions
 
+Published candidate: Pages `21f64db`, implementation source `32be3bd`. 154 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.
 - [ ] Check red HP, yellow stamina, ☢ radiation and lasting-condition labels.

@@ -15,10 +15,10 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [x] Red HP gauge, yellow stamina gauge, radiation number with ☢ symbol; visible condition/implant labels.
 - [x] Six lasting conditions from attack families and radiation, with defensive counterplay and paid treatment.
 - [x] Dr. Pell and Ripper Voss, three implant paths with three ranks, and the Spare Parts mission as an alternative to buying an upgrade.
-- [ ] v5 migration, persistence and resource-accounting tests; responsive UI/focus tests; full regression gate and public verification.
+- [x] v5 migration, persistence and resource-accounting tests; responsive UI/focus tests; full regression gate and public verification. Published Pages `21f64db`; implementation source `32be3bd`.
 - [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
 
-Verification: 154 unit tests, production build, asset audit and 14 browser suites pass. Source mirror builds independently. Live Pages verification follows publication.
+Verification: 154 unit tests, production build, asset audit and 14 browser suites pass. Source mirror builds independently. Live Pages assets match the tested hashes; doctor conversation, restored controls, intake, downward travel, revival and persistent death pass.
 
 Rules and commands: [MEDICINE.md](MEDICINE.md).
 
