@@ -1,0 +1,1753 @@
+{
+  "url": "https://pwshfan1980h.github.io/deadlease/?transcript-audit=1789583331350",
+  "verifiedAt": "2026-09-16T18:28:54.433Z",
+  "errors": [],
+  "scenarios": [
+    {
+      "name": "01-doctor",
+      "lines": [
+        {
+          "line": 1,
+          "text": "CLINIC CLERK / “Rhea. Right. Your things are by the door. Iona is waiting in Toll Square.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CLINIC CLERK",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": " / “",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Rhea",
+              "color": "rgb(119, 186, 255)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-neutral"
+            },
+            {
+              "text": ". Right. Your things are by the door. ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Iona",
+              "color": "rgb(119, 186, 255)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-neutral"
+            },
+            {
+              "text": " is waiting in Toll Square.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "CLINIC CLERK / “Need money? Read the jobs board by the door. Paid runs, whenever you need them.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CLINIC CLERK",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": " / “Need money? Read the jobs board by the door. Paid runs, whenever you need them.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› talk doctor",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› talk doctor",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "Dr. Pell: “I can repair what the streets did, or make you harder to break.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Dr. Pell",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": ": “I can repair what the streets did, or make you harder to break.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "CONDITION / No lasting injuries.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CONDITION / No lasting injuries.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "IMPLANTS / None installed.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPLANTS / None installed.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "Type treat <condition> or treat all.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type treat <condition> or treat all.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "dermal weave · rank 0/3 · +12 maximum HP per rank. Next: 80 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "dermal weave · rank 0/3 · +12 maximum HP per rank. Next: 80 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "Type upgrade dermal weave.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade dermal weave.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 11,
+          "text": "adrenal regulator · rank 0/3 · +6 maximum stamina per rank. Next: 80 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "adrenal regulator · rank 0/3 · +6 maximum stamina per rank. Next: 80 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 12,
+          "text": "Type upgrade adrenal regulator.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade adrenal regulator.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 13,
+          "text": "targeting optic · rank 0/3 · +6 percentage points to weapon accuracy per rank. Next: 100 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "targeting optic · rank 0/3 · +6 percentage points to weapon accuracy per rank. Next: 100 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 14,
+          "text": "Type upgrade targeting optic.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade targeting optic.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 15,
+          "text": "Dr. Pell: “Bring me three pieces of salvage for the repair bench and I’ll fit an implant for you. No charge.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Dr. Pell",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": ": “Bring me three pieces of ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "salvage",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            },
+            {
+              "text": " for the repair bench and I’ll fit an implant for you. No charge.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 16,
+          "text": "Type accept spare parts.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type accept spare parts.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02-doctor-short-window",
+      "lines": [
+        {
+          "line": 1,
+          "text": "CLINIC CLERK / “Rhea. Right. Your things are by the door. Iona is waiting in Toll Square.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CLINIC CLERK",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": " / “",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Rhea",
+              "color": "rgb(119, 186, 255)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-neutral"
+            },
+            {
+              "text": ". Right. Your things are by the door. ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Iona",
+              "color": "rgb(119, 186, 255)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-neutral"
+            },
+            {
+              "text": " is waiting in Toll Square.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "CLINIC CLERK / “Need money? Read the jobs board by the door. Paid runs, whenever you need them.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CLINIC CLERK",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": " / “Need money? Read the jobs board by the door. Paid runs, whenever you need them.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› talk doctor",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› talk doctor",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "Dr. Pell: “I can repair what the streets did, or make you harder to break.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Dr. Pell",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": ": “I can repair what the streets did, or make you harder to break.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "CONDITION / No lasting injuries.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CONDITION / No lasting injuries.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "IMPLANTS / None installed.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPLANTS / None installed.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "Type treat <condition> or treat all.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type treat <condition> or treat all.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "dermal weave · rank 0/3 · +12 maximum HP per rank. Next: 80 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "dermal weave · rank 0/3 · +12 maximum HP per rank. Next: 80 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "Type upgrade dermal weave.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade dermal weave.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 11,
+          "text": "adrenal regulator · rank 0/3 · +6 maximum stamina per rank. Next: 80 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "adrenal regulator · rank 0/3 · +6 maximum stamina per rank. Next: 80 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 12,
+          "text": "Type upgrade adrenal regulator.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade adrenal regulator.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 13,
+          "text": "targeting optic · rank 0/3 · +6 percentage points to weapon accuracy per rank. Next: 100 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "targeting optic · rank 0/3 · +6 percentage points to weapon accuracy per rank. Next: 100 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 14,
+          "text": "Type upgrade targeting optic.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type upgrade targeting optic.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 15,
+          "text": "Dr. Pell: “Bring me three pieces of salvage for the repair bench and I’ll fit an implant for you. No charge.”",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Dr. Pell",
+              "color": "rgb(255, 209, 139)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-clinic"
+            },
+            {
+              "text": ": “Bring me three pieces of ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "salvage",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            },
+            {
+              "text": " for the repair bench and I’ll fit an implant for you. No charge.”",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 16,
+          "text": "Type accept spare parts.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Type accept spare parts.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03-jobs",
+      "lines": [
+        {
+          "line": 1,
+          "text": "IMPORTED / Valid browser save.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPORTED / Valid browser save.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "Reclamation Clinic.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Reclamation Clinic.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› read board",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› read board",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "COURIER / 0 deliveries completed.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "COURIER / 0 deliveries completed.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "freight-return / Freight return to Freight Yard · 14 credits. Type accept freight-return",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "freight-return / Freight return to Freight Yard · 14 credits. ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Type accept freight-return",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "Freight Yard and Reclamation Clinic offer local work. Freight Yard and Bellwether Post offer long-distance dispatches.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Freight Yard and Reclamation Clinic offer local work. Freight Yard and Bellwether Post offer long-distance dispatches.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "› accept freight-return",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› accept freight-return",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "COURIER / Carry repaired instruments to Freight Yard. Payment: 14 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "COURIER / Carry repaired instruments to Freight Yard. Payment: 14 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "› jobs",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› jobs",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "COURIER / repaired instruments for Freight Yard. 14 credits on delivery. Type deliver parcel there.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "COURIER / repaired instruments for Freight Yard. 14 credits on delivery. ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Type deliver parcel there.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "04-room-items",
+      "lines": [
+        {
+          "line": 1,
+          "text": "IMPORTED / Valid browser save.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPORTED / Valid browser save.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "Ration Kiosk.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Ration Kiosk.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› look around",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› look around",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "Ration Kiosk / District 67 / level 1",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Ration Kiosk / District 67 / level 1",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "A vending machine offers nutrition, consolation, and an apology in three payment plans. Its medical drawer still works. A small placard reads: buy medical supplies (8 credits). A sealed medical kit sits on a restocking crate beside the vending machine. The attendant turns away to count ration tins; a watchman stands within shouting distance.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "A vending machine offers nutrition, consolation, and an apology in three payment plans. Its medical drawer still works. A small placard reads: buy ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "medical supplies",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            },
+            {
+              "text": " (8 credits). A ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "sealed medical kit",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            },
+            {
+              "text": " sits on a restocking crate beside the vending machine. The attendant turns away to count ration tins; a watchman stands within shouting distance.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "Kiosk watch — calm armed human protects this refuge.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Kiosk watch",
+              "color": "rgb(119, 186, 255)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-neutral"
+            },
+            {
+              "text": " — calm armed human protects this refuge.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "A calm human watch checks weapons, offers directions and enforces a ceasefire. Free rest and medical decontamination are available.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "A calm human watch checks weapons, offers directions and enforces a ceasefire. Free rest and medical decontamination are available.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "Ground: knife ×2",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Ground: knife ×2",
+              "color": "rgb(177, 180, 178)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "ground-text"
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "Ways out: south, east, west, north.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Ways out: south, east, west, north.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "› take knife",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› take ",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            }
+          ]
+        },
+        {
+          "line": 11,
+          "text": "TAKEN / knife",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "TAKEN / ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "05-combat",
+      "lines": [
+        {
+          "line": 1,
+          "text": "IMPORTED / Valid browser save.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPORTED / Valid browser save.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "Service Tunnel.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Service Tunnel.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "street cutthroat blocks your way.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "street cutthroat",
+              "color": "rgb(255, 121, 121)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-enemy"
+            },
+            {
+              "text": " blocks your way.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "HEAVY STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut. Unguarded severe hits can leave lasting injuries.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "HEAVY STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut. Unguarded severe hits can leave lasting injuries.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "› look",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› look",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "Service Tunnel / District 67 / level 1",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Service Tunnel / District 67 / level 1",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "Pipes cross the ceiling like the handwriting of a frightened engineer. A maintenance arrow points east toward the sump. A dry recess offers a moment to rest. A street cutthroat watches the passage ahead.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Pipes cross the ceiling like the handwriting of a frightened engineer. A maintenance arrow points east toward the sump. A dry recess offers a moment to rest. A ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "street cutthroat",
+              "color": "rgb(255, 121, 121)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-enemy"
+            },
+            {
+              "text": " watches the passage ahead.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "street cutthroat · HP 20/20",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "street cutthroat",
+              "color": "rgb(255, 121, 121)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-enemy"
+            },
+            {
+              "text": " · HP 20/20",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "HEAVY STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut. Unguarded severe hits can leave lasting injuries.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "HEAVY STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut. Unguarded severe hits can leave lasting injuries.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "Ways out: north, east, west, south.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Ways out: north, east, west, south.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 11,
+          "text": "› brace",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› brace",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 12,
+          "text": "BRACE / Halve incoming damage, then reduce it by 6.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "BRACE / Halve incoming damage, then reduce it by 6.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 13,
+          "text": "SPIKE / street cutthroat deals 2 HP.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "SPIKE / ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "street cutthroat",
+              "color": "rgb(255, 121, 121)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "character-name name-enemy"
+            },
+            {
+              "text": " deals 2 HP.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 14,
+          "text": "RECOVERING · no damage this response. Attack or heal.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "RECOVERING · no damage this response. Attack or heal.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 15,
+          "text": "› heal",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› heal",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 16,
+          "text": "HEAL / Patched for up to 18 HP. One supply consumed.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "HEAL / Patched for up to 18 HP. One supply consumed.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 17,
+          "text": "RECOVER / The cutthroat retreats a pace to reset their footing.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "RECOVER / The cutthroat retreats a pace to reset their footing.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 18,
+          "text": "CUTTING STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CUTTING STRIKE / An unguarded hit causes bleeding. Cover or brace prevents the cut.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "06-feedback",
+      "lines": [
+        {
+          "line": 1,
+          "text": "IMPORTED / Valid browser save.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPORTED / Valid browser save.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "Reclamation Clinic.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Reclamation Clinic.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› learn breach shot",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› learn breach shot",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "LEARNED / Breach shot. use breach shot",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "LEARNED / Breach shot. use breach shot",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "› buy knife",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› buy ",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "BOUGHT / knife for 5 credits.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "BOUGHT / ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            },
+            {
+              "text": " for 5 credits.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "› equip knife",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› equip ",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "EQUIPPED / knife",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "EQUIPPED / ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "knife",
+              "color": "rgb(101, 255, 114)",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "className": "item-mention"
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "text": "› go up",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› go up",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 10,
+          "text": "No exit that way. Type look.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "No exit that way. ",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            },
+            {
+              "text": "Type look.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "07-injury",
+      "lines": [
+        {
+          "line": 1,
+          "text": "IMPORTED / Valid browser save.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPORTED / Valid browser save.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "text": "Reclamation Clinic.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Reclamation Clinic.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "text": "› status",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› status",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 4,
+          "text": "CONDITION / brain damage: Traumatic neural damage: −12 percentage points to weapon accuracy. Clinical repair required.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "CONDITION / brain damage: Traumatic neural damage: −12 percentage points to weapon accuracy. Clinical repair required.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 5,
+          "text": "IMPLANTS / None installed.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "IMPLANTS / None installed.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        },
+        {
+          "line": 6,
+          "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Visit a doctor for lasting conditions. Type talk doctor for prices. Rest, supplies and revival drones do not cure them.",
+              "color": "rgb(165, 170, 167)",
+              "fontStyle": "italic",
+              "fontWeight": "400",
+              "className": "transcript-instruction"
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "text": "› treat brain damage",
+          "color": "rgb(215, 255, 188)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "› treat brain damage",
+              "color": "rgb(215, 255, 188)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": "log-command"
+            }
+          ]
+        },
+        {
+          "line": 8,
+          "text": "Treatment costs 75 credits. Nothing charged. You can treat one condition at a time; clinic prices are lower.",
+          "color": "rgb(167, 249, 135)",
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "parts": [
+            {
+              "text": "Treatment costs 75 credits. Nothing charged. You can treat one condition at a time; clinic prices are lower.",
+              "color": "rgb(167, 249, 135)",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "className": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

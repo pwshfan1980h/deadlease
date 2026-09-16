@@ -19,6 +19,8 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [x] v5 migration, persistence and resource-accounting tests; responsive UI/focus tests; full regression gate and public verification. Published Pages `21f64db`; implementation source `32be3bd`.
 - [x] Three fresh public play sessions with buttons and typing; record progression, fishing, medical recovery and terminal death. Fix invalid combat button availability and pass release checks. See [playtest report](PLAYTEST-2026-09-16-BUTTONS.md).
 - [ ] Follow up on playtest usability: fishing-kit alias, courier destination directions, compact-arrival warning before high-level territory, and individual loot selection.
+- [x] Audit 89 rendered transcript entries and screenshots across dialogue, jobs, exploration, combat, progression and injury; record category misses in [TRANSCRIPT-CATEGORY-AUDIT.md](TRANSCRIPT-CATEGORY-AUDIT.md).
+- [ ] Finish semantic transcript categories: non-Type control advice, system notices, stronger player-command separation and warning/refusal emphasis. Current audit is only a partial pass.
 - [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
 
 Verification: 154 unit tests, production build, asset audit and 14 browser suites pass. Source mirror builds independently. Live Pages assets match the tested hashes; doctor conversation, restored controls, intake, downward travel, revival and persistent death pass.

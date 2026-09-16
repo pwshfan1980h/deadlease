@@ -1,5 +1,9 @@
 # FREEBORN — playtest accountability
 
+## Transcript category audit — partial pass
+
+Line-by-line inspection of 89 rendered entries found clear grey italic hints and character colors, but missed non-Type instructions, green system notices, and weak separation of player commands, routine results and warnings. See [audit and exact lines](TRANSCRIPT-CATEGORY-AUDIT.md). No game UI changes made during this audit.
+
 ## Transcript voice separation — 16 September 2026
 
 Implemented and verified: control hints are grey italic on black; world prose, dialogue and combat retain green. Doctor and mission command prompts are separate from speech; the Crown warning keeps level/turn details in interface guidance. Browser checks assert computed colors, italics and no name/item highlighting inside hints. Full release gate passed (156 unit tests, 14 browser suites). Human reading-comfort acceptance remains pending.
