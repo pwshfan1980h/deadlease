@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T19:10:08.633Z",
-  "finished": "2026-09-16T19:13:32.042Z",
+  "started": "2026-09-16T21:33:00.761Z",
+  "finished": "2026-09-16T21:36:26.854Z",
   "passed": true,
   "results": [
     {
@@ -46,7 +46,7 @@
     {
       "stage": "test:minimap",
       "passed": true,
-      "seconds": 31
+      "seconds": 32
     },
     {
       "stage": "test:frontier",
@@ -84,9 +84,14 @@
       "seconds": 6
     },
     {
+      "stage": "test:recovery",
+      "passed": true,
+      "seconds": 2
+    },
+    {
       "stage": "test:scenes",
       "passed": true,
-      "seconds": 3
+      "seconds": 2
     },
     {
       "stage": "test:room-transcript",

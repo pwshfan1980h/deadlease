@@ -51,7 +51,7 @@ try{
  await newGame(page);
  await page.getByRole('heading',{name:'Reclamation Clinic',exact:true}).waitFor();
  await compact();await crops();
- await cmd('map');assert.equal(await page.getByRole('button',{name:'Whole estuary',exact:true}).getAttribute('aria-pressed'),'true');await page.keyboard.press('Escape');
+ await cmd('map');assert.equal(await page.getByRole('button',{name:'Local zoom',exact:true}).getAttribute('aria-pressed'),'true');await page.keyboard.press('Escape');
  await page.screenshot({path:path.join(evidence,'compact-clinic.png')});
  await cmd('s');await cmd('s');await page.getByText('STRIKE · a measured attack is next.',{exact:true}).first().waitFor();await compact();await crops();await page.screenshot({path:path.join(evidence,'compact-combat.png')});
  // Run seeds vary damage; finish the encounter instead of assuming three hits.

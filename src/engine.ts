@@ -1,5 +1,7 @@
+import {weaponChance,weaponDamage,attackVerb,combatAssessment,incomingDamage} from './combat';
+export {incomingDamage} from './combat';
 import {instruction} from './instructions';
-import {medicalCommand,medicalJournal,doctors,injury,accuracyModifier,impaired} from './medicine';
+import {medicalCommand,medicalJournal,doctors,injury,impaired} from './medicine';
 import {runRecord,resolveLethal,drone,type Run} from './runs';
 import {enemyRole,behaviorIntent} from './enemyBehavior';
 import {missions,missionKey,missionActive,missionDone,missionProgress,resolveMission,missionConversation,missionJournal,recordCatch} from './missions';
@@ -20,11 +22,11 @@ import {visitors,visitorAllowed} from './roaming';
 import pumpText from './data/original-quest.json';
 export interface Encounter {id:string;name:string;level:number;hp:number;maxHP:number;damage:number;armor:number;phase:number;heat:number;morale:'fighting'|'surrendered'|'defiant'}
 export type PumpState='new'|'accepted'|'repaired'|'commons'|'lease';
-export interface Game {version:5;run:Run;bleed:number;courier:CourierState;lootPity:number;player:Player;room:string;previous:string;discovered:string[];defeated:Record<string,number>;scrounged:string[];loot:Record<string,Record<string,number>>;pump:PumpState;quests:Record<string,string>;rewards:string[];encounter:Encounter|null;turns:number;rng:number;shield:number;exposed:number;exposeTurns:number;cooldowns:Record<string,number>}
+export interface Game {version:6;run:Run;bleed:number;courier:CourierState;lootPity:number;player:Player;room:string;previous:string;discovered:string[];defeated:Record<string,number>;scrounged:string[];loot:Record<string,Record<string,number>>;pump:PumpState;quests:Record<string,string>;rewards:string[];encounter:Encounter|null;turns:number;rng:number;shield:number;exposed:number;exposeTurns:number;cooldowns:Record<string,number>}
 export interface CombatCue {cue:string;delay:number;impact?:'player'|'enemy'}
 export interface Result {state:Game;changed:boolean;messages:string[];sound:string;sounds?:CombatCue[];challenge?:Challenge;discovery?:{item:string;first:boolean};flavor?:Flavor}
 export function createGame(name='Mara',origin='Baseline',cls='Enforcer',bonus='Tech',seed=670122,runId?:string):Game{
- return {version:5,run:runRecord(seed>>>0||1,runId),bleed:0,courier:{route:null,completed:0},lootPity:0,player:createPlayer(name,origin,cls,bonus),room:'clinic',previous:'clinic',discovered:['clinic'],defeated:{},scrounged:[],loot:Object.fromEntries(Object.values(rooms).map(r=>[r.id,{...r.loot}])),pump:'new',quests:{},rewards:[],encounter:null,turns:0,rng:seed>>>0||1,shield:0,exposed:0,exposeTurns:0,cooldowns:{}};
+ return {version:6,run:runRecord(seed>>>0||1,runId),bleed:0,courier:{route:null,completed:0},lootPity:0,player:createPlayer(name,origin,cls,bonus),room:'clinic',previous:'clinic',discovered:['clinic'],defeated:{},scrounged:[],loot:Object.fromEntries(Object.values(rooms).map(r=>[r.id,{...r.loot}])),pump:'new',quests:{},rewards:[],encounter:null,turns:0,rng:seed>>>0||1,shield:0,exposed:0,exposeTurns:0,cooldowns:{}};
 }
 export function random(g:Game){let x=g.rng;x^=x<<13;x^=x>>>17;x^=x<<5;g.rng=x>>>0;return g.rng/4294967296}
 export function enemyFor(room:string):Encounter{
@@ -43,7 +45,7 @@ export function roamingEnemyFor(room:string,visitorId:string):Encounter{
 export function engageVisitor(source:Game,visitorId:string,initiatedByPlayer=false):Result{
  const reject=(message:string):Result=>({state:source,changed:false,messages:[message],sound:'error'});
  const r=rooms[source.room];
- if(source.run.status==='dead')return reject('This run has ended. Begin a new patient.');
+ if(source.run.status==='dead')return reject('You are awaiting clinic recovery. Wake at the clinic to continue.');
  if(source.encounter)return reject('Resolve the current encounter first.');
  if(!visitorAllowed(visitorId,r))return reject('That visitor is not here.');
  const v=visitors[visitorId];
@@ -58,18 +60,15 @@ export function engageVisitor(source:Game,visitorId:string,initiatedByPlayer=fal
 }
 export function enterEncounter(g:Game){if(g.run.status==='dead')return;const alarm=activeAlarm(g);if(alarm){g.encounter=theftEnemyFor(alarm.id);return}const r=rooms[g.room];if(r.enemy&&!r.safe&&(g.defeated[r.id]===undefined||(r.respawn&&g.turns-g.defeated[r.id]>=B.respawnTurns)))g.encounter=enemyFor(r.id)}
 export function intent(e:Encounter){const warning=(enemyRole(e.name)==='marksman'?e.phase===1:e.phase===2)?' Unguarded severe hits can leave lasting injuries.':'';return (behaviorIntent(e)??['STRIKE · a measured attack is next.','WIND-UP · '+enemyDefinition(e.name).windup+' No damage this response.','HEAVY STRIKE · '+(e.damage*B.spikeMultiplier)+'–'+(e.damage*B.spikeMultiplier+B.enemyVariance-1)+' raw damage next! Brace, cover, interrupt or flee.','RECOVERING · no damage this response. Attack or heal.'][e.phase])+warning}
-export function incomingDamage(raw:number,armor:number,shield:number,brace:boolean,cover:boolean,insulation:number){
- let n=Math.max(1,raw-armor-insulation);if(brace)n=Math.max(1,Math.floor(n*B.braceSpikeFactor)-B.braceFlat);if(cover)n=Math.max(1,Math.floor(n*B.coverFactor));return Math.max(1,n-shield);
-}
 function baseRoomDescription(g:Game){
  if(g.room==='pump'&&['repaired','commons','lease'].includes(g.pump))return 'The ceramic cartridge holds. Water fills the TEAMWORK mug and keeps going. For once, a machine is doing what it says on the plate.';
  if(g.room==='booth'&&g.pump!=='new'&&g.pump!=='accepted')return g.pump==='repaired'?'PUMP STATUS: ACTIVE. COMMONS and SYNDICATE receivers wait. Give key commons or give key syndicate. The decision is permanent.':'PUMP STATUS: ACTIVE. ACCESS ASSIGNED: '+(g.pump==='lease'?'syndicate':g.pump).toUpperCase()+'. Water runs through the district again.';
  return rooms[g.room].description;
 }
 export function roomDescription(g:Game){if(g.encounter?.id.startsWith('fishing:'))return g.encounter.name==='pallid bankmaw'?'Something enormous has followed the line ashore. Pale jaws scrape the bank; four heavy feet block the waterline. The old predator attacks on sight.':'A fish-shaped quadruped scrabbles onto the bank, gills flared and teeth bared. It attacks before you can lift the rod.';const alarm=activeAlarm(g);if(alarm)return theftDescription(alarm,g);return [baseRoomDescription(g),...theftObjects.filter(object=>object.room===g.room).map(object=>theftDescription(object,g)),...puzzleObjects.filter(object=>object.room===g.room).map(object=>g.rewards.includes(puzzleFlag(object.id))?object.empty:object.description),...(fishingSpot(g.room)?[fishingSpot(g.room)!.description,fishingWarning,...(rooms[g.room].safe?['The watch protects the shelter, not the waterline.']:[])]:[])].join(' ')}
-export const HELP=`BODY: status; talk doctor; treat; implants; upgrade <implant>; accept spare parts; report spare parts. Lasting injuries require a doctor; implants last this run.
+export const HELP=`BODY: status; talk doctor; treat; implants; upgrade <implant>; accept spare parts; report spare parts. Lasting injuries require a doctor; implants survive clinic reconstruction.
 EXPLORE: n/s/e/w/up/down; go <direction>; look around (details); talk <name>; inspect <target/item/room/stat>; take all; scrounge; rest.
-COMBAT: attack [target]; aim (firearm); brace (free, halve damage −6); cover (3 stamina, reduce damage 65%); heal / use medical supplies; use <ability>; flee (parting attack in cover).
+COMBAT: inspect target (free threat assessment); attack [target]; fire/shoot (firearm); aim (firearm); brace (free, halve damage −6); cover (3 stamina, reduce damage 65%); heal / use medical supplies; use <ability>; flee (parting attack in cover).
 VISITORS: inspect <name>; talk <name>; attack <name>. Neutral travelers pass peacefully; defensive creatures fight back; hostiles attack on sight. Room activity runs in real time; combat waits for commands.
 PACK: inventory (drag items; R rotate; arrows + Enter also work); drop <item>; equip canvas satchel / field backpack / expedition frame. Grit adds pack rows.
 PROGRESS: inventory; equip <item>; buy <item>; sell <item>; jobs; skills; train <skill>; learn <class ability>; stats; journal.
@@ -77,11 +76,11 @@ MISSIONS: talk to people for personal requests; missions for progress; accept mi
 INTERACTIONS: inspect <object>; pick <lock>; hack <terminal>; fish at accessible water with a packed telescopic fishing kit; eat <fish>. Fishing requires two timed Space presses.
 JOBS: read board / inspect board (where posted); jobs (work journal anywhere); accept <route-id>; deliver parcel. Repeatable paid routes connect the clinic, freight yard and Bellwether.
 QUESTS: install component; give key commons OR give key syndicate; deliver <artifact>; resolve erase OR resolve disclose; depart (city ending at Crown Receiver after the ledger).
-SYSTEM: help; view (enlarge art); map [surface/sewers/local/world]; map fog/labels/hazards on/off; settings; menu; palette original/ember/tidal; mute; volume master/effects/ambience/music <0–100>; save; load; load auto; export; import.
+SYSTEM: help; view (enlarge art); map [surface/sewers/local/world]; map labels/hazards on/off (fog is always on; map opens locally); settings; menu; palette original/ember/tidal; mute; volume master/effects/ambience/music <0–100>; save; load; load auto; export; import.
 Up/Down history · Tab minimap · Ctrl+Space completion · Escape close overlay / pause · PageUp/PageDown log. Reading and invalid commands never advance combat. Hunting grounds return after 12 world turns; leave and re-enter. Safe refuges restore HP/stamina and clear radiation. Type spare to accept an offered surrender. Bleeding costs 2 HP per combat action; heal stops it. Death ends the run. A packed Stitch Drone rescues you once per item; unpacked drones cannot activate. Level cap 10.`;
 /** Entering a room reveals presence, not a survey. Looking remains a free explicit action. */
-export function arrival(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['RUN ENDED / '+g.player.name+' · '+g.run.cause+'.'];return [r.name+'.',...(g.encounter?[g.encounter.name+' blocks your way.',intent(g.encounter)]:[])]}
-export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['RUN ENDED / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Begin a new patient.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(doctors[g.room]?[doctors[g.room].name+' tends a surgical bench. Type talk doctor for treatment and implants.']:[]),...(r.guard&&!g.encounter&&!theftObjects.some(object=>object.room===g.room&&g.rewards.includes(alarmFlag(object.id)))?[r.guard+' protects this refuge.']:[]),...(r.npc?['Here: '+r.npc+'.',instruction('Type talk '+r.npc+'.')]:[]),...(r.warning&&!g.encounter?[r.warning]:[]),...(g.encounter?[g.encounter.name+' · HP '+g.encounter.hp+'/'+g.encounter.maxHP,intent(g.encounter)]:[]),...(Object.keys(g.loot[g.room]).length?['Ground: '+Object.entries(g.loot[g.room]).map(([k,v])=>k+' ×'+v).join(', ')]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
+export function arrival(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['FALLEN / '+g.player.name+' · '+g.run.cause+'.'];return [r.name+'.',...(g.encounter?[g.encounter.name+' blocks your way.',intent(g.encounter)]:[])]}
+export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['FALLEN / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Wake at the clinic to continue.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(doctors[g.room]?[doctors[g.room].name+' tends a surgical bench. Type talk doctor for treatment and implants.']:[]),...(r.guard&&!g.encounter&&!theftObjects.some(object=>object.room===g.room&&g.rewards.includes(alarmFlag(object.id)))?[r.guard+' protects this refuge.']:[]),...(r.npc?['Here: '+r.npc+'.',instruction('Type talk '+r.npc+'.')]:[]),...(r.warning&&!g.encounter?[r.warning]:[]),...(g.encounter?[g.encounter.name+' · HP '+g.encounter.hp+'/'+g.encounter.maxHP,intent(g.encounter)]:[]),...(Object.keys(g.loot[g.room]).length?['Ground: '+Object.entries(g.loot[g.room]).map(([k,v])=>k+' ×'+v).join(', ')]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
 export function clearEncounter(g:Game){g.encounter=null;g.shield=0;g.exposed=0;g.exposeTurns=0;g.bleed=0}
 function rewardKill(g:Game,m:string[],peace=false){if(g.encounter&&g.encounter.hp<=0){
  const e=g.encounter,roaming=e.id.startsWith('roaming:'),theft=e.id.startsWith('theft:'),fishing=e.id.startsWith('fishing:');
@@ -147,8 +146,10 @@ export function command(source:Game,text:string,options:{timing?:TimingOutcome;i
  verb=({a:'attack',l:'look',i:'inventory',inv:'inventory',get:'take',grab:'take',snatch:'steal',swipe:'steal',pocket:'steal'} as Record<string,string>)[verb]??verb;
  const unchanged=(message:string|string[]):Result=>({state:source,changed:false,messages:Array.isArray(message)?message:[message],sound:'error'});
  const read=(m:string|string[])=>({...unchanged(m),sound:'submit'});
- if(source.run.status==='dead')return read('This run has ended. Begin a new patient.');
+ if(source.run.status==='dead')return read('You are awaiting clinic recovery. Wake at the clinic to continue.');
  if(!raw)return read([]);
+ const weaponVerbs=['fire','shoot','slash','shock','burn','drain'];
+ if(weaponVerbs.includes(verb)){if((verb==='shoot'?'fire':verb)!==attackVerb(source.player.weapon))return unchanged('Your '+source.player.weapon+' cannot '+verb+'. Use attack to '+attackVerb(source.player.weapon)+'.');verb='attack';arg=arg.replace(/^at /,'').replace(/^the /,'');}
  const medical=medicalCommand(source,verb,arg);if(medical)return medical;
  const flavor=flavorFor(source,verb,arg,roomDescription(source));
  if(flavor&&(!source.encounter||['inspect','search','listen','smell'].includes(verb)))return {...read(flavor.message),flavor};
@@ -170,7 +171,7 @@ export function command(source:Game,text:string,options:{timing?:TimingOutcome;i
  if(verb==='jobs')return read(courierJournal(source));
  if(verb==='missions')return read([...missionJournal(source),...medicalJournal(source.player)]);
  if(verb==='inspect'){
-  if(arg==='target'&&source.encounter)return read(`${source.encounter.name}: ${source.encounter.hp} HP, ${source.encounter.armor} armor, ${source.encounter.damage} base damage. ${intent(source.encounter)}`);
+  if(source.encounter&&['target','enemy',source.encounter.name].includes(arg.replace(/^the /,'')))return read(combatAssessment(source));
   if(Object.hasOwn(items,arg))return read(items[arg].description);
   if(Object.hasOwn(abilities,arg))return read(abilities[arg].description+` Costs ${abilities[arg].cost} stamina. Cooldown ${abilities[arg].cooldown} actions.`);
   const r=Object.values(rooms).find(r=>(r.id===arg||r.name.toLowerCase()===arg)&&source.discovered.includes(r.id));
@@ -243,8 +244,8 @@ export function command(source:Game,text:string,options:{timing?:TimingOutcome;i
    if(verb==='aim'&&(weapon.skill!=='Firearms'||p.stamina<cost))return unchanged('Aim requires a firearm and '+cost+' stamina.');
    if(g.encounter!.morale==='surrendered'){g.encounter!.morale='defiant';m.push('REFUSED / They snatch their weapon back up.');}
    if(verb==='aim')p.stamina-=cost;
-   const skill=p.skills[weapon.skill!];const chance=Math.max(B.minAccuracy,Math.min(B.maxAccuracy,B.baseAccuracy+B.reflexAccuracy*p.stats.Reflex+B.skillAccuracy*skill+accuracyModifier(p)+(verb==='aim'?B.aimAccuracy:0)+(p.className==='Glassrunner'?B.glassAccuracy:0)-(p.radiation>=B.radThreshold?B.radPenalty:0)));
-   if(random(g)*100<chance){const damage=Math.max(1,weapon.damage!+B.skillDamage*skill+Math.floor(random(g)*B.damageVariance)-Math.max(0,g.encounter!.armor-g.exposed));g.encounter!.hp-=damage;m.push('HIT / Your '+p.weapon+' deals '+damage+' damage.')}else m.push('MISS / Your '+p.weapon+' attack misses.');
+   const chance=weaponChance(p,verb==='aim');
+   if(random(g)*100<chance){const damage=weaponDamage(p,g.encounter!,g.exposed,Math.floor(random(g)*B.damageVariance));g.encounter!.hp-=damage;m.push('HIT / You '+(verb==='aim'?'take aim and ':'')+attackVerb(p.weapon)+' with '+p.weapon+' for '+damage+' damage.')}else m.push('MISS / You '+(verb==='aim'?'take aim and ':'')+attackVerb(p.weapon)+' with '+p.weapon+' but miss.');
    if(verb==='attack')p.stamina=Math.min(maxStamina(p),p.stamina+B.attackRecovery+(p.className==='Wirewright'?B.wireRecovery:0));sound='attack-'+weaponAttack(p.weapon);sounds.push({cue:sound,delay:0},{cue:m.some(line=>line.startsWith('MISS'))?'attack-miss':'attack-impact',delay:140,...(!m.some(line=>line.startsWith('MISS'))?{impact:'enemy' as const}:{})});
   }else if(verb==='brace'){brace=true;if(p.className==='Enforcer')p.stamina=Math.min(maxStamina(p),p.stamina+B.enforcerRecovery);m.push('BRACE / Halve incoming damage, then reduce it by 6.');sound='attack-block';}
   else if(verb==='cover'){if(p.stamina<B.coverCost)return unchanged('Cover costs 3 stamina. Brace is free.');p.stamina-=B.coverCost;cover=true;m.push('COVER / Incoming damage reduced by 65%.');}

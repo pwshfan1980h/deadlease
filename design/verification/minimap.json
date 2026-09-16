@@ -3,7 +3,8 @@
   "url": "http://127.0.0.1:4193/",
   "checks": [
     "Readable 12px room label and >=16px player ring; no clipping at 1440, 1280, 1024, 3440 and 390px widths",
-    "Floor/local/world/labels/fog shortcuts; off-floor player and selection hidden; inspection preserves save and restores command focus",
+    "Fog always applied: no checkbox, F cannot disable it, legacy map fog off rejected; only discovered markers, ladders and region names; exploration expands reveal; every reopen returns to local view at player",
+    "Floor/local/world/labels shortcuts; off-floor player and selection hidden; inspection preserves save and restores command focus",
     "SVG keyboard focus uses a non-scaling ring, never a giant outline over the map",
     "All 149 discovered room labels inspected without clipping or viewport shifts; local zoom centers selected room; surface/sewer edge markers fit"
   ],

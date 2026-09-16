@@ -1,17 +1,17 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T19:14:33.067Z",
+  "verifiedAt": "2026-09-16T21:37:08.468Z",
   "url": "https://pwshfan1980h.github.io/deadlease/",
-  "pagesCommit": "0c7790f248533154d43d721e8cacce42d6400bf8",
+  "pagesCommit": "77ead33cd80f619fd50278a8593bd120a7634180",
   "sourceBranch": "source",
   "assets": [
     {
-      "path": "./assets/index-C3lf0VD2.js",
-      "sha256": "40d56a157da5f15b0cdfc5c614dc805f43ef13b898b1039b9f14c9cb646f2d54"
+      "path": "./assets/index-CtM0-gSz.js",
+      "sha256": "9e35f5f2e3aae5b3482c309e30bed5d507b6af192432b0d9ae9d8f55551b99ef"
     },
     {
-      "path": "./assets/index-NCHPIKKU.css",
-      "sha256": "44a3a287c1876f60161fa486c46022c11518dcee90a4f78ec86194a1e25fd69f"
+      "path": "./assets/index-pCUWcYQl.css",
+      "sha256": "655c0e585d1eae380ec7fcc629b07858cf88ab60d9b7fb963a166cf6523b3cdb"
     },
     {
       "path": "./assets/items/stitch-drone.png",
@@ -60,7 +60,7 @@
     "NPC replies chirp once without the submit beep; all four new feedback audio files match tested hashes",
     "Fresh keyboard clinic intake, clean top-scrolled room transcript and downward sewer travel",
     "Packed drone consumes one and continues combat",
-    "Unpacked drone does not rescue; death persists through reload"
+    "Unpacked drone does not rescue; death persists through reload; clinic reconstruction preserves discovery and inventory and charges once"
   ],
   "errors": []
 }

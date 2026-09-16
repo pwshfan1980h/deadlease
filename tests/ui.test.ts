@@ -14,3 +14,6 @@ it('renders painted scene, command entry, resource labels, movement, panels and 
 it('offers keyboard completion for multiword abilities, items, directions and safe commands',()=>{
  const g=createGame();expect(completions('use riot',g)).toContain('use riot stance');expect(completions('equip battered',g)).toContain('equip battered handgun');expect(completions('go s',g)).toContain('go south');
 });
+it('offers local and world map commands without any fog-disable completion',()=>{
+ const commands=completions('map ',createGame());expect(commands).toContain('map local');expect(commands).toContain('map world');expect(commands.some(c=>c.startsWith('map fog'))).toBe(false);
+});

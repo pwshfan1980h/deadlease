@@ -7,7 +7,7 @@ import {rooms} from '../src/world';
 import {enemyDefinition} from '../src/enemies';
 import {encode,decode} from '../src/saves';
 it('v4 migrates additively while strict body validation rejects corrupt medical state',()=>{
- const old:any=createGame();old.version=4;delete old.player.body;const raw=JSON.stringify(old),g=decode(raw);expect(g.version).toBe(5);expect(g.player.body).toEqual(newBody());expect(JSON.stringify(old)).toBe(raw);expect(g.run).toEqual(old.run);
+ const old:any=createGame();old.version=4;delete old.player.body;const raw=JSON.stringify(old),g=decode(raw);expect(g.version).toBe(6);expect(g.player.body).toEqual(newBody());expect(JSON.stringify(old)).toBe(raw);expect(g.run).toEqual(old.run);
  for(const edit of [(b:any)=>b.ailments=['imaginary'],(b:any)=>b.ailments=['brain damage','brain damage'],(b:any)=>b.implants={'dermal weave':4},(b:any)=>b.implants={'bad':1},(b:any)=>b.voucher=true,(b:any)=>b.commission='paid']){const bad=createGame();edit(bad.player.body);expect(()=>encode(bad)).toThrow()}
 });
 it('injuries persist through rest, healing, leveling and reload; new patients start clean',()=>{

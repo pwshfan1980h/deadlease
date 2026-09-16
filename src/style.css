@@ -338,3 +338,5 @@ html body .inventory-dialog .pack-item{cursor:grab!important}html body .inventor
 /* HTML focus outlines use SVG map units and can cover entire neighborhoods. */
 .minimap-dialog .map-location:focus-visible{outline:none}
 .minimap-dialog .map-location:focus-visible .map-hit-target{stroke:var(--amber);stroke-width:2px}
+
+.minimap-dialog .map-fog-status{font-size:.68rem;color:var(--ash);align-self:center}

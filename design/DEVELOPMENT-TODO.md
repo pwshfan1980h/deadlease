@@ -2,9 +2,19 @@
 
 Status: in progress. Checked implementation tasks have passed their recorded verification; unchecked tasks remain planned. See the milestone record below.
 
-Visual priority override (latest user playtest): finish the scene/UI pass below before resuming feature phases.
+Latest priority: clinic continuity and combat readability. The user replaced permadeath with retained progression and wants a relationship with the clinic. See [current rules and evidence](CLINIC-RECOVERY-AND-COMBAT.md).
 
 Build in this order: room interactions → enemy behavior → backpack synergies → courier reputation → discoveries → tutorial. Complete a playable, tested increment in each phase before expanding it. The tutorial comes last so it teaches the finished controls and mechanics.
+
+## Current priority — clinic relationship and combat clarity
+
+- [x] Verify and publish clinic reconstruction retaining map, quests, levels, implants, gear and delivery custody; charge 15% credits and one treatable injury.
+- [x] Verify Pell recognition, earned treatment discount, migration, write failures/retries and duplicate recovery protection.
+- [x] Verify weapon-aware attack labels/prose and free current-build inspection forecasts in actual browser combat.
+- [ ] Human playtest: recovery cost, injury burden, familiarity with Pell, firearm clarity and threat usefulness.
+- [ ] Extend the clinic relationship with a second authored personal mission and remembered world choices; earned help should unlock meaningful dialogue/services.
+- [ ] Design the next combat increment: distinct weapon tradeoffs and clear counterplay. Research is recorded; no external ruleset was imported.
+- [ ] Collect specific browser failures before considering a desktop wrapper. No Python rewrite is scheduled.
 
 ## Current priority — transcript space and medical progression
 
@@ -23,6 +33,7 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [ ] Finish semantic transcript categories: non-Type control advice, system notices, stronger player-command separation and warning/refusal emphasis. Current audit is only a partial pass.
 - [x] NPC reply chirps and distinct level-up fanfare; verify dialogue routing, earned-level triggers, pause/mute/reload behavior and audio assets. See [AUDIO-FEEDBACK.md](AUDIO-FEEDBACK.md).
 - [x] Correct minimap SVG focus artifacts, floor framing, label/marker readability and room-inspection hit targets; verify all 149 markers and five window sizes. See [MINIMAP-REVIEW.md](MINIMAP-REVIEW.md).
+- [x] Enforce minimap fog across controls and commands; default every opening to local close-up at the player; hide undiscovered region and ladder destination names.
 - [ ] Human visual acceptance of minimap rendering after fixes.
 - [x] Reset the transcript on room changes and show its top with command focus retained; verify fades, stairs, blocked movement, retreat and revisits. See [ROOM-TRANSCRIPTS.md](ROOM-TRANSCRIPTS.md).
 - [ ] Human acceptance of room-by-room transcript flow.
@@ -50,11 +61,9 @@ User withdrew the 3440×1440 design target. Use a centered frame near 4:3 (up to
 
 User direction: FREEBORN is intended to be a roguelike that takes at least roughly 30–45 minutes. Working pacing target: about 45 minutes for an ordinary successful run, with 30 minutes as the lower design target. This is a design goal to measure, not a claim about the current build or a mandatory real-time gate. Early defeats may be shorter; deliberate farming may extend a run. Skilled play and exceptional builds can finish faster without being penalized.
 
-Confirmed user decision: death ends the run and the player starts a fresh character. Same-character clinic revival has been replaced; see the runs milestone below. Use the death experience as the bridge into a new clinic intake; do not automatically resume the dead character. Completing the city crossing is a successful run ending. Permanent gameplay upgrades between runs have not been requested.
+Current confirmed decision: death retains map, quests, levels, implants and gear through clinic reconstruction. Credit loss and a treatable injury provide the setback. A packed drone rescues in place without that reconstruction penalty. The earlier fresh-character rule below is historical and superseded. The 30–45 minute target now describes the journey toward the city, not compulsory permadeath.
 
-Implemented exception: a packed revival drone can intercept a lethal event before final death. This consumes an earned item and continues the current run; it does not restore automatic clinic revival. Without an eligible drone, death still ends the run.
-
-### Cross-cutting work alongside Phases 1–5, before the tutorial
+### Historical run milestone (death rule superseded above)
 
 - [x] Confirm the death rule: death ends the run; the next attempt uses a fresh character.
 - [x] Implement a terminal dead-run state and a death summary, followed by the option to begin fresh clinic intake. Reset character levels, gear, money, quests, deliveries, and run-specific world state; no automatic resource carryover.

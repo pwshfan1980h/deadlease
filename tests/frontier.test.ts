@@ -30,7 +30,7 @@ it('local courier routes pay only once at the destination and can be repeated th
 it('courier acceptance is atomic for a full pack and death closes the unfinished delivery',()=>{
  const full=createGame();full.player.inventory.salvage=500;const before=structuredClone(full);expect(command(full,'accept freight-return').state).toEqual(before);
  let g=step(createGame(),'accept freight-return');g.room='crown-2';g.previous='crown-1';g.discovered.push('crown-2','crown-1');g.encounter=enemyFor(g.room);g.encounter.phase=2;g.player.hp=1;
- g=step(g,'brace');expect(g.run.status).toBe('dead');expect(g.courier.route).toBeNull();expect(g.player.inventory['sealed parcel']).toBeUndefined();
+ g=step(g,'brace');expect(g.run.status).toBe('dead');expect(g.courier.route).toBe('freight-return');expect(g.player.inventory['sealed parcel']).toBe(1);
 });
 it('long-distance dispatches cross the wilderness to a separate guarded town',()=>{
  expect(deliveryRoutes['bellwether-run'].to).toBe('bellwether-1');expect(deliveryRoutes['district-return'].to).toBe('yard');
@@ -53,7 +53,7 @@ it('misses still play the attempted weapon and human windups do not use machine 
 });
 function v2(room='clinic'){const g:any=at(room);g.version=2;delete g.player.body;delete g.courier;delete g.lootPity;delete g.run;delete g.bleed;for(const id of Object.keys(g.loot))if(!Object.hasOwn(legacy,id))delete g.loot[id];if(g.encounter){const r=legacy[room as keyof typeof legacy];const base:Record<string,number[]>={'coupon ferret':[22,5,0],'compliance tadpole':[28,6,1],guard:[34,7,2]};const old=base[r.enemy];const hp=old?.[0]??14+r.level*10;g.encounter={id:room,name:r.enemy,level:r.level,hp:hp-1,maxHP:hp,damage:old?.[1]??3+r.level*2,armor:old?.[2]??Math.floor(r.level/2),phase:2};}return g}
 it('old saves migrate map, enemy names and learned actions while corrupt legacy encounters remain rejected',()=>{
- for(const room of ['clinic','alley','crown-4']){const old=v2(room),g=decode(JSON.stringify(old));expect(g.version).toBe(5);expect(Object.keys(g.loot)).toHaveLength(Object.keys(rooms).length);expect(g.player.name).toBe(old.player.name);expect(()=>encode(g)).not.toThrow();if(g.encounter){expect(g.encounter.name).toBe(rooms[room].enemy);expect(g.encounter.phase).toBe(2);old.encounter.damage++;expect(()=>decode(JSON.stringify(old))).toThrow(/legacy enemy/)}}
+ for(const room of ['clinic','alley','crown-4']){const old=v2(room),g=decode(JSON.stringify(old));expect(g.version).toBe(6);expect(Object.keys(g.loot)).toHaveLength(Object.keys(rooms).length);expect(g.player.name).toBe(old.player.name);expect(()=>encode(g)).not.toThrow();if(g.encounter){expect(g.encounter.name).toBe(rooms[room].enemy);expect(g.encounter.phase).toBe(2);old.encounter.damage++;expect(()=>decode(JSON.stringify(old))).toThrow(/legacy enemy/)}}
  const old=v2();old.player=createGame('Mara','Baseline','Advocate').player;delete old.player.body;old.player.abilities=['stay order'];old.cooldowns={'stay order':0};const g=decode(JSON.stringify(old));expect(g.player.abilities).toEqual(['disarming feint']);expect(g.cooldowns).toEqual({'disarming feint':0});
  const missing=v2();delete missing.loot.alley;expect(()=>decode(JSON.stringify(missing))).toThrow();
 });

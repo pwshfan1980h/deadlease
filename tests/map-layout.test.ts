@@ -27,3 +27,15 @@ it('draws every same-floor passage once and ladders at both matching endpoints',
   else {const shaft=geometry.shafts.find(s=>s.x===room.x&&s.y===room.y);expect(shaft).toBeDefined();expect([room.x,room.y]).toEqual([other.x,other.y])}
  }
 });
+
+it('starts close to the player with permanent discovery fog and no unseen locations or ladders',async()=>{
+ const {createElement}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
+ const {Atlas}=await import('../src/visuals');const {createGame}=await import('../src/engine');
+ const g=createGame();const html=renderToStaticMarkup(createElement(Atlas,{game:g}));
+ expect(html).toContain('viewBox="-3.5 -3.5 7 7"');expect(html).toContain('class="map-terrain" mask="url(');
+ expect(html).toContain('aria-pressed="true">Local zoom');expect(html).not.toContain('> Fog</label>');
+ expect(html).not.toContain('Clinic Steps map location');expect(html).not.toContain('Ladder down —');
+ g.room='steps';g.discovered.push('steps');const explored=renderToStaticMarkup(createElement(Atlas,{game:g}));
+ expect(explored).toContain('viewBox="-3.5 -2.5 7 7"');expect(explored).toContain('Ladder down —');
+ expect(explored).toContain('Unexplored</p>');expect(explored).not.toContain('Steps Undercroft');
+});

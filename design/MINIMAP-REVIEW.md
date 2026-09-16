@@ -1,14 +1,18 @@
 # Minimap rendering review — 16 September 2026
 
+## Current behavior — mandatory fog and local opening
+
+Every Tab, map button, or plain `map` opening starts in local close-up around the player. Fog of war is always applied, including the optional W/world overview. There is no Fog checkbox, F shortcut, or `map fog off` command. Discovered rooms reveal nearby terrain; unknown markers, region names and ladder destination names remain hidden. Floor switching selects a nearby known room in local view when one exists; an unexplored floor stays blank. Closing and reopening resets inspection/zoom to the player.
+
 ## Reproduced problems and corrections
 
 - **Huge gold blocks after keyboard input.** The generic `:focus-visible` HTML outline was applied to SVG room groups. Its pixel lengths became map units, producing an enormous rectangle when zoomed. Map locations now use a small, non-scaling SVG focus ring.
 - **Sewers lost in empty space.** Both floors used the tall surface-world frame. Each floor now has stable bounds derived from all its rooms, with padding. Movement and discovery do not change those bounds.
 - **Unreadable labels and weak player marker.** Room labels now render at 12 screen pixels, regional names at 10, and the player ring at least 16 pixels across, independent of zoom/window dimensions. Selected labels stay inside the frame, with conflicting region headings suppressed.
-- **Decoration competed with actual passages.** Reduced building/water contrast, strengthened continuous route lines, and removed the decorative sewer pipes that could look like additional passages. Dim dots indicate unsurveyed positions while Fog is off; their names and encounters remain hidden.
+- **Decoration competed with actual passages.** Reduced building/water contrast, strengthened continuous route lines, and removed the decorative sewer pipes that could look like additional passages. Unsurveyed positions and their names remain hidden behind mandatory fog.
 - **Player marker intercepted room inspection.** The overlay no longer intercepts pointer events. Clicking the current room inspects it normally.
 - **Inspection shifted the map slightly.** Reserved space for room details and ladder exits keeps the drawing viewport stable.
-- **Local view on the wrong floor.** Floor changes return to the full-floor view. Local zoom centers the inspected room; without a valid inspected/current location on that floor, it stays unavailable. Off-floor selection details and player marker stay hidden.
+- **Local view on the wrong floor.** Floor changes open locally around a known room when available. Local zoom centers the inspected room; without a valid inspected/current location on that floor, it stays unavailable. Off-floor selection details and player marker stay hidden.
 
 The room graph was checked against every drawn route and ladder. No missing passage was found. No geography, travel rule, encounter, or save schema was changed.
 
@@ -21,7 +25,7 @@ Release gate passed: 163 unit tests, 16 browser suites, production build and ass
 `npm run test:minimap` checks an isolated browser/save:
 
 - 1440×900, 1280×800, 1024×720, 3440×1440 and 390×844 framing and readable label/marker dimensions.
-- Surface/sewer, local/world, fog and label shortcuts; focus restoration and unchanged save data.
+- Surface/sewer, local/world and label shortcuts; enforced fog against the former checkbox/shortcut/command; focus restoration and unchanged save data.
 - Inspection of all 149 room markers, correct selected labels, no clipped labels and no moving viewport.
 - Non-scaling focus ring after mixing clicks and keyboard shortcuts.
 

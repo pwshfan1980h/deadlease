@@ -6,7 +6,7 @@ it('impact events match landed damage, preserve timing, and never mark a miss as
  let hit=false,miss=false;
  for(let seed=1;seed<100000&&(!hit||!miss);seed+=113){
   const g=fight();g.rng=seed;const result=command(g,'attack'),impacts=result.sounds?.filter(e=>e.impact)??[];
-  if(result.messages.some(m=>m.startsWith('HIT / Your'))){hit=true;expect(impacts).toContainEqual({cue:'attack-impact',delay:140,impact:'enemy'})}
+  if(result.messages.some(m=>m.startsWith('HIT / You '))){hit=true;expect(impacts).toContainEqual({cue:'attack-impact',delay:140,impact:'enemy'})}
   else{miss=true;expect(impacts.some(e=>e.impact==='enemy')).toBe(false)}
   expect(impacts).toContainEqual({cue:'attack-impact',delay:520,impact:'player'});
  }

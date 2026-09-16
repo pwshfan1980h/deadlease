@@ -1,3 +1,4 @@
+import {reconstructAtClinic} from './reconstruction';
 import {newBody,ailments,implants} from './medicine';
 import {runRecord,legacyRunId} from './runs';
 import {enemyRole} from './enemyBehavior';
@@ -8,7 +9,7 @@ import {theftObjects} from './roomObjects';
 import {theftFlag,alarmFlag,subduedFlag,theftEnemyFor,activeAlarm} from './theft';
 import {reconcilePack,validPack} from './backpack';
 import type {Game} from './engine';
-export interface WriteDecision {value?:string;quarantine?:string;error?:string}
+export interface WriteDecision {value?:string;quarantine?:string;error?:string;reconstruction?:string}
 export interface Backup {id:number;slot:string;raw:string;reason:string;at:number}
 export interface StorageDriver {read(key:string):Promise<string|undefined>;update(key:string,f:(old:string|undefined)=>WriteDecision,game?:Game):Promise<void>;backups():Promise<Backup[]>}
 import {createGame,enemyFor,roamingEnemyFor} from './engine';
@@ -59,11 +60,12 @@ export function decode(raw:string):Game{
  const parsed=JSON.parse(raw);object(parsed);const wasV2=parsed.version===2;if(wasV2)migrateV2(parsed);
  if(parsed.version===3){keys(parsed,Object.keys(createGame()).filter(k=>!['run','bleed'].includes(k)));integer(parsed.rng,1,4294967295);parsed.run=runRecord(parsed.rng,legacyRunId(raw));parsed.bleed=0;parsed.version=4;if(parsed.encounter){object(parsed.encounter);if(!wasV2)keys(parsed.encounter,['id','name','level','hp','maxHP','damage','armor','phase']);parsed.encounter.heat=0;parsed.encounter.morale='fighting'}}
  if(parsed.version===4){object(parsed.player);keys(parsed.player,Object.keys(createPlayer('Mara')).filter(k=>k!=='body'&&(k!=='pack'||Object.hasOwn(parsed.player as object,'pack'))));parsed.player.body=newBody();parsed.version=5;}
- const g=parsed as unknown as Game;if(g.version!==5)fail('unsupported version (browser v2, v3, v4 or v5 required; Python saves are separate)');
- keys(g,Object.keys(createGame()));keys(g.run,['id','seed','status','cause','endedTurn','kills','revivals']);
- if(typeof g.run.id!=='string'||!/^[a-zA-Z0-9-]{1,80}$/.test(g.run.id))fail('run identity');integer(g.run.seed,1,4294967295);integer(g.run.kills);integer(g.run.revivals);integer(g.bleed,0,3);
+ if(parsed.version===5){object(parsed.run);parsed.run.recoveries=0;parsed.version=6;}
+ const g=parsed as unknown as Game;if(g.version!==6)fail('unsupported version (browser v2 through v6 required; Python saves are separate)');
+ keys(g,Object.keys(createGame()));keys(g.run,['id','seed','status','cause','endedTurn','kills','revivals','recoveries']);
+ if(typeof g.run.id!=='string'||!/^[a-zA-Z0-9-]{1,80}$/.test(g.run.id))fail('run identity');integer(g.run.seed,1,4294967295);integer(g.run.kills);integer(g.run.revivals);integer(g.run.recoveries);integer(g.bleed,0,3);
  if(!['alive','dead'].includes(g.run.status)||typeof g.run.cause!=='string'||g.run.cause.length>120)fail('run status');
- if(g.run.status==='alive'){if(g.run.cause||g.run.endedTurn!==null)fail('living run summary')}else {integer(g.run.endedTurn,0,g.turns);if(g.run.endedTurn!==g.turns||!g.run.cause||g.encounter||g.bleed||g.shield||g.exposed||g.exposeTurns||g.courier.route)fail('terminal run')}
+ if(g.run.status==='alive'){if(g.run.cause||g.run.endedTurn!==null)fail('living run summary')}else {integer(g.run.endedTurn,0,g.turns);if(g.run.endedTurn!==g.turns||!g.run.cause||g.encounter||g.bleed||g.shield||g.exposed||g.exposeTurns)fail('terminal run')}
  integer(g.lootPity,0,2);keys(g.courier,['route','completed']);integer(g.courier.completed);if(g.courier.route!==null&&(typeof g.courier.route!=='string'||!Object.hasOwn(deliveryRoutes,g.courier.route)))fail('courier route');object(g.player);const p=g.player;
  if(typeof p.className!=='string')fail('class name');
  const ref=createPlayer(p.name,p.origin,p.className,p.bonus);const legacyPack=!Object.hasOwn(p,'pack');if(legacyPack)p.pack={bag:'canvas satchel',layout:{}};keys(p,Object.keys(ref));if(p.name!==ref.name)fail("noncanonical name");keys(p.stats,[...STATS]);keys(p.skills,[...SKILLS]);
@@ -136,7 +138,7 @@ export class SaveRepository {
  private expected=new Map<string,string|undefined>();
  constructor(private driver:StorageDriver){}
  async terminal(id:string){const raw=await this.driver.read('ended:'+id);return raw?decode(raw):null}
- private async playable(g:Game){if(g.run.status==='alive'&&await this.terminal(g.run.id))throw Error('This run has ended. Load its record or begin a new patient.');}
+ private async playable(g:Game){if(g.run.status==='dead'&&await this.driver.read('reconstructed:'+g.run.id))throw Error('This recovery already happened. Load the latest autosave.');if(g.run.status==='alive'&&await this.terminal(g.run.id))throw Error('This run has ended. Load its record or begin a new patient.');}
  async save(slot:string,g:Game){
   const raw=encode(g);await this.playable(g);
   // Compare the exact observed content inside the same read/write transaction.
@@ -155,6 +157,14 @@ export class SaveRepository {
  }
  async recover(slot:string,g:Game){const raw=encode(g);await this.playable(g);await this.driver.update(slot,old=>({value:raw,...(old!==undefined?{quarantine:old}:{})}),g);this.expected.set(slot,raw)}
  async import(raw:string,slot:string){const g=decode(raw);await this.recover(slot,g);return g}
+ async reconstruct(source:Game){
+  const recovered=reconstructAtClinic(source),raw=encode(recovered.state);
+  await this.driver.update('auto',old=>{
+   if(old===undefined||old!==this.expected.get('auto')||encode(decode(old))!==encode(source))return {error:'The recovery record changed. Load the latest autosave before continuing.'};
+   return {value:raw,quarantine:old,reconstruction:source.run.id};
+  },recovered.state);
+  this.expected.set('auto',raw);return recovered;
+ }
  backups(){return this.driver.backups()}
 }
 export class IndexedDBDriver implements StorageDriver {
@@ -168,13 +178,15 @@ export class IndexedDBDriver implements StorageDriver {
    const tx=db.transaction(['slots','quarantine'],'readwrite');let problem:string|undefined;
    tx.oncomplete=()=>problem?reject(Error(problem)):resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error??Error('Save transaction aborted.'));
    const slots=tx.objectStore('slots'),req=slots.get(key);req.onsuccess=()=>{
-    const apply=(ended:string|undefined)=>{try{
+    const apply=(ended:string|undefined,reconstructed=false)=>{try{
      const d=f(req.result);
+     if(game?.run.status==='dead'&&reconstructed){problem='This recovery already happened. Load the latest autosave.';if(d.value)tx.objectStore('quarantine').add({slot:key,raw:d.value,reason:problem,at:Date.now()});return}
      if(game?.run.status==='alive'&&ended){problem='This run has ended in another session. Load its record or begin a new patient.';if(d.value)tx.objectStore('quarantine').add({slot:key,raw:d.value,reason:problem,at:Date.now()});return}
      problem=d.error;if(d.quarantine!==undefined)tx.objectStore('quarantine').add({slot:key,raw:d.quarantine,reason:d.error??'Preserved run snapshot',at:Date.now()});
-     if(d.value!==undefined){slots.put(d.value,key);if(game?.run.status==='dead'&&!ended)slots.put(d.value,'ended:'+game.run.id)}
+     const write=()=>{if(d.value!==undefined){slots.put(d.value,key);if(game?.run.status==='dead'&&!ended)slots.put(d.value,'ended:'+game.run.id);if(d.reconstruction)slots.put(d.value,'reconstructed:'+d.reconstruction)}};
+     if(d.reconstruction){const prior=slots.get('reconstructed:'+d.reconstruction);prior.onsuccess=()=>{if(prior.result!==undefined){problem='This recovery already happened. Load the latest autosave.';return}try{write()}catch(e){problem=String(e);tx.abort()}}}else write();
     }catch(e){problem=String(e);tx.abort()}};
-    if(game){const seal=slots.get('ended:'+game.run.id);seal.onsuccess=()=>apply(seal.result)}else apply(undefined);
+    if(game){const seal=slots.get('ended:'+game.run.id);seal.onsuccess=()=>{if(game.run.status==='dead'){const receipt=slots.get('reconstructed:'+game.run.id);receipt.onsuccess=()=>apply(seal.result,receipt.result!==undefined)}else apply(seal.result)}}else apply(undefined);
    };
   });
  }

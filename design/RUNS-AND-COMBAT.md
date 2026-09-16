@@ -1,24 +1,24 @@
 # Runs, revival and enemy roles
 
-This is the current rules reference. It supersedes the historical clinic-revival descriptions in earlier milestone reports. Human feel and run duration remain unverified until Will playtests them; use [the sign-off ledger](PLAYTEST-LEDGER.md).
+This is the current rules reference. The clinic-continuity decision supersedes earlier permadeath milestones. Human feel and journey duration remain unverified; use [the sign-off ledger](PLAYTEST-LEDGER.md).
 
-## Death and a fresh patient
+## Death and clinic reconstruction
 
-Lethal damage ends the run at the room where it happened. The death screen records the cause, level, turns, visited locations, kills, drone rescues and completed work. It offers **New patient**, **Return to title** and **Export record**. Tab/Shift+Tab moves between controls; Enter activates them. Escape returns to the title. The title shows **Run record** for a dead autosave.
+Without a packed drone, lethal damage opens a death experience. **Wake at clinic** restores the same character at Reclamation Clinic: map, quests, levels, implants, gear, pack placement and active delivery remain. The fee is 15% of carried credits, rounded up, plus one treatable lasting injury. An empty purse never blocks recovery. Pell recognizes previous recoveries and actual help given to the clinic. Completing Spare Parts earns 20% off his injury treatment.
 
-New patient begins the same in-world clinic intake: dismissible backstory, `talk clerk`, name/origin, then class/bonus skill. Finalizing creates a cryptographically random run identity and RNG seed. All gear, money, levels, world changes, mission progress and delivery progress start fresh. Preferences remain separate and survive. There is no new clone debt. Historical debt in older saves is retained. Cancelling intake restores the preceding session; it never revives a dead character.
-
-The active delivery is closed on death and its parcel removed. Other inventory and quest state stay in the terminal record for inspection/export; the engine refuses all gameplay commands against that record. No idle timer resumes it.
+The title offers **Return to clinic** for a dead autosave. **New game** remains an explicit fresh-character choice, with new identity/seed and no inherited gameplay progress. Preferences persist. Escape from death returns to the title; it does not reconstruct or charge the player.
 
 ### Saving and migration
 
-The run milestone introduced **v4** (now extended by **v5** medical state; see [MEDICINE.md](MEDICINE.md)): `run` records identity, initial seed, status, cause, terminal turn, kills and rescues; `bleed` tracks the status duration. Encounters add `heat` and `morale`.
+The v6 envelope adds a clinic recovery count and retains the existing drone-rescue count. v2–v5 characters migrate without losing living progress. Death checkpoints remain immutable; reconstruction commits a new life identity and a one-use recovery receipt atomically before resuming play. Interrupted writes charge nothing. Stale tabs and imports cannot reconstruct the same death twice or replace its living autosave with the old dead record. **Load latest autosave** appears with an error so another tab can rejoin the successful recovery.
 
-Versions 2 and 3 migrate without discarding living characters, pack positions, earned rewards, encounter HP or phase. New effects begin neutral. Reading does not rewrite legacy bytes. The next successful save now writes v5, retaining the v4 run fields. Pre-change v3 living and combat fixtures live in `tests/fixtures/run-migration/`.
+See [the full continuity, combat and migration guide](CLINIC-RECOVERY-AND-COMBAT.md) for details and research. This is local continuity, not server-enforced anti-cheat.
 
-An accepted terminal write stores the slot and `ended:<run-id>` together in one IndexedDB transaction. The first terminal record is immutable. Load resolves an older living slot to that ended record. Import, explicit recovery and ordinary save all reject a living state with a sealed identity. A stale tab cannot overwrite the seal, even if it has not received the one-second notification poll. Conflicting bytes remain in quarantine. A dead screen blocks New patient while recording or after a storage failure; **Retry saving record** explicitly recovers the terminal autosave and quarantines previous bytes. Export remains available on failure.
+## Weapon actions and inspection
 
-This is local run continuity, not server-enforced anti-cheat. Clearing browser storage, changing exported JSON or importing into another browser is outside this guarantee. Distinct pre-v4 snapshots have no shared historical identity; each raw legacy snapshot gets a stable migration identity. Living manual saves can still replay a living run. Completed history currently has no gallery; the current record/export and preserved per-run entries are the implemented surface.
+The attack button and prose distinguish firing, slashing, striking, shocking and other weapon families. `attack` always uses the equipped weapon; `fire`/`shoot` require a firearm. Aim fires with an accuracy bonus and stamina cost.
+
+Use **inspect target** or `inspect <enemy name>` for a free, current-build threat assessment, hit chance, damage range, and the next enemy response with brace/cover comparisons. It does not advance turns or RNG. The label is an estimate, not a promised battle outcome.
 
 ## Stitch Drone
 
@@ -50,10 +50,10 @@ Peaceful resolution pays half the normal XP and credits (rounded down), no salva
 
 ## Quick human playtest
 
-Use a separate browser profile or export your current save first: importing a test patient deliberately replaces the active session. Files in [playtest-saves](playtest-saves/) are disposable fixtures, not real player saves. Each has a distinct identity. Once a fixture dies in a profile it stays dead there; use a fresh profile to repeat that same death case.
+Use a separate browser profile or export your current save first: importing a test patient deliberately replaces the active session. Files in [playtest-saves](playtest-saves/) are disposable fixtures, not real player saves. Each has a distinct identity. A fixture death can be reconstructed once; use a fresh profile to repeat exactly the same imported death case.
 
 1. **01-packed-drone.json:** import, open `inventory`, inspect both drones, Escape, type `brace`. Expect one drone consumed, half HP and the same enemy. Reload; it should stay consumed.
-2. **02-unpacked-drone.json:** import and `brace`. Expect final death despite owning a drone outside the grid. Inspect the summary, reload, then New patient. Expect clean clinic intake, no inherited progress.
+2. **02-unpacked-drone.json:** import and `brace`. Expect the death experience despite owning a drone outside the grid. Reload, then Wake at clinic. Expect the same gear and explored map, a 15% credit charge, and one injury.
 3. **03-marksman.json:** type `cover`, then `brace`. Watch aiming change to reloading, with no damage during those two responses. Try a fresh copy with `brace` first to allow the aimed shot.
 4. **04-cutthroat.json:** type `dance` to expose yourself, then inspect HP/transcript. `look` and Escape/pause should not tick bleeding. `heal` should stop it.
 5. **05-tread-brute.json:** `brace` three times to see heat reach three, then watch three cooling turns. Do those openings feel legible and useful?
@@ -63,7 +63,7 @@ Report `case / pass or fail / what happened / what felt wrong` in the [ledger](P
 
 ## Developer verification and scope
 
-`npm run test:runs` exercises the production build with real IndexedDB, two tabs, stale-tab rejection, reloads, fresh intake, preferences, drones, bleeding, all three roles and surrender. It records screenshots at 3440×1440, 1280×800 and 390×844. `tests/runs.test.ts` and `tests/enemy-behavior.test.ts` cover pure rules and malformed saves. Run `npm run test:all` for the complete gate; do not rebuild `dist/` while a browser suite is using it.
+`npm run test:recovery` checks reconstruction, failed writes, duplicate prevention, clinic recognition and combat inspection. `npm run test:runs` exercises the production build with real IndexedDB, two tabs, stale-tab rejection, reloads, fresh intake, preferences, drones, bleeding, all three roles and surrender. It records screenshots at 3440×1440, 1280×800 and 390×844. `tests/runs.test.ts` and `tests/enemy-behavior.test.ts` cover pure rules and malformed saves. Run `npm run test:all` for the complete gate; do not rebuild `dist/` while a browser suite is using it.
 
 Runtime modules: `runs.ts`, `enemyBehavior.ts`, `engine.ts`, `saves.ts`, `RunEnd.tsx` and `App.tsx`. Add role membership in `enemyBehavior.ts`, then add counter/state/save tests. Fixed watch encounters explicitly bypass human morale and marksman behavior.
 

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "Free clickable threat assessment, weapon-aware firing button and lethal warning are visible in live combat",
+    "Atomic receipt guard rejects a stale death import even when its preflight read misses a completed reconstruction",
+    "Death keeps delivery custody; reconstruction transaction abort/retry and stale second-tab recovery charge exactly once, preserve progress, restore focus and begin a clean clinic transcript",
+    "Recovery survives reload; Pell recognizes actual clinic help and charges the earned discounted treatment price",
+    "Recovered patient can inspect their retained local fogged map, travel, and fire the same weapon in a subsequent encounter"
+  ],
+  "errors": []
+}

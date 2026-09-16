@@ -1,4 +1,19 @@
+## Clinic continuity and combat clarity — current candidate
+
+Human acceptance: **pending**. Rules: [clinic and combat guide](CLINIC-RECOVERY-AND-COMBAT.md). This replaces the historical permadeath acceptance cases below.
+
+- [ ] Fall without a packed drone, reload, then Wake at clinic. Same map, quests, levels, implants and pack; 15% credits and one treatable injury.
+- [ ] Talk to Pell after recovering. Does he feel like someone who knows you? Complete Spare Parts and check his recognition and cheaper injury treatment.
+- [ ] In combat, inspect target before acting. Are hit chance, damage, threat and brace/cover numbers useful at a glance?
+- [ ] Try both a gun and a melee weapon. Is it obvious whether you fire, aim, slash or strike? Report a concrete focus/scroll/audio issue if the browser feels squirrelly.
+
+174 unit tests in 29 files, the build/asset audit and all 18 browser suites passed. Published Pages: `77ead33`; live asset hashes, intake, travel, drone rescue and persistent clinic recovery passed public verification. Evidence: `verification/clinic-recovery.json` and `verification/full-verification.json`. Your response can be `case / pass or fail / what felt wrong`.
+
 # FREEBORN — playtest accountability
+
+## Mandatory map fog and local opening
+
+Requested change: every map opening starts close to the player; fog cannot be disabled. World overview retains fog, explored rooms expand its reveal, and undiscovered markers/region labels/ladder destinations remain hidden. Focused five-size browser review passed. Human acceptance pending.
 
 ## Room-by-room transcripts
 

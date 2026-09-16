@@ -23,15 +23,15 @@ it('unpacked drones cannot activate and an unpacked lower-index drone does not d
 it('bleeding rescue cancels the remaining enemy response and consumes only one drone',()=>{
  const g=fight();g.bleed=3;g.player.inventory[drone]=2;reconcilePack(g.player);const r=command(g,'brace').state;expect(r.run.revivals).toBe(1);expect(r.player.hp).toBe(maxHP(r.player)/2);expect(r.bleed).toBe(0);expect(r.encounter?.phase).toBe(2);expect(r.player.inventory[drone]).toBe(1);expect(decode(encode(r))).toEqual(r);
 });
-it('a drone rescue during flight keeps the survivor with the opponent; death closes parcel custody',()=>{
+it('a drone rescue during flight keeps the survivor with the opponent; death preserves parcel custody for clinic recovery',()=>{
  const g=fight();g.player.inventory[drone]=1;reconcilePack(g.player);const rescued=command(g,'flee').state;expect(rescued.room).toBe(g.room);expect(rescued.encounter).toBeTruthy();
- let carrier=command(createGame(),'accept freight-return').state;carrier.room=g.room;carrier.previous=g.previous;carrier.discovered=g.discovered;carrier.encounter=g.encounter;carrier.player.hp=1;const dead=command(carrier,'brace').state;expect(dead.run.status).toBe('dead');expect(dead.courier.route).toBeNull();expect(dead.player.inventory['sealed parcel']).toBeUndefined();expect(decode(encode(dead))).toEqual(dead);
+ let carrier=command(createGame(),'accept freight-return').state;carrier.room=g.room;carrier.previous=g.previous;carrier.discovered=g.discovered;carrier.encounter=g.encounter;carrier.player.hp=1;const dead=command(carrier,'brace').state;expect(dead.run.status).toBe('dead');expect(dead.courier.route).toBe('freight-return');expect(dead.player.inventory['sealed parcel']).toBe(1);expect(decode(encode(dead))).toEqual(dead);
 });
 it('lethal roaming strikes use the same drone/death rules and produce valid saves',()=>{
  const g=createGame();g.room=g.previous='steps';g.discovered.push('steps');g.player.hp=1;g.rng=1;g.player.inventory[drone]=1;reconcilePack(g.player);const r=engageVisitor(g,'lurker');expect(r.state.run.revivals).toBe(1);expect(r.sound).toBe('attack-revive');expect(decode(encode(r.state))).toEqual(r.state);
 });
 it('real v3 fixtures migrate deterministically without losing character, pack, or encounter health',()=>{
- for(const name of ['living','combat']){const raw=readFileSync('tests/fixtures/run-migration/'+name+'-v3.json','utf8'),old=JSON.parse(raw),g=decode(raw);expect(g.version).toBe(5);expect({...g.player,body:undefined}).toEqual({...old.player,body:undefined});expect(g.run.status).toBe('alive');expect(decode(raw)).toEqual(g);expect(g.bleed).toBe(0);if(old.encounter){expect(g.encounter?.hp).toBe(old.encounter.hp);expect(g.encounter?.phase).toBe(old.encounter.phase)}expect(decode(encode(g))).toEqual(g)}
+ for(const name of ['living','combat']){const raw=readFileSync('tests/fixtures/run-migration/'+name+'-v3.json','utf8'),old=JSON.parse(raw),g=decode(raw);expect(g.version).toBe(6);expect({...g.player,body:undefined}).toEqual({...old.player,body:undefined});expect(g.run.status).toBe('alive');expect(decode(raw)).toEqual(g);expect(g.bleed).toBe(0);if(old.encounter){expect(g.encounter?.hp).toBe(old.encounter.hp);expect(g.encounter?.phase).toBe(old.encounter.phase)}expect(decode(encode(g))).toEqual(g)}
 });
 it('forged terminal state and invalid combat status are rejected',()=>{
  for(const change of [(g:any)=>g.player.hp=0,(g:any)=>g.run.status='dead',(g:any)=>g.run.endedTurn=1,(g:any)=>g.run.id='../escape',(g:any)=>g.bleed=4,(g:any)=>g.encounter.heat=2,(g:any)=>g.encounter.morale='surrendered']){const g=fight();change(g);expect(()=>encode(g)).toThrow()}

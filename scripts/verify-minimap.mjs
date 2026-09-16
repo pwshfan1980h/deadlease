@@ -31,6 +31,7 @@ async function inspect(){await settled();return page.locator('.geographic-map').
 })}
 try{
  await page.goto(url);await fixture('clinic',false);
+ assert.equal((await inspect()).viewBox,'-3.5 -3.5 7 7');assert.equal(await page.getByRole('button',{name:'Local zoom',exact:true}).getAttribute('aria-pressed'),'true');assert.equal(await page.getByRole('checkbox',{name:'Fog',exact:true}).count(),0);assert.equal(await page.locator('.map-location').count(),1);assert.equal(await page.locator('.map-terrain [aria-label^="Ladder"]').count(),0);
  for(const [width,height] of [[1440,900],[1280,800],[1024,720],[3440,1440],[390,844]]){
   await page.setViewportSize({width,height});const measured=await inspect();
   assert(Math.abs(measured.labelPixels-12)<.1);assert(measured.labelInside);assert(measured.regionsInside);assert(measured.markerInside);assert(measured.markerWidth>=15.9);assert(measured.svgHeight>150);
@@ -42,11 +43,14 @@ try{
  await page.keyboard.press('b');assert.equal((await inspect()).viewBox,mapBounds(-1).join(' '));assert.equal(await page.locator('.map-player').count(),0);assert.equal(await page.locator('.map-place-label').count(),0);assert(await page.getByRole('button',{name:'Local zoom',exact:true}).isDisabled());
  await page.keyboard.press('s');await page.keyboard.press('l');assert.equal((await inspect()).viewBox,'-3.5 -3.5 7 7');await page.screenshot({path:new URL('local-clinic.png',out).pathname});
  await page.keyboard.press('w');await page.keyboard.press('g');await settled();assert.equal(await page.locator('.map-place-label').count(),0);await page.keyboard.press('g');
- await page.keyboard.press('f');await settled();assert(await page.locator('.map-terrain').getAttribute('mask'));await page.keyboard.press('f');await settled();assert.equal(await page.locator('.map-terrain').getAttribute('mask'),null);
+ await page.keyboard.press('f');await settled();assert(await page.locator('.map-terrain').getAttribute('mask'));await page.keyboard.press('f');await settled();assert(await page.locator('.map-terrain').getAttribute('mask'));assert.deepEqual(await page.locator('.map-region').allTextContents(),['DISTRICT 67']);
  assert.equal(await rawSave(),before);await page.keyboard.press('Escape');assert(await input.evaluate(e=>document.activeElement===e));
- checks.push('Floor/local/world/labels/fog shortcuts; off-floor player and selection hidden; inspection preserves save and restores command focus');
+ await input.fill('map fog off');await input.press('Enter');await settled();assert.equal(await page.locator('.minimap-dialog').count(),0);assert((await page.locator('.log').textContent()).includes('Fog of war is always on'));await input.press('Tab');assert.equal((await inspect()).viewBox,'-3.5 -3.5 7 7');assert(await page.locator('.map-terrain').getAttribute('mask'));await page.keyboard.press('Escape');
+ await input.fill('s');await input.press('Enter');await page.waitForFunction(()=>document.querySelector('.room-panel')?.getAttribute('aria-busy')==='false'&&!document.querySelector('.command-hint')?.textContent.includes('SAVING…'));await input.press('Tab');assert.equal((await inspect()).viewBox,'-3.5 -2.5 7 7');assert.equal(await page.locator('.map-location').count(),2);assert.equal(await page.locator('mask circle').count(),2);assert((await page.locator('.map-vertical').textContent()).includes('Unexplored'));await page.screenshot({path:new URL('discovery-expands-fog.png',out).pathname});await page.keyboard.press('Escape');
+ checks.push('Fog always applied: no checkbox, F cannot disable it, legacy map fog off rejected; only discovered markers, ladders and region names; exploration expands reveal; every reopen returns to local view at player');
+ checks.push('Floor/local/world/labels shortcuts; off-floor player and selection hidden; inspection preserves save and restores command focus');
  await fixture('sewer-0');const floorSave=await rawSave();assert.equal(await page.locator('.map-player').getAttribute('data-room'),'sewer-0');
- assert.equal((await inspect()).viewBox,mapBounds(-1).join(' '));
+ assert.equal((await inspect()).viewBox,'-3.5 -2.5 7 7');await page.getByRole('button',{name:'Whole estuary',exact:true}).click();assert.equal((await inspect()).viewBox,mapBounds(-1).join(' '));
  const initial=await page.locator('.geographic-map').boundingBox();
  for(const room of Object.values(rooms).filter(r=>r.layer===-1)){
   await page.locator(`.map-location[data-room="${room.id}"]`).click();const measured=await inspect();assert.equal(await page.locator('.map-place-label').textContent(),room.name);assert(measured.labelInside,room.id+' label clipped');assert.deepEqual(await page.locator('.geographic-map').boundingBox(),initial);
@@ -55,7 +59,7 @@ try{
  const focusStyle=await page.locator('.map-location[data-room="sewer-7"]').evaluate(e=>({outline:getComputedStyle(e).outlineStyle,vector:getComputedStyle(e.querySelector('.map-hit-target')).vectorEffect}));assert.equal(focusStyle.outline,'none');assert.equal(focusStyle.vector,'non-scaling-stroke');
  await page.screenshot({path:new URL('sewers-surveyed.png',out).pathname});
  assert.equal(await rawSave(),floorSave);await page.keyboard.press('Escape');
- await fixture('bellwether-6');assert((await inspect()).labelInside);assert((await inspect()).markerInside);await page.screenshot({path:new URL('bellwether-edge.png',out).pathname});
+ await fixture('bellwether-6');await page.getByRole('button',{name:'Whole estuary',exact:true}).click();assert((await inspect()).labelInside);assert((await inspect()).markerInside);await page.screenshot({path:new URL('bellwether-edge.png',out).pathname});
  const surfaceFrame=await page.locator('.geographic-map').boundingBox();
  for(const room of Object.values(rooms).filter(r=>r.layer===0)){
   await page.locator(`.map-location[data-room="${room.id}"]`).click();assert((await inspect()).labelInside,room.id+' label clipped');assert.equal(await page.locator('.map-place-label').textContent(),room.name);assert.deepEqual(await page.locator('.geographic-map').boundingBox(),surfaceFrame);

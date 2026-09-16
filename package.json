@@ -29,7 +29,8 @@
     "test:medicine": "node --import ./scripts/register-ts.mjs scripts/verify-medicine.mjs",
     "test:feedback": "node --import ./scripts/register-ts.mjs scripts/verify-feedback.mjs",
     "test:minimap": "node --import ./scripts/register-ts.mjs scripts/verify-minimap.mjs",
-    "test:room-transcript": "node --import ./scripts/register-ts.mjs scripts/verify-room-transcript.mjs"
+    "test:room-transcript": "node --import ./scripts/register-ts.mjs scripts/verify-room-transcript.mjs",
+    "test:recovery": "node --import ./scripts/register-ts.mjs scripts/verify-recovery.mjs"
   },
   "dependencies": {
     "react": "19.2.7",

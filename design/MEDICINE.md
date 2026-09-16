@@ -1,6 +1,6 @@
 # District 67 — lasting conditions and augmentation
 
-This is a run-based progression system. A fresh patient has no lasting conditions or implants. A revival drone preserves the current body, including injuries and implants.
+Medical progression survives clinic reconstruction; see [clinic continuity](CLINIC-RECOVERY-AND-COMBAT.md). A fresh patient has no lasting conditions or implants. A revival drone preserves the current body, including injuries and implants.
 
 ## Conditions
 
@@ -46,3 +46,7 @@ Automated tests cover migration, persistence, prices, partial treatment, insuffi
 ## Disposable human test
 
 Import [07-medical.json](playtest-saves/07-medical.json) in a separate test run/profile. It intentionally supplies all six conditions, 500 credits and 3 salvage; it is a mechanics fixture, not evidence of earned balance or run pacing. Try `status`, `talk doctor`, `treat brain damage`, `rest`, `accept spare parts`, `report spare parts`, `upgrade dermal weave`, and reload. Check that treatment removes only the selected condition and the mission upgrade spends no credits. Avoid importing over a character you want to retain without exporting it first.
+
+## Clinic relationship
+
+Pell recognizes recovered patients. Completing Spare Parts earns 20% off his injury treatment (round each condition up); Voss retains his usual rates. Reconstruction costs 15% of carried credits and adds one absent lasting injury. No credits means no fee, so it never blocks continuing. Implants and existing conditions persist.
