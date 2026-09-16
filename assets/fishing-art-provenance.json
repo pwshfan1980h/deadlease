@@ -1,0 +1,39 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "date": "2026-09-15",
+  "prompts": "design/fishing-art-prompts.json",
+  "changes": "Original generated PNGs; runtime atlas crops and scene display only.",
+  "files": {
+    "items/estuary-fishing-atlas.png": {
+      "sha256": "ab18b782180f447aedf44ff479501d3c2909fcc39c8c50b3eb5a6eb57678a4d5",
+      "width": 1254,
+      "height": 1254
+    },
+    "paintings/fishing-jetty.png": {
+      "sha256": "969cac8703054fe542a53fa2964673eccb7bce7cfa128bac35edac486bb6e366",
+      "width": 1672,
+      "height": 941
+    },
+    "paintings/fishing-drains.png": {
+      "sha256": "d89c5369b599176a3d8cbbb07785ebaa3cbd91f031313770e72f316cfdbe3199",
+      "width": 1672,
+      "height": 941
+    },
+    "paintings/fishing-creek.png": {
+      "sha256": "76716a746dedb168006da4441de659b08679a0d3fb492aec6bc2a926cda06b18",
+      "width": 1672,
+      "height": 941
+    },
+    "paintings/mudskipper-hound.png": {
+      "sha256": "3c4e1da4041f325f89959114d956899faf10b6ca1c285db4f2d0cfa9907a66f6",
+      "width": 1254,
+      "height": 1254
+    },
+    "paintings/pallid-bankmaw.png": {
+      "sha256": "82e75b2f86f0e2ba539bdd9dda2f53e0734fc44ddb99f3f27a30bf902638fa0b",
+      "width": 1254,
+      "height": 1254
+    }
+  },
+  "predatorPrompts": "design/fishing-predator-prompts.json"
+}

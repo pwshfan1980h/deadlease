@@ -1,0 +1,11 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "prompt": "design/stitch-drone-prompt.json",
+  "files": {
+    "items/stitch-drone.png": {
+      "sha256": "360ea56fdf9c6e640883c1dee1c08d13f63a3a76f345c8b9473ab445293aadac",
+      "width": 1254,
+      "height": 1254
+    }
+  }
+}
