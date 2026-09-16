@@ -6,6 +6,13 @@ Latest priority: clinic continuity and combat readability. The user replaced per
 
 Build in this order: room interactions → enemy behavior → backpack synergies → courier reputation → discoveries → tutorial. Complete a playable, tested increment in each phase before expanding it. The tutorial comes last so it teaches the finished controls and mechanics.
 
+## Completion testing before difficulty tuning
+
+Confirmed priority: use persistent clinic recovery to test the full journey through the city ending. Keep the current balance as the baseline while deeper playtests establish completion time, blockers, recovery burden and resource availability. Fix bugs and unclear interactions as they appear. Increase difficulty only if those playtests show a need; retained progress alone is not a reason to make enemies or penalties harsher.
+
+- [ ] Complete end-to-end playthroughs with clinic recovery; record elapsed time, deaths, treatment spending, gear/build and any progression blockers.
+- [ ] Review the findings with Will before choosing difficulty changes. Preserve the approved recovery model and the possibility of powerful builds.
+
 ## Current priority — clinic relationship and combat clarity
 
 - [x] Verify and publish clinic reconstruction retaining map, quests, levels, implants, gear and delivery custody; charge 15% credits and one treatable injury.

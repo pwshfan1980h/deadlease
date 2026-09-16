@@ -2,6 +2,9 @@
 
 Human acceptance: **pending**. Rules: [clinic and combat guide](CLINIC-RECOVERY-AND-COMBAT.md). This replaces the historical permadeath acceptance cases below.
 
+Testing order: reach the city ending with the current recovery and balance rules first. Record completion time, deaths, treatment costs, build and any blockers. Difficulty increases remain deferred until deeper testing demonstrates a need.
+
+- [ ] Complete a full journey to the city ending using persistent recovery; distinguish bugs/confusing interactions from actual combat difficulty.
 - [ ] Fall without a packed drone, reload, then Wake at clinic. Same map, quests, levels, implants and pack; 15% credits and one treatable injury.
 - [ ] Talk to Pell after recovering. Does he feel like someone who knows you? Complete Spare Parts and check his recognition and cheaper injury treatment.
 - [ ] In combat, inspect target before acting. Are hit chance, damage, threat and brace/cover numbers useful at a glance?
