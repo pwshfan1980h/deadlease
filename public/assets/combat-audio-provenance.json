@@ -1,0 +1,68 @@
+{
+  "creator": "FREEBORN / original synthesized combat Foley",
+  "source": "scripts/build-combat-audio.mjs",
+  "sampleRate": 22050,
+  "format": "16-bit mono PCM",
+  "files": {
+    "attack-pistol": {
+      "sha256": "24715b803f9e6fdc3f9f45823a661e46baa9577b6a26ed8c4039dacb54fd3a9e",
+      "peak": 13872
+    },
+    "attack-rifle": {
+      "sha256": "41ff5c501c5492ab3b0bc30262b50008249fb33bf5e3c59f0e85b942f2ca144a",
+      "peak": 18514
+    },
+    "attack-blade": {
+      "sha256": "fcf64f3e0a4e61b70f7ff18a705825f7f593b028348b5e2879049965a437cd63",
+      "peak": 4732
+    },
+    "attack-blunt": {
+      "sha256": "5d41843a1acbe0fe5eacecc5f40b6a0a21e1da2e775bdbe2a80f519aa7a65d84",
+      "peak": 12495
+    },
+    "attack-electric": {
+      "sha256": "8592ac11c9951277f9fe70cb6ff09da5143cf2bdfbce25521099444c1db2d25d",
+      "peak": 9544
+    },
+    "attack-fire": {
+      "sha256": "21a088ab039cd0e3f6dcf07107755d5c64017bff4136ee3a627c22f94544715c",
+      "peak": 11191
+    },
+    "attack-claw": {
+      "sha256": "2857daad97f8c5829cb1248702a3ea4726614238fdd0d26359f88b2a5eeab36c",
+      "peak": 11345
+    },
+    "attack-drain": {
+      "sha256": "007b0d45d3dc544aa786410c6a020fe98b35ea2cf55aecb8208fb311165123ed",
+      "peak": 7513
+    },
+    "attack-miss": {
+      "sha256": "358aec176ff908d58a2aecc43ea90074f3a60beb9b80350e25877af96b222947",
+      "peak": 6654
+    },
+    "attack-impact": {
+      "sha256": "77ec0807d3432e1151e4d773696742b681d6af91323d0bc5285a04278b07e9f6",
+      "peak": 11091
+    },
+    "attack-block": {
+      "sha256": "d4dc1de8efb98ceff5786e3e3f8808eb0f2919cfd1e4f68789edf9f91247ea32",
+      "peak": 9506
+    },
+    "attack-heal": {
+      "sha256": "9a19f3e145b5692a74700f1e425b5a5fefd575623daf6dcd3f84d392526d0a7a",
+      "peak": 6387
+    },
+    "attack-windup": {
+      "sha256": "8a4528e6ae6674f8fa8838f16cb03e23c975dbc178a71deef10bb409798f8a19",
+      "peak": 4635
+    },
+    "attack-recover": {
+      "sha256": "f605e1d5f7312095273189d8cfdacdd2bf993f6b45f4cdeee46f6815946c8f3e",
+      "peak": 3301
+    },
+    "attack-revive": {
+      "sha256": "d4b61b62a2d1946b16302551878a3a779d2c0beb87dd79a9085e04bf4a390b15",
+      "peak": 5620
+    }
+  }
+}

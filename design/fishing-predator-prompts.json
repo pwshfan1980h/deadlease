@@ -1,0 +1,14 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "date": "2026-09-15",
+  "prompts": [
+    [
+      "mudskipper-hound",
+      "Square enemy illustration for FREEBORN, painted industrial noir RPG, expressive painterly trading-card art without a card frame, lettering or UI. A vicious fish-like quadruped called a mudskipper hound lunges out of black harbor water onto wet brick. Anatomically four muscular bent legs, fin ridges, wet slate scales, broad mudskipper eyes, a gaping toothy fish mouth. Low close action framing with the head and forelegs dominant, tail partially cropped. Rust, charcoal, bone and amber lamplight, no bright green. Menacing and weird, clearly an animal not a person; no gore. Rich dramatic brushwork, readable silhouette. Square 1024x1024 or larger."
+    ],
+    [
+      "pallid-bankmaw",
+      "Square enemy illustration for FREEBORN, painted industrial noir RPG, expressive painterly trading-card art without a card frame, lettering or UI. A colossal pale fish predator called a pallid bankmaw rises over a snapped fishing platform, four powerful amphibian legs visible in a crouching lunge. Tight three-quarter close view of its enormous blunt head, broad jaws with thin hooked teeth, cloudy tiny eyes, pearl-bone scarred plates and long gill slits. Its bulk recedes into dark reed water; snapped wood provides scale. A terrifying old river animal, no human features, no gore. Charcoal, bone, desaturated slate and very subtle amber reflections. Dramatic dark painted realism with loose textured brushwork; avoid neon green. Square 1024x1024 or larger."
+    ]
+  ]
+}

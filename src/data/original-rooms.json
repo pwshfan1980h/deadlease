@@ -1,0 +1,180 @@
+{
+  "clinic": {
+    "name": "Reclamation Clinic",
+    "pos": [
+      0,
+      0
+    ],
+    "description": "You wake beneath a sign: REPLACEMENT IS NOT A REFUND. The clerk slides your old coat through a hatch. It fits like an accusation. A printer adds another line to your account.",
+    "npc": "clerk",
+    "exits": {
+      "s": "steps",
+      "e": "kiosk"
+    }
+  },
+  "steps": {
+    "name": "Clinic Steps",
+    "pos": [
+      0,
+      1
+    ],
+    "description": "Rain ticks on a roof made of expired safety notices. Far below the street, a pump coughs in its sleep. Someone has chalked FREE WATER over a tariff schedule. Someone else has underlined the fine.",
+    "salvage": true,
+    "exits": {
+      "n": "clinic",
+      "s": "alley",
+      "e": "square"
+    }
+  },
+  "square": {
+    "name": "Toll Square",
+    "pos": [
+      1,
+      1
+    ],
+    "description": "A dry fountain holds a queue of patient buckets. Water technician Iona is listening to the pavement with a stolen stethoscope. The district has seventeen minutes of pressure left. The estimate is painted on a permanent sign.",
+    "npc": "technician",
+    "exits": {
+      "n": "kiosk",
+      "s": "tunnel",
+      "e": "gate",
+      "w": "steps"
+    }
+  },
+  "kiosk": {
+    "name": "Ration Kiosk",
+    "pos": [
+      1,
+      0
+    ],
+    "description": "A vending machine offers nutrition, consolation, and an apology in three payment plans. Its medical drawer still works. A small placard reads: buy medical supplies (8 credits).",
+    "exits": {
+      "s": "square",
+      "e": "relay",
+      "w": "clinic"
+    }
+  },
+  "alley": {
+    "name": "Scrap Alley",
+    "pos": [
+      0,
+      2
+    ],
+    "description": "Stripped appliances lean together like exhausted commuters. A gutter scavenger is pricing your teeth by sight. Under a dead refrigerator lies the ceramic pump component Iona needs.",
+    "enemy": "scavenger",
+    "loot": {
+      "pump component": 1,
+      "salvage": 2
+    },
+    "salvage": true,
+    "exits": {
+      "n": "steps",
+      "e": "tunnel"
+    }
+  },
+  "tunnel": {
+    "name": "Service Tunnel",
+    "pos": [
+      1,
+      2
+    ],
+    "description": "Pipes cross the ceiling like the handwriting of a frightened engineer. A maintenance arrow points east toward the sump. A dry recess offers a moment to rest.",
+    "salvage": true,
+    "exits": {
+      "n": "square",
+      "e": "sump",
+      "w": "alley"
+    }
+  },
+  "sump": {
+    "name": "Drain Sump",
+    "pos": [
+      2,
+      2
+    ],
+    "description": "The water is luminous and has opinions. An escaped sump creature kneads a corporate logo in the sludge. Its patent tag is still attached. [RAD] Exposure here: 8 per world action.",
+    "enemy": "creature",
+    "radiation": 8,
+    "loot": {
+      "medical supplies": 2
+    },
+    "exits": {
+      "n": "gate",
+      "e": "pump",
+      "w": "tunnel"
+    }
+  },
+  "pump": {
+    "name": "Pump Hall",
+    "pos": [
+      3,
+      2
+    ],
+    "description": "The last municipal pump shudders inside a cage of brass ribs. An empty ceramic socket spits blue sparks. Someone has left a mug beneath the leak. The mug says TEAMWORK.",
+    "loot": {},
+    "exits": {
+      "n": "booth",
+      "w": "sump"
+    }
+  },
+  "booth": {
+    "name": "Control Booth",
+    "pos": [
+      3,
+      1
+    ],
+    "description": "A control console waits for a working pump. Its two receivers are labeled COMMONS and LEASE. The lettering is worn off COMMONS. The keyboard is worn off LEASE.",
+    "exits": {
+      "n": "yard",
+      "s": "pump",
+      "w": "gate"
+    }
+  },
+  "gate": {
+    "name": "Security Gate",
+    "pos": [
+      2,
+      1
+    ],
+    "description": "A contract guard stands under a camera that has been dead for years. He has orders to protect the water from the people currently drinking it.",
+    "enemy": "guard",
+    "loot": {
+      "armor vest": 1,
+      "salvage": 2
+    },
+    "exits": {
+      "n": "relay",
+      "s": "sump",
+      "e": "booth",
+      "w": "square"
+    }
+  },
+  "relay": {
+    "name": "Rooftop Relay",
+    "pos": [
+      2,
+      0
+    ],
+    "description": "The city looks almost habitable from here. An aerial sends unpaid invoices into the weather. A relay lamp still blinks: somebody, somewhere, is accepting them.",
+    "salvage": true,
+    "exits": {
+      "s": "gate",
+      "e": "yard",
+      "w": "kiosk"
+    }
+  },
+  "yard": {
+    "name": "Freight Yard",
+    "pos": [
+      3,
+      0
+    ],
+    "description": "Freight containers bear destinations that no longer exist. Broker Moth has built a shop in one marked RETURN TO SENDER. He sells survival without making promises.",
+    "npc": "broker",
+    "salvage": true,
+    "exits": {
+      "s": "booth",
+      "w": "relay"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "security_concerns": [],
+  "logic_errors": [
+    {
+      "id": "FINAL-001",
+      "severity": "low",
+      "file": "browser/src/saves.ts",
+      "line": 20,
+      "related_files": [
+        "browser/src/progression.ts:82",
+        "browser/src/progression.ts:94"
+      ],
+      "title": "Save validation accepts an array class name that prevents class progression",
+      "reproduction": [
+        "Create g = createGame(); gainXP(g.player, 180). This is a valid level-3 Enforcer with two training points.",
+        "Change only g.player.className to ['Enforcer'], serialize it with JSON.stringify, and call decode. The malformed class name is accepted; encode also accepts the returned state.",
+        "Call command(decoded, 'learn breach shot'). It returns changed=false and the learning-requirements error despite the correct level and available points.",
+        "Replace only className with the string 'Enforcer' and repeat the command. It returns changed=true."
+      ],
+      "actual": "Object.hasOwn(classes, className) and subsequent bracket lookups coerce the array to a property key, so decode accepts it. learn uses strict equality between the ability class string and the player class array, rejecting every additional class ability. SaveRepository.import relies on this decoder, allowing the malformed state to be imported and persisted.",
+      "expected": "The decoder must reject non-string className values before accepting or importing a save.",
+      "recommendation": "Require typeof className === \"string\" before the own-property check, and add a malformed-class-name import regression that verifies existing slot bytes are preserved.",
+      "evidence": "Executed against current source using the local TypeScript loader. The malformed state decoded at level=3, points=2; learning failed with the array and succeeded with the string. This requires malformed imported JSON; no ordinary gameplay state or remote security exploit is implicated."
+    }
+  ],
+  "suggestions": [
+    {
+      "file": "browser/tests/combat.test.ts",
+      "title": "Use serializable encounter fixtures for ability effect regressions",
+      "recommendation": "Replace the 500-HP/template-modified fixtures with valid high-level encounters where practical, and roundtrip the input and resulting states. The independent review exercised all 40 abilities on valid crown-2 encounters with exact stamina checks and successful serialization; preserving that coverage would complement the current tests.",
+      "blocking": false
+    }
+  ],
+  "summary": "Final independent read-only source review completed. All four prior RULES_REVIEW findings are fixed: omitted undefeated encounters are rejected; ordinary saves compare exact observed slot bytes inside the atomic update and preserve stale branches; import/recovery explicitly replace while backing up prior bytes, with expectations updated only after success; counter/inventory mutations remain serializable; inherited inspect targets return strings. Reviewed actual saves, rules, progression, world, UI, audio, sprite runtime, generated manifest, packing/audit scripts and tests. All 13 test files / 49 tests passed using vitest run --no-cache, including 60 pump routes, regional campaign progression, sprite runtime and pixel/audio asset audit. TypeScript --noEmit --incremental false passed. An additional 97 independent cases passed, covering all 40 abilities on serializable encounters, exact stamina, boundary actions and inherited command keys; missing undefeated encounters were also independently rejected. Inspected the passed Hermes production report, verification script, and desktop clinic/combat and mobile screenshots. Its real-browser evidence supports production atlas rendering, alternate palettes, layout, IndexedDB persistence, import rejection and explicit corrupt-slot recovery. No browser attempts, git operations, app-source edits or evidence overwrites were performed. No additional significant UI, atlas or audio correctness problem was reproduced. Review fails solely on FINAL-001, the reproduced malformed className acceptance/progression defect; no security concern was reproduced."
+}

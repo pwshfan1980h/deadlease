@@ -1,0 +1,830 @@
+{
+  "clinic": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "steps": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "square": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "kiosk": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "alley": {
+    "enemy": "coupon ferret",
+    "level": 1,
+    "loot": {
+      "pump component": 1,
+      "salvage": 2
+    }
+  },
+  "tunnel": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "sump": {
+    "enemy": "compliance tadpole",
+    "level": 2,
+    "loot": {
+      "medical supplies": 2
+    }
+  },
+  "pump": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "booth": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "gate": {
+    "enemy": "guard",
+    "level": 3,
+    "loot": {
+      "armor vest": 1,
+      "salvage": 2
+    }
+  },
+  "relay": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "yard": {
+    "enemy": "",
+    "level": 1,
+    "loot": {}
+  },
+  "quay-0": {
+    "enemy": "",
+    "level": 2,
+    "loot": {}
+  },
+  "quay-1": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "quay-2": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "quay-3": {
+    "enemy": "dock raider",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "quay-4": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "quay-5": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "quay-6": {
+    "enemy": "dock raider",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "quay-7": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "quay-8": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "quay-9": {
+    "enemy": "dock raider",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "quay-10": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "quay-11": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "quay-12": {
+    "enemy": "dock raider",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "quay-13": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "quay-14": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "quay-15": {
+    "enemy": "dock raider",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "quay-16": {
+    "enemy": "dock raider",
+    "level": 3,
+    "loot": {
+      "salvage": 2,
+      "weather recording": 1
+    }
+  },
+  "quay-17": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-0": {
+    "enemy": "",
+    "level": 3,
+    "loot": {}
+  },
+  "reed-1": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "reed-2": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-3": {
+    "enemy": "marsh stalker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "reed-4": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "reed-5": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-6": {
+    "enemy": "marsh stalker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "reed-7": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "reed-8": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-9": {
+    "enemy": "marsh stalker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "reed-10": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "reed-11": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-12": {
+    "enemy": "marsh stalker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "reed-13": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "reed-14": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "reed-15": {
+    "enemy": "marsh stalker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "reed-16": {
+    "enemy": "marsh stalker",
+    "level": 4,
+    "loot": {
+      "salvage": 2,
+      "filter core": 1
+    }
+  },
+  "reed-17": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-0": {
+    "enemy": "",
+    "level": 4,
+    "loot": {}
+  },
+  "foundry-1": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-2": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-3": {
+    "enemy": "furnace hound",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "foundry-4": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-5": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-6": {
+    "enemy": "furnace hound",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "foundry-7": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-8": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-9": {
+    "enemy": "furnace hound",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "foundry-10": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-11": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-12": {
+    "enemy": "furnace hound",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "foundry-13": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-14": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "foundry-15": {
+    "enemy": "furnace hound",
+    "level": 4,
+    "loot": {
+      "salvage": 1,
+      "governor spindle": 1
+    }
+  },
+  "foundry-16": {
+    "enemy": "furnace hound",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "foundry-17": {
+    "enemy": "",
+    "level": 6,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-0": {
+    "enemy": "",
+    "level": 6,
+    "loot": {}
+  },
+  "glass-1": {
+    "enemy": "",
+    "level": 7,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "glass-2": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-3": {
+    "enemy": "glass wraith",
+    "level": 6,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "glass-4": {
+    "enemy": "",
+    "level": 7,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "glass-5": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-6": {
+    "enemy": "",
+    "level": 6,
+    "loot": {}
+  },
+  "glass-7": {
+    "enemy": "",
+    "level": 7,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "glass-8": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-9": {
+    "enemy": "glass wraith",
+    "level": 6,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "glass-10": {
+    "enemy": "",
+    "level": 7,
+    "loot": {
+      "salvage": 2,
+      "lens fragment": 1
+    }
+  },
+  "glass-11": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-12": {
+    "enemy": "glass wraith",
+    "level": 6,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "glass-13": {
+    "enemy": "",
+    "level": 7,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "glass-14": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "glass-15": {
+    "enemy": "glass wraith",
+    "level": 6,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "glass-16": {
+    "enemy": "glass wraith",
+    "level": 7,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "glass-17": {
+    "enemy": "",
+    "level": 8,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "crown-0": {
+    "enemy": "",
+    "level": 8,
+    "loot": {}
+  },
+  "crown-1": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-2": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "crown-3": {
+    "enemy": "storm collector",
+    "level": 8,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "crown-4": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-5": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "crown-6": {
+    "enemy": "storm collector",
+    "level": 8,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "crown-7": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-8": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "crown-9": {
+    "enemy": "storm collector",
+    "level": 8,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "crown-10": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-11": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "crown-12": {
+    "enemy": "storm collector",
+    "level": 8,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "crown-13": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-14": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3,
+      "master ledger": 1
+    }
+  },
+  "crown-15": {
+    "enemy": "",
+    "level": 8,
+    "loot": {}
+  },
+  "crown-16": {
+    "enemy": "storm collector",
+    "level": 9,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "crown-17": {
+    "enemy": "storm collector",
+    "level": 10,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-0": {
+    "enemy": "",
+    "level": 2,
+    "loot": {}
+  },
+  "sewer-1": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-2": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-3": {
+    "enemy": "drain lurker",
+    "level": 5,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "sewer-4": {
+    "enemy": "",
+    "level": 2,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-5": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-6": {
+    "enemy": "drain lurker",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "sewer-7": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-8": {
+    "enemy": "",
+    "level": 2,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-9": {
+    "enemy": "drain lurker",
+    "level": 3,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "sewer-10": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-11": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-12": {
+    "enemy": "drain lurker",
+    "level": 2,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "sewer-13": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-14": {
+    "enemy": "",
+    "level": 4,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-15": {
+    "enemy": "drain lurker",
+    "level": 5,
+    "loot": {
+      "salvage": 1,
+      "drain seal": 1
+    }
+  },
+  "sewer-16": {
+    "enemy": "drain lurker",
+    "level": 2,
+    "loot": {
+      "salvage": 2
+    }
+  },
+  "sewer-17": {
+    "enemy": "",
+    "level": 3,
+    "loot": {
+      "salvage": 3
+    }
+  },
+  "sewer-18": {
+    "enemy": "drain lurker",
+    "level": 4,
+    "loot": {
+      "salvage": 1
+    }
+  },
+  "sewer-19": {
+    "enemy": "",
+    "level": 5,
+    "loot": {
+      "salvage": 2
+    }
+  }
+}

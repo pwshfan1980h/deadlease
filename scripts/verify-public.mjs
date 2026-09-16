@@ -1,0 +1,23 @@
+// Post-publication smoke check in an isolated browser profile. Never touches local player saves.
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {newGame} from './intake-helper.mjs';
+const root=new URL('../',import.meta.url),url='https://pwshfan1980h.github.io/deadlease/',hash=b=>createHash('sha256').update(b).digest('hex');
+const html=await (await fetch(url+'?verify='+Date.now())).text(),built=await fs.readFile(new URL('dist/index.html',root),'utf8');
+const script=built.match(/src="([^"]+\.js)"/)[1],css=built.match(/href="([^"]+\.css)"/)[1];assert(html.includes(script)&&html.includes(css),'Pages has not served the new build yet');
+const assets=[];for(const path of [script,css,'./assets/items/stitch-drone.png','./assets/sounds/attack-revive.wav']){const response=await fetch(new URL(path,url));assert.equal(response.status,200);const actual=Buffer.from(await response.arrayBuffer()),expected=await fs.readFile(new URL('dist/'+path.replace(/^\.\//,''),root));assert.equal(hash(actual),hash(expected));assets.push({path,sha256:hash(actual)})}
+const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:3440,height:1440},reducedMotion:'reduce'}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
+async function state(){return page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('deadlease-v2',1);r.onsuccess=()=>resolve(r.result)});try{return await new Promise(resolve=>{const r=db.transaction('slots').objectStore('slots').get('auto');r.onsuccess=()=>resolve(JSON.parse(r.result))})}finally{db.close()}})}
+async function settled(){await page.waitForFunction(()=>!document.querySelector('.command-hint')?.textContent.includes('SAVING…')&&document.querySelector('.room-panel')?.getAttribute('aria-busy')==='false')}
+async function cmd(text){const input=page.getByRole('textbox',{name:'Command',exact:true});await input.fill(text);await input.press('Enter');await settled()}
+async function load(name){await page.getByLabel('Import save file').setInputFiles(new URL('design/playtest-saves/'+name+'.json',root).pathname);await page.getByRole('status').filter({hasText:'Imported valid save'}).waitFor();await settled()}
+try{
+ await page.goto(url+'?verify='+Date.now());await newGame(page,'Public Test');await settled();assert.equal((await state()).version,4);await cmd('s');assert.equal((await state()).room,'steps');await cmd('down');assert.equal((await state()).room,'sewer-0');
+ await load('01-packed-drone');await cmd('brace');assert.equal((await state()).run.revivals,1);assert.equal((await state()).player.inventory['stitch drone'],1);
+ await load('02-unpacked-drone');await cmd('brace');await page.getByRole('dialog',{name:'Everything goes quiet.',exact:true}).waitFor();assert.equal((await state()).run.status,'dead');await page.reload();await page.getByRole('button',{name:'Run record',exact:true}).press('Enter');await page.getByRole('dialog',{name:'Everything goes quiet.',exact:true}).waitFor();assert.deepEqual(errors,[]);
+ const report={passed:true,verifiedAt:new Date().toISOString(),url,pagesCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:new URL('.pages-deploy/',root),encoding:'utf8'}).trim(),sourceBranch:'source',assets,checks:['Public JS/CSS/drone image/revival sound exactly match tested build hashes','Fresh keyboard clinic intake and downward sewer travel','Packed drone consumes one and continues combat','Unpacked drone does not rescue; death persists through reload'],errors};
+ await fs.writeFile(new URL('design/verification/deployment.json',root),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+}finally{await browser.close()}

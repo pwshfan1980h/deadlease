@@ -1,0 +1,31 @@
+import type {Game} from './engine';
+import {rooms} from './world';
+export function normalizeCommand(text:string){
+ let raw=text.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.!]+$/,'');
+ raw=raw.replace(/^pick up /,'take ').replace(/^look at /,'inspect ').replace(/^do (?:a |a little )?dance(?: again)?$/,'dance').replace(/^go fishing$/,'fish').replace(/^cast (?:a |the )?(?:line|rod)$/,'fish').replace(/^pick (?:the )?lock on /,'pick ');
+ const aliases:Record<string,string>={examine:'inspect',check:'inspect',read:'read',hit:'punch',strike:'punch',smack:'punch',kick:'kick',yell:'shout',scream:'shout',weep:'cry',giggle:'laugh',grin:'smile',leap:'jump',hop:'jump',nap:'rest',sleep:'rest',fish:'fish',fishing:'fish',lockpick:'pick',knock:'tap',stroke:'pet',embrace:'hug',sniff:'smell',peer:'inspect'};
+ const [verb,...parts]=raw.split(' ');return [aliases[verb]??verb,...parts].join(' ');
+}
+export interface Flavor {id:string;message:string;again:string}
+const emotes:Record<string,[string,string]>={
+ dance:['You dance.','You dance again.'],sing:['You sing a few bars. The tune survives the weather.','You sing it again. No better, no worse.'],hum:['You hum under your breath.','You hum the same stubborn tune again.'],whistle:['You whistle a crooked little tune.','You whistle again.'],laugh:['You laugh. It feels good to still be able to.','You laugh again.'],cry:['You let yourself cry for a moment.','You wipe your eyes and start again.'],smile:['You smile.','You smile again.'],shrug:['You shrug.','You shrug again, with conviction.'],nod:['You nod.','You nod again.'],wave:['You wave.','You wave again.'],bow:['You make a small, theatrical bow.','You take another bow.'],salute:['You offer an unnecessarily crisp salute.','You salute again.'],clap:['You applaud your own survival.','You applaud again. An encore.'],stretch:['You stretch until something clicks.','You stretch again, more cautiously.'],jump:['You jump. Gravity remains in charge.','You jump again. Gravity wins the rematch.'],spin:['You turn in a slow circle.','You spin again.'],sit:['You sit for a moment, keeping your pack close.','You settle down again.'],stand:['You stand a little straighter.','You straighten up again.'],kneel:['You lower yourself onto one knee.','You kneel again.'],crouch:['You crouch, listening.','You crouch again.'],shout:['You shout into the air. Your voice belongs to you.','You shout again.'],curse:['You swear at the state of things.','You find a few more words for it.'],wait:['You take a breath and watch the room.','You wait a little longer.']
+};
+export function flavorFor(g:Game,verb:string,arg:string,description:string):Flavor|null{
+ const words=arg.replace(/^the /,'').replace(/ again$/,'');
+ if(emotes[verb]&&(!words||words==='again'||(verb==='dance'&&['around','a jig','badly'].includes(words)))){const [message,again]=emotes[verb];return {id:verb,message,again}}
+ if(verb==='listen'&&!arg){const below=rooms[g.room].layer<0;return {id:'listen',message:below?'You listen. Water threads through brickwork somewhere beyond the lamps.':'You listen to rain, distant machinery, and the space between them.',again:'You listen again. The place keeps its own time.'}}
+ if(verb==='smell'&&!arg)return {id:'smell',message:rooms[g.room].layer<0?'Damp brick, old water, and a trace of hot copper.':'Rain, rust, and cold smoke.',again:'You breathe it in again. Still the estuary.'};
+ const social=words.replace(/^(at|to|with) /,'').replace(/^the /,'');
+ if(emotes[verb]&&social&&(social===rooms[g.room].npc||rooms[g.room].guard.toLowerCase().includes(social)||social===g.encounter?.name))return {id:verb+':'+social,message:'You '+verb+' toward '+social+'. '+(g.encounter?'They keep their weapon trained on you.':'You receive a brief, puzzled acknowledgment.'),again:'You '+verb+' toward '+social+' again. They noticed the first time.'};
+ const targets:Record<string,RegExp>={wall:/wall|brick|clinic|kiosk|office|booth/i,door:/door|hatch|gate/i,window:/window|clinic/i,table:/table/i,pipe:/pipe|pump|channel/i,water:/water|creek|channel|harbor|rain|estuary/i,ground:/.*/,floor:/.*/,lamp:/lamp|lantern|light/i,rope:/rope|line/i,rail:/rail|bridge/i,sign:/sign|placard/i,crate:/crate/i,stove:/stove|fire/i,bed:/bed|clinic/i,bench:/bench|seat/i,bridge:/bridge/i,tree:/tree|orchard/i,reeds:/reeds|marsh/i,boat:/boat|ferry/i,bell:/bell/i,net:/net/i,bin:/bin|litter|refuse/i,grate:/grate|drain/i,hatch:/hatch/i,machine:/machine|pump|relay/i,gear:/gear|mechanism/i,stone:/stone|gravel/i,book:/book|ledger|register/i,roof:/roof|awning/i,stair:/stair|step/i,footprint:/footprint|bootprint|track/i,fire:/stove|fire|flame/i};
+ const singular=Object.hasOwn(targets,words)?words:words.replace(/s$/,'');const target=Object.hasOwn(targets,singular)?singular:'';
+ if(!target||!targets[target].test(description+' '+rooms[g.room].name))return null;
+ const id=verb+':'+target;
+ if(['punch','attack','kick','slap'].includes(verb))return {id,message:target==='wall'?'You engage the wall in fisticuffs. The wall declines to concede.':'You '+(verb==='attack'?'strike':verb)+' the '+target+'. It offers no useful response.',again:'You try the '+target+' again. Stubborn thing.'};
+ if(['push','pull','shake','hug','kiss','pet'].includes(verb))return {id,message:'You '+verb+' the '+target+'. '+(verb==='hug'?'It offers very little comfort.':verb==='kiss'?'The estuary keeps your secret.':'It stays stubbornly as it was.'),again:'You try again. The '+target+' remains unmoved.'};
+ if(['touch','tap','feel'].includes(verb))return {id,message:'You touch the '+target+'. Cold, damp, and thoroughly real.',again:'You touch the '+target+' again. Still there.'};
+ if(['lick','taste'].includes(verb))return {id,message:'You reconsider tasting the '+target+'. Some mysteries can remain unsolved.',again:'Still no. Even you have standards.'};
+ if(['inspect','search'].includes(verb))return {id,message:'You examine the '+target+' closely. '+(target==='water'?'The current hides more than it reveals.':'Wear, repairs, and the marks of people making do. Nothing loose comes away.'),again:'You check the '+target+' again. Nothing else reveals itself.'};
+ if(verb==='drink'&&target==='water')return {id,message:'You lean toward the water, then notice the oily film. Better not.',again:'The water has not improved.'};
+ return null;
+}

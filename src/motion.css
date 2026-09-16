@@ -1,0 +1,63 @@
+/* FREEBORN motion language: rain, slow light, a short crossing, then silence.
+   Title/travel use transform and opacity; death draws one small SVG trace.
+   Controls never wait for an animation. */
+.title-art{animation:title-drift 28s ease-in-out infinite alternate;transform-origin:65% 50%}
+.title-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:paint}
+.title-atmosphere i{position:absolute;display:block;pointer-events:none}
+.title-menu{position:relative;z-index:1}
+.title-menu h1{animation:title-emerge 900ms ease-out both}
+.title-lamplight{inset:0;background:radial-gradient(ellipse at 70% 46%,#d6a66a1c,transparent 46%);animation:lamp-breathe 9s ease-in-out infinite alternate}
+.title-mist{inset:35% -12% -20%;background:radial-gradient(ellipse at 75% 80%,#abb9c319,transparent 62%);animation:mist-drift 22s ease-in-out infinite alternate}
+.title-rain{inset:-150px -100px;opacity:.1;background:repeating-linear-gradient(104deg,transparent 0 109px,#bfced43d 110px,transparent 111px 167px);mask-image:linear-gradient(90deg,transparent 15%,#000 68%);animation:rain-drift 5s linear infinite}
+.title-rain.rain-distant{opacity:.065;background-size:73% 100%;animation-duration:8s;animation-delay:-3s}
+.title-menu nav button{transition:color 140ms ease,background-color 140ms ease}
+.title-menu nav button[aria-pressed]{background:transparent;color:#B5AEA3}
+@keyframes title-drift{from{transform:scale(1.025) translateX(0)}to{transform:scale(1.075) translateX(-.6%)}}
+@keyframes title-emerge{from{opacity:.25;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lamp-breathe{from{opacity:.35}to{opacity:.9}}
+@keyframes mist-drift{from{transform:translateX(3%);opacity:.4}to{transform:translateX(-3%);opacity:.85}}
+@keyframes rain-drift{from{transform:translate(0,-60px)}to{transform:translate(-29px,60px)}}
+
+/* The old room leaves in the travel direction; the next enters from ahead.
+   The HUD and command input remain stationary. Total crossing stays 380 ms. */
+.room-panel{--travel-x:0px;--travel-y:-10px;transition:opacity 160ms ease-in,transform 160ms ease-in}
+.room-panel[data-travel-direction="north"]{--travel-y:10px}
+.room-panel[data-travel-direction="east"]{--travel-x:-12px;--travel-y:0px}
+.room-panel[data-travel-direction="west"]{--travel-x:12px;--travel-y:0px}
+.room-panel[data-travel-direction="down"]{--travel-y:-22px}
+.room-panel[data-travel-direction="up"]{--travel-y:22px}
+.room-panel.travel-out{transform:translate(var(--travel-x),var(--travel-y));opacity:0}
+.room-panel.travel-in{animation:room-crossing 220ms ease-out both;transition:none}
+@keyframes room-crossing{from{opacity:0;transform:translate(calc(var(--travel-x) * -1),calc(var(--travel-y) * -1))}to{opacity:1;transform:translate(0,0)}}
+
+/* One dying signal, no strobing or repeating heartbeat. Dismiss at any point. */
+.clinic-dialog.death-screen{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:clamp(64px,18vh,240px) max(24px,calc((100vw - 640px)/2)) 40px;border:0;box-shadow:none;background:#0b0b0e;color:#ded6c9;overflow-y:auto;isolation:isolate}
+.death-screen::backdrop{background:#09090b;backdrop-filter:none}
+.death-screen::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 50% 42%,#76493926,transparent 65%);animation:death-light-falls 1800ms ease-out both}
+.death-screen h2{max-width:none;font:clamp(2rem,4vw,3.5rem)/1.15 Georgia,serif;letter-spacing:-.025em;margin:30px 0 22px;animation:death-words 1100ms ease-out both}
+.death-screen>p:not(.intake-keys){color:#a49b90;font-size:1.1rem}
+.death-screen .intake-close{position:fixed;top:24px;right:24px}
+.death-screen .primary{margin-top:16px;background:transparent;border:1px solid #84745c55;color:#d6c5ab;font-weight:400}
+.death-screen .primary:hover,.death-screen .primary:focus-visible{background:#d6a66a12;color:#e7ddca}
+.death-signal{position:relative;width:100%;height:120px;pointer-events:none}
+.death-signal svg{display:block;width:100%;height:120px;overflow:visible;fill:none;stroke:#c6a07c;stroke-width:1.5;stroke-linecap:round}
+.death-horizon{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,#c6a07c24,transparent)}
+.death-trace{stroke-dasharray:1;animation:signal-ends 1600ms ease-out both}
+.death-flatline{opacity:.35;animation:signal-settles 1800ms ease-out both}
+@keyframes signal-ends{0%{stroke-dashoffset:1;opacity:.8}70%{stroke-dashoffset:0;opacity:.65}100%{stroke-dashoffset:0;opacity:.06}}
+@keyframes signal-settles{from{opacity:0}to{opacity:.35}}
+@keyframes death-light-falls{from{opacity:1}to{opacity:.3}}
+@keyframes death-words{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* User preference and OS preference both stop motion. Keep static content legible. */
+.app[data-page-hidden="true"] *,.app[data-page-hidden="true"] *::before,.app[data-page-hidden="true"] *::after{animation-play-state:paused!important}
+.app[data-motion="off"] *,.app[data-motion="off"] *::before,.app[data-motion="off"] *::after{animation:none!important;transition:none!important}
+.app[data-motion="off"] .title-art{transform:none}
+.app[data-motion="off"] .title-rain{display:none}
+.app[data-motion="off"] .death-trace{opacity:.06}
+.app[data-motion="off"] .room-panel{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+ .app *,.app *::before,.app *::after{animation:none!important;transition:none!important}
+ .title-art{transform:none}.title-rain{display:none}.death-trace{opacity:.06}.room-panel{opacity:1;transform:none}
+}
+@media(max-width:520px){.death-screen h2{font-size:2.1rem}.clinic-dialog.death-screen{padding-top:18vh}.death-screen>p:not(.intake-keys){font-size:1rem}}

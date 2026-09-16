@@ -1,0 +1,13 @@
+.pause-menu{width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 40px);padding:32px 38px;background:#1b1a19;color:var(--bone);border:1px solid #78664a35;box-shadow:0 30px 140px #000b;overflow:auto}
+.pause-menu::backdrop{background:#09090bbd;backdrop-filter:blur(5px)}
+.pause-menu header{margin-bottom:22px}.pause-menu h2{font:2rem Georgia,serif;margin:10px 0}.pause-menu header p{margin:0}
+.pause-menu nav,.pause-menu .pause-saves,.pause-menu .pause-confirm{display:flex;flex-direction:column;gap:5px}
+.pause-menu button{display:block;text-align:left;width:100%;padding:12px 14px;background:transparent;border:1px solid transparent;color:var(--bone);font-size:.9rem}
+.pause-menu button:hover:not(:disabled),.pause-menu button:focus-visible{background:#b58c5020;border-color:#b58c5050;color:var(--amber);outline:none}
+.pause-menu button:disabled{opacity:.4}.pause-menu .pause-resume{color:var(--amber)}
+.pause-menu footer{color:var(--ash);font-size:.62rem;line-height:1.7;margin-top:24px}.pause-menu .pause-back{margin-top:20px}
+.pause-settings{display:flex;flex-direction:column;gap:15px}.pause-settings label{display:block;font-size:.8rem;text-transform:capitalize}.pause-settings label span{float:right;color:var(--ash)}.pause-settings input[type=range],.pause-settings select{display:block;width:100%;margin-top:8px}.pause-settings input[type=checkbox]{margin-right:8px}
+.pause-controls,.pause-credits,.pause-confirm{font-size:.8rem;line-height:1.7}.pause-controls dl{display:grid;grid-template-columns:110px 1fr;gap:12px}.pause-controls dt{color:var(--amber)}.pause-controls dd{margin:0}.pause-controls code{white-space:normal;font-size:.75rem}.pause-notice{font-size:.75rem;color:var(--amber);line-height:1.6}
+.app[data-paused=true] .room-panel,.app[data-paused=true] .player-card{animation-play-state:paused!important}
+@media(min-width:2200px){.pause-menu{width:560px;padding:40px 48px}.pause-menu button{font-size:1rem;padding:14px}.pause-menu h2{font-size:2.4rem}}
+@media(max-width:520px){.pause-menu{padding:24px 20px}.pause-controls dl{grid-template-columns:90px 1fr}}

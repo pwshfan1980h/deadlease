@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "Death atomically stores an immutable ended record; a second open tab follows it; reload shows Run record; living import cannot resurrect it; death layouts fit all three sizes",
+    "New clinic intake produces a new seed/identity and clean progress, preserves preferences and the prior ended record",
+    "An aborted death transaction blocks new intake; explicit retry preserves previous bytes and saves the terminal record before re-enabling it",
+    "Two packed drones rescue on separate lethal actions; each is consumed exactly once; current encounter and consumed state survive reload",
+    "An owned but unpacked drone cannot prevent death",
+    "Bleeding rescue cancels the remaining enemy response, consuming only one drone",
+    "Marksman cover breaks aim and produces a harmless reload, with readable intent",
+    "Knife bleeding is visible, free look and pause do not tick it, and medical supplies stop it",
+    "Tread brute heat creates three harmless cooling responses before restarting its attack cycle",
+    "A surrendered human can be spared with one partial payout, no kill credit and no duplicate claim",
+    "A stale tab without polling cannot overwrite a death seal with its living branch"
+  ],
+  "errors": []
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "environment": "Clean npm ci in the standalone source worktree",
+  "checks": [
+    "npm ci",
+    "npm run build",
+    "npm run audit:assets"
+  ],
+  "logSha256": "124c6715860f3a6e02adb1856ca77c8202d3bf0733624c73f34bfbce654791c1",
+  "requiresSiblingPythonProject": false
+}

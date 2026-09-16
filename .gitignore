@@ -1,0 +1,11 @@
+node_modules/
+.npm-cache/
+dist/
+*.tsbuildinfo
+evidence/playwright-tmp/
+
+.pages-deploy/
+# Local release checkouts and generated QA captures
+.source-deploy/
+evidence/
+.DS_Store

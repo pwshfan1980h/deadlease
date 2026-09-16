@@ -1,0 +1,90 @@
+{
+  "passed": false,
+  "security_concerns": [
+    {
+      "id": "RULES-001",
+      "severity": "medium",
+      "file": "browser/src/saves.ts",
+      "line": 50,
+      "title": "An imported save can erase an undefeated encounter and bypass guarded loot",
+      "reproduction": [
+        "Create g = createGame(); apply command(g, 's').state twice to enter Scrap Alley with its living scavenger.",
+        "Set only g.encounter = null, then call decode(JSON.stringify(g)). The decoder accepts it.",
+        "Call command(decoded, 'take all'). The action succeeds and grants the pump component while decoded.defeated remains empty."
+      ],
+      "actual": "The null-encounter branch checks only orphan combat effects. It accepts an enemy room with no encounter and no recorded defeat. engine.ts worldAction then permits looting, scrounging, resting, and departure.",
+      "expected": "A save in an enemy room that has never been defeated must contain its active encounter.",
+      "recommendation": "Reject null encounters in unsafe enemy rooms without a recorded defeat. Handle previously defeated respawning rooms separately because waiting in a cleared room is currently legal. Add this minimal edit to saves.test.ts corruption cases.",
+      "evidence": "Reproduced against the actual bundled rules: decode accepted the edit; take all returned changed=true and pump component=1 with defeated={}. This is a local save-integrity/gameplay bypass, not remote code execution or evidence of a shared-server exploit."
+    }
+  ],
+  "logic_errors": [
+    {
+      "id": "RULES-002",
+      "severity": "medium",
+      "file": "browser/src/saves.ts",
+      "line": 62,
+      "title": "A stale session silently overwrites a newer valid save",
+      "reproduction": [
+        "Create two SaveRepository instances A and B sharing one StorageDriver. Save createGame() to auto, then load that slot into both sessions.",
+        "In A apply 's', 'scrounge', 'n', then save auto. This stores turns=3, XP=10, scrounged=['steps'].",
+        "In B apply 'e' to its original state and save auto. Load auto again through A."
+      ],
+      "actual": "The stored state becomes turns=1, XP=0, scrounged=[], and no backup is created. save() validates the old value but unconditionally replaces it, even when the writer loaded a different earlier value. IndexedDB serializes transactions but does not supply a revision comparison here.",
+      "expected": "Ordinary saves from competing sessions should detect that the slot changed since loading and preserve the newer state or both branches.",
+      "recommendation": "Track an expected slot revision or content token and compare it inside driver.update before writing. Treat intentional import/recovery/rollback as explicit replacement operations. Add a shared-driver two-session regression test.",
+      "evidence": "Reproduced using the same synchronous Memory StorageDriver behavior as browser/tests/saves.test.ts. The actual IndexedDB callback was inspected; a real browser execution attempt was blocked at Chromium launch by sandbox permissions, so cross-tab IndexedDB behavior was not executed."
+    },
+    {
+      "id": "RULES-003",
+      "severity": "medium",
+      "file": "browser/src/engine.ts",
+      "line": 127,
+      "related_files": [
+        "browser/src/engine.ts:157",
+        "browser/src/engine.ts:160",
+        "browser/src/engine.ts:166",
+        "browser/src/engine.ts:168",
+        "browser/src/saves.ts:23",
+        "browser/src/saves.ts:27",
+        "browser/src/saves.ts:33"
+      ],
+      "title": "Accepted boundary states advance into states that cannot be saved or exported",
+      "reproduction": [
+        "Counter case: create g=createGame(), set g.turns=10000000, and verify decode(JSON.stringify(g)) succeeds. Apply 'rest'; encode(result.state) throws 'Invalid save: numeric range' because turns becomes 10000001.",
+        "Inventory case: start a separate createGame(), set player.inventory['medical supplies']=100000, and verify decode accepts it. Apply 'buy medical supplies' at the clinic with the initial 20 credits. The purchase succeeds and increases the stack to 100001; encode now throws.",
+        "Credits case: start a separate createGame(), set player.credits=10000000 and player.inventory.salvage=1, and verify decode accepts it. Apply 'sell salvage' at the clinic. Credits become 10000004; encode now throws."
+      ],
+      "actual": "Successful commands exceed the persistence limits. Since encode calls decode, save(), recover(), and export through encode reject the resulting state. The turn overflow cannot be reversed through ordinary game actions.",
+      "expected": "Every accepted state should remain serializable after successful rules actions, including the documented numeric boundaries.",
+      "recommendation": "Align mutation limits with persistence validation: prevent inventory overflow before consuming credits/loot, consistently bound credit awards, and choose a turn representation/limit that remains compatible with cooldown and respawn arithmetic. Add boundary roundtrip tests for successful commands.",
+      "evidence": "All three cases were executed and reproduced. These require boundary-valued saves or very long play; no ordinary short-session overflow was observed."
+    },
+    {
+      "id": "RULES-004",
+      "severity": "low",
+      "file": "browser/src/engine.ts",
+      "line": 77,
+      "title": "Inspecting inherited object keys returns non-string messages",
+      "reproduction": [
+        "Call command(createGame(), 'inspect __proto__').",
+        "Inspect result.messages[0]: it is Object.prototype, with typeof value === 'object', rather than a string. 'inspect constructor' similarly returns a function."
+      ],
+      "actual": "details[arg] reads inherited properties of the plain details object; read() wraps the inherited value into messages despite the Result.messages:string[] contract.",
+      "expected": "Unknown inspect targets should return the normal explanatory string, and every message should be a string.",
+      "recommendation": "Guard the details lookup with Object.hasOwn, use a Map, or construct a dictionary without a prototype. Add inherited-key inspect cases to the command tests.",
+      "evidence": "Reproduced directly. changed remains false and combat does not advance; no prototype mutation or downstream UI failure is claimed."
+    }
+  ],
+  "suggestions": [
+    {
+      "file": "browser/tests/quests.test.ts",
+      "line": 6,
+      "title": "Add full-route regional progression and persistence coverage",
+      "reproduction": "Run the existing regional quest test and inspect its at(g, room) helper: it directly changes room, clears encounters, and leaves previous unchanged before taking and delivering artifacts. The pump test also teleports to Pump Hall and Control Booth. These tests pass without exercising the connecting fights, retreat geography, or encode after each action.",
+      "recommendation": "Keep the focused quest tests, but add representative regional quest journeys using movement/combat commands and encode/decode checkpoints, including return trips through respawning rooms. Separately test ability stamina deltas and wrong-class/level rejection on valid, serializable encounters; combat.test.ts currently gives the enemy hp/maxHP=500 for its all-abilities test and checks resource upper bounds rather than exact costs.",
+      "evidence": "The independent review executed all 60 origin/class/pump-ending combinations using actual movement and combat with encode after each command; all passed. Full regional journeys were not independently completed. This is a coverage recommendation, not a claim that regional progression is impossible."
+    }
+  ],
+  "summary": "Independent review of the actual browser/src/engine.ts, progression.ts, saves.ts, world.ts and the combat, progression, saves, world, and quest tests; supporting config, items, quests, and authored room data were also inspected. No git commands were used and no app code or existing tests were modified. Review failed on four concrete findings: a local encounter-removal import bypass, stale-session save overwrite, mutation/persistence boundary mismatches, and non-string inspect messages. All 5 targeted test files / 22 tests passed. Additional temporary checks exercised 30000 generated commands across all 30 builds (10900 changed states; every resulting state encoded successfully) and 60 complete pump-ending routes (all passed). No ability tier/cost bypass, invalid action advancing combat, or impossible pump progression was reproduced. IndexedDB transaction code was reviewed, but native browser execution was blocked by the sandbox; stale overwrite was verified at the repository/Memory-driver level. UI files were outside scope."
+}

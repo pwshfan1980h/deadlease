@@ -1,0 +1,37 @@
+import {newGame} from './intake-helper.mjs';
+import {chromium} from 'playwright';
+import {preview} from 'vite';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const out=new URL('../evidence/',import.meta.url);
+const server=await preview({preview:{host:'127.0.0.1',port:4187,strictPort:true}});
+const browser=await chromium.launch({headless:true});
+const context=await browser.newContext({viewport:{width:1280,height:800}});
+const page=await context.newPage();const errors=[],requests=[],checks=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`)});page.on('request',r=>requests.push(r.url()));
+async function slot(p=page,key='auto'){return p.evaluate(async key=>{const db=await new Promise((resolve,reject)=>{const q=indexedDB.open('deadlease-v2',1);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});return new Promise((resolve,reject)=>{const q=db.transaction('slots').objectStore('slots').get(key);q.onsuccess=()=>{db.close();resolve(q.result?JSON.parse(q.result):null)};q.onerror=()=>reject(q.error)})},key)}
+async function until(fn,label){for(let i=0;i<150;i++){if(await fn())return;await new Promise(r=>setTimeout(r,40))}throw Error('Timed out: '+label)}
+async function artReady(){await page.waitForFunction(()=>[...document.querySelectorAll('canvas')].every(c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;return d.some((v,i)=>i%4===3&&v>0)}))}
+async function cmd(text,p=page){const before=await p.locator('.log-command').count();const input=p.getByRole('textbox',{name:'Command',exact:true});await input.fill(text);await input.press('Enter');await p.waitForFunction(n=>document.querySelectorAll('.log-command').length>n,before);await p.waitForFunction(()=>!document.querySelector('.command-hint').textContent.includes('SAVING…'))}
+try{
+ await page.goto('http://127.0.0.1:4187/');await newGame(page);await until(async()=>!!await slot(),'initial autosave');
+ assert.equal(await page.getByLabel('Import save file').isVisible(),false);const box=await page.getByRole('textbox',{name:'Command',exact:true}).boundingBox();assert(box.y+box.height<=800);checks.push('compact 1280x800 creation; hidden file input; visible command');
+ await artReady();await page.screenshot({path:new URL('hermes-production-clinic.png',out).pathname});
+ await cmd('s');await cmd('s');assert((await slot()).encounter);await artReady();await page.screenshot({path:new URL('hermes-production-combat.png',out).pathname});
+ let attempts=0;while((await slot()).encounter&&attempts++<20)await cmd('attack');assert.equal((await slot()).encounter,null);await cmd('take all');assert((await slot()).player.inventory['pump component']===1);checks.push('real command movement, combat victory, quest component loot');
+ await page.getByRole('button',{name:'Whole estuary',exact:true}).click();await page.getByLabel('Fog',{exact:true}).uncheck();await artReady();await page.screenshot({path:new URL('hermes-production-geography.png',out).pathname});
+ await page.getByRole('button',{name:'Sewers',exact:true}).click();await artReady();await page.screenshot({path:new URL('hermes-production-sewer-map.png',out).pathname});checks.push('surface and sewer geographical maps');
+ await cmd('settings');await page.getByLabel('Palette',{exact:true}).selectOption('tidal');assert.equal(await page.locator('html').getAttribute('data-palette'),'tidal');await artReady();await page.screenshot({path:new URL('hermes-production-tidal.png',out).pathname});
+ await page.getByLabel('Palette',{exact:true}).selectOption('ember');assert.equal(await page.locator('html').getAttribute('data-palette'),'ember');await artReady();await page.screenshot({path:new URL('hermes-production-ember.png',out).pathname});checks.push('both alternate palettes and atlas crop rendering');
+ await page.getByRole('button',{name:'Manual save',exact:true}).click();await until(async()=>!!await slot(page,'manual'),'manual saved');
+ await page.reload();await page.getByRole('button',{name:'Continue',exact:true}).click();await page.getByRole('heading',{name:'Scrap Alley',exact:true}).waitFor();assert.equal(await page.locator('html').getAttribute('data-palette'),'ember');
+ await cmd('settings');const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Export JSON',exact:true}).click();const download=await downloadPromise;const exported=new URL('hermes-export.json',out).pathname;await download.saveAs(exported);
+ await page.getByLabel('Import save file').setInputFiles(exported);await page.getByText('IMPORTED / Valid browser save.',{exact:true}).waitFor();checks.push('IndexedDB manual, autosave reload, export and valid import');
+ await page.getByLabel('Import save file').setInputFiles({name:'broken.json',mimeType:'application/json',buffer:Buffer.from('{bad')});await page.getByRole('status').filter({hasText:/invalid|JSON|Syntax/i}).waitFor();assert.equal((await slot()).room,'alley');checks.push('malformed import rejection preserves current game');
+ await page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('deadlease-v2',1);r.onsuccess=()=>resolve(r.result)});await new Promise((resolve,reject)=>{const tx=db.transaction('slots','readwrite');tx.objectStore('slots').put('HERMES CORRUPT TEST','auto');tx.oncomplete=resolve;tx.onerror=reject});db.close()});
+ await page.reload();await page.getByRole('button',{name:'Load game',exact:true}).click();await page.getByRole('heading',{name:'Scrap Alley',exact:true}).waitFor();await cmd('settings');await page.getByRole('button',{name:'Recover autosave from current game',exact:true}).click();await until(async()=>{try{return (await slot())?.room==='alley'}catch{return false}},'recovered auto');checks.push('real corrupt IndexedDB quarantine and explicit recovery');
+ const backups=await page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('deadlease-v2',1);r.onsuccess=()=>resolve(r.result)});return new Promise(resolve=>{const r=db.transaction('quarantine').objectStore('quarantine').getAll();r.onsuccess=()=>{db.close();resolve(r.result)}})});assert(backups.some(b=>b.raw==='HERMES CORRUPT TEST'));
+ await page.setViewportSize({width:390,height:844});await artReady();await page.screenshot({path:new URL('hermes-production-mobile.png',out).pathname,fullPage:true});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));checks.push('mobile no horizontal overflow');
+ const images=requests.filter(u=>/\.(png|webp)(\?|$)/.test(u));assert(images.length>0);assert(images.every(u=>u.includes('/assets/atlases/')||u.includes('/assets/paintings/')));checks.push('production raster network requests use local atlases and paintings');assert.deepEqual(errors,[]);
+ const report={passed:true,checks,errors,rasterRequests:[...new Set(images)],quarantinePreserved:true};await fs.writeFile(new URL('hermes-production-verification.json',out),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+} catch(e){await artReady();await page.screenshot({path:new URL('hermes-production-failure.png',out).pathname,fullPage:true});console.log('BODY',await page.locator('body').innerText());throw e}finally{await browser.close();await new Promise(resolve=>server.httpServer.close(resolve))}

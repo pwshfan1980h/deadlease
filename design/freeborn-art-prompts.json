@@ -1,0 +1,91 @@
+{
+  "generator": "Built-in image_gen",
+  "ending": {"id":"city-horizon","prompt":"Use case: stylized-concept. Asset: wide 16:9 late-game background environment for FREEBORN text RPG. Foreground: a ruined wet concrete causeway at the edge of an industrial wasteland, broken railing and abandoned storm antenna, no people. Far across an immense misty estuary, beyond playable reach: a living real city with tall slender skyscrapers, scattered warm illuminated windows, three small utilitarian flying machines between towers, hint of cleaner life beyond the hardship. City must remain distant, monumental but believable, framed by rain and low cloud. Painted industrial noir, charcoal, bone, rust, cool grey, sparse warm amber lights; painterly texture, cinematic scale. No text, lettering, logos or UI. This is a view of an unreachable destination, not inside the city.","path":"public/assets/paintings/city-horizon.png"},
+  "prompts": [
+    {
+      "id": "shallow-drains",
+      "prompt": "Wide 16:9 full-scene environment painting for a text RPG: low level shallow sewer beneath a rain-soaked industrial town. Walkable brick ledges either side of ankle-deep water, low arched ceiling, old copper pipes, a warm caged lamp and visible ladder to daylight. Welcoming navigable scale, not a deep dungeon. No characters. Painted industrial noir, charcoal and bone, rust browns, amber lamps, cool grey daylight, very little green. Visible brush texture, grounded detailed game concept art. No text, no logos, no UI.",
+      "path": "public/assets/paintings/shallow-drains.png"
+    },
+    {
+      "id": "dike-wilderness",
+      "prompt": "Wide 16:9 full-scene environment painting for a text RPG: lonely coastal wilderness far beyond civilization, broken gravel causeway through tawny reeds, black tidal pools, distant bare trees, abandoned leaning telegraph poles and huge overcast sky. No buildings in foreground, no people. Painted industrial noir, charcoal, bone, rust, cool grey rain light, very little green. Atmospheric brushwork, grounded detailed game concept art. No text, logos or UI.",
+      "path": "public/assets/paintings/dike-wilderness.png"
+    },
+    {
+      "id": "bellwether-town",
+      "prompt": "Wide 16:9 full-scene environment painting for a text RPG: a small second frontier town beyond the coastal marsh, stone and corrugated iron buildings clustered around a warm courier post, timber bridge into town, lanterns in rain, distant bell tower, small human silhouettes. Visually separate from a dense industrial city. Painted industrial noir, charcoal, bone, rusty metal, amber lamps, grey weather, restrained greens. Atmospheric brushwork, grounded detailed game concept art. No legible text, logos or UI.",
+      "path": "public/assets/paintings/bellwether-town.png"
+    },
+    {
+      "id": "street-cutthroat",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: a lean adult human street ambusher in patched civilian coat with short hooked knife, clear uncovered weathered face, wet brick alley",
+      "path": "public/assets/paintings/street-cutthroat.png"
+    },
+    {
+      "id": "harbor-gunner",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: an adult woman human harbor raider with a battered long rifle, tarred raincoat, rope harness, uncovered weathered face, dock cranes behind",
+      "path": "public/assets/paintings/harbor-gunner.png"
+    },
+    {
+      "id": "reed-poacher",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: an adult human marsh poacher with bolt action rifle and reed camouflage over a worn coat, recognizable uncovered human face, wide desolate wetlands behind",
+      "path": "public/assets/paintings/reed-poacher.png"
+    },
+    {
+      "id": "tread-brute",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: a burly adult human industrial fighter whose entire lower body is a compact twin tank-tread chassis, visibly human scarred head and muscular clothed torso, leather harness, huge improvised steel ram, foundry behind. Clearly show both caterpillar treads in frame, no ordinary legs",
+      "path": "public/assets/paintings/tread-brute.png"
+    },
+    {
+      "id": "shard-duelist",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: an adult woman human duelist with a long blade made of mirrored scrap, glass fragments stitched into padded coat, clear uncovered human face, ruined glassworks behind",
+      "path": "public/assets/paintings/shard-duelist.png"
+    },
+    {
+      "id": "storm-deserter",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: an adult human military deserter with a long rifle, torn storm poncho and heavy boots, clear uncovered human face beneath rain hood, antenna causeway behind",
+      "path": "public/assets/paintings/storm-deserter.png"
+    },
+    {
+      "id": "drain-scavenger",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy portrait for a text RPG. Painted industrial noir, charcoal, bone, rust browns, amber lamps, cool grey daylight, visible brush texture, grounded worn machinery, very little green. Full or three-quarter figure with face legible, centered and filling the square while weapon and distinctive silhouette stay in frame. Single character, no text, logos, borders, UI or gore. Subject: an adult human sewer scavenger carrying a heavy pipe wrench, patched canvas clothes, rolled waders, dirty uncovered human face, respirator hanging at neck, shallow brick sewer and amber lamp behind",
+      "path": "public/assets/paintings/drain-scavenger.png"
+    },
+    {
+      "id": "alley-marksman",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Tight head-and-shoulders portrait of an older human man aiming a battered pistol just past the viewer, intense tired eyes, weather-beaten skin, ragged scarf, wet city brick background. The muzzle and hand enter the foreground, body out of frame.",
+      "path": "public/assets/paintings/alley-marksman.png"
+    },
+    {
+      "id": "chain-brawler",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Waist-up dynamic action painting of a broad human woman whipping a heavy mooring chain sideways across a rain-soaked harbor. Strong diagonal composition, furious determined face, industrial gloves, sea spray, feet not visible.",
+      "path": "public/assets/paintings/chain-brawler.png"
+    },
+    {
+      "id": "fen-trapper",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Close environmental action painting of a crouching adult human marsh trapper yanking a rope snare toward the viewer, covered shoulders and grinning weathered face very close, reeds bent by action, dirty hands prominent, not a standing full-body portrait.",
+      "path": "public/assets/paintings/fen-trapper.png"
+    },
+    {
+      "id": "slag-burner",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Waist-up side view of an adult human foundry saboteur operating an improvised industrial fire lance, welding visor raised enough to reveal a recognizable human face, brief jet of orange fire crossing the foreground, dynamic composition, factory sparks.",
+      "path": "public/assets/paintings/slag-burner.png"
+    },
+    {
+      "id": "mirror-sniper",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Extreme close-up of a human woman’s face and eye reflected in a cracked scope as she aims a long rifle among shards of window glass. Rifle occupies a diagonal foreground. Tense stillness. No full body.",
+      "path": "public/assets/paintings/mirror-sniper.png"
+    },
+    {
+      "id": "coil-zealot",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Low angle waist-up painting of an adult human storm cult fighter shouting while lifting a sparking jury-rigged electric staff, bare recognizable human head framed by rain, frayed coat, storm mast behind. Strong dramatic pose, no full body.",
+      "path": "public/assets/paintings/coil-zealot.png"
+    },
+    {
+      "id": "sump-knifer",
+      "prompt": "Use case: stylized-concept. Asset: square 1024x1024 enemy illustration for FREEBORN text RPG. Rich painterly trading-card illustration, visually varied narrative composition rather than a character lineup, grounded industrial noir. Charcoal, bone, rust browns, warm amber light, cool grey rain, visible brush texture, very little green. Single main adult human, no text, border, card frame, logos, UI or gore. Close action painting of an adult human woman lunging out of a shallow sewer doorway, one gloved hand on wet brick, other hand clutching a short rusted knife, determined human face with grime and patched hood, amber lamp behind. Crop at waist.",
+      "path": "public/assets/paintings/sump-knifer.png"
+    }
+  ]
+}

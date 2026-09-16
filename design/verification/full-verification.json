@@ -1,0 +1,82 @@
+{
+  "started": "2026-09-16T02:44:37.170Z",
+  "finished": "2026-09-16T02:47:15.751Z",
+  "passed": true,
+  "results": [
+    {
+      "stage": "test",
+      "passed": true,
+      "seconds": 5
+    },
+    {
+      "stage": "build",
+      "passed": true,
+      "seconds": 4
+    },
+    {
+      "stage": "audit:assets",
+      "passed": true,
+      "seconds": 2
+    },
+    {
+      "stage": "test:browser",
+      "passed": true,
+      "seconds": 4
+    },
+    {
+      "stage": "test:noir",
+      "passed": true,
+      "seconds": 11
+    },
+    {
+      "stage": "test:roaming",
+      "passed": true,
+      "seconds": 45
+    },
+    {
+      "stage": "test:clinic",
+      "passed": true,
+      "seconds": 2
+    },
+    {
+      "stage": "test:inventory",
+      "passed": true,
+      "seconds": 5
+    },
+    {
+      "stage": "test:frontier",
+      "passed": true,
+      "seconds": 13
+    },
+    {
+      "stage": "test:motion",
+      "passed": true,
+      "seconds": 8
+    },
+    {
+      "stage": "test:boards",
+      "passed": true,
+      "seconds": 4
+    },
+    {
+      "stage": "test:pause",
+      "passed": true,
+      "seconds": 7
+    },
+    {
+      "stage": "test:theft",
+      "passed": true,
+      "seconds": 4
+    },
+    {
+      "stage": "test:interactions",
+      "passed": true,
+      "seconds": 38
+    },
+    {
+      "stage": "test:runs",
+      "passed": true,
+      "seconds": 6
+    }
+  ]
+}

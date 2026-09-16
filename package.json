@@ -1,0 +1,45 @@
+{
+  "name": "deadlease",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "npm run assets:rebuild && tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:browser": "node scripts/verify-browser.mjs",
+    "audit:assets": "node --import ./scripts/register-ts.mjs scripts/audit-assets.mjs",
+    "assets:rebuild": "node --import ./scripts/register-ts.mjs scripts/build-atlases.mjs",
+    "audio:rebuild": "node scripts/build-travel-audio.mjs && node scripts/build-battle-music.mjs && node scripts/build-combat-audio.mjs",
+    "test:noir": "node --import ./scripts/register-ts.mjs scripts/verify-noir.mjs",
+    "test:roaming": "node scripts/verify-roaming.mjs",
+    "deploy:pages": "node scripts/deploy-pages.mjs",
+    "test:clinic": "node --import ./scripts/register-ts.mjs scripts/verify-clinic.mjs",
+    "test:inventory": "node --import ./scripts/register-ts.mjs scripts/verify-inventory.mjs",
+    "test:all": "node scripts/verify-all.mjs",
+    "test:frontier": "node --import ./scripts/register-ts.mjs scripts/verify-frontier.mjs",
+    "test:motion": "node --import ./scripts/register-ts.mjs scripts/verify-motion.mjs",
+    "test:boards": "node --import ./scripts/register-ts.mjs scripts/verify-boards.mjs",
+    "test:pause": "node scripts/verify-pause.mjs",
+    "test:theft": "node --import ./scripts/register-ts.mjs scripts/verify-theft.mjs",
+    "test:interactions": "node --import ./scripts/register-ts.mjs scripts/verify-interactions.mjs",
+    "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@types/node": "22.20.1",
+    "@vitejs/plugin-react": "6.0.3",
+    "vite": "8.2.0",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10",
+    "playwright": "1.62.1",
+    "jsdom": "29.1.1",
+    "pngjs": "5.0.0"
+  }
+}
