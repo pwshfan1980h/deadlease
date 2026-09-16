@@ -1,3 +1,11 @@
+## Single room occupant roster — current candidate
+
+- [ ] In Reclamation Clinic, expect one Here roster: Clerk · Clinic orderly · Dr. Pell.
+- [ ] Repeat look around: details should appear, with no additional partial character or ground-item list.
+- [ ] Travel to Clinic Steps (no roster), then down to the undercroft (Drainwatch Hal once). A passing visitor should join and leave the same roster.
+
+Human acceptance pending. Automated verification passed: 178 unit tests in 30 files, all 18 browser suites, build and asset audit. Published Pages: `0f0d6e0`; live asset hashes, complete clinic roster, repeated look, travel and recovery passed public verification. Evidence: `verification/full-verification.json`, `verification/room-transcript.json` and `verification/deployment.json`. See [room transcript rules](ROOM-TRANSCRIPTS.md#one-current-occupant-roster).
+
 ## Clinic continuity and combat clarity — current candidate
 
 Human acceptance: **pending**. Rules: [clinic and combat guide](CLINIC-RECOVERY-AND-COMBAT.md). This replaces the historical permadeath acceptance cases below.

@@ -21,3 +21,13 @@ Screenshots and focused results: `evidence/room-transcript/`. Compact report: `d
 ## Human retest — pending
 
 Read or talk enough to fill the clinic transcript, then move south. Only Clinic Steps' arrival should remain, at the top. Try down/up, enter Scrap Alley, and flee. The retreat should explain its parting attack without retaining earlier combat history. Type `look around` to build the new room's transcript normally.
+
+## One current occupant roster
+
+Each room has one **Here:** roster built from its current NPC, guard, doctor and passing visitor. Named identities replace role aliases; a warden who is also the guard appears once. The active enemy uses its illustrated encounter entry, not an extra friendly/visitor label. Alarmed or defeated watch entries are not shown as friendly guards. Visitor entries are bound to their current room and disappear when the visitor leaves or becomes an encounter.
+
+`look` / `look around` returns detail, warnings and exits; it no longer appends separate NPC, doctor, guard, enemy-stat or ground-item lists. Ground items retain their single live grey list. Authored prose, dialogue and arrival/departure events may naturally mention people; these are not additional live rosters. Repeated looks do not accumulate obsolete occupant lists.
+
+Regression coverage: `tests/presence.test.ts` checks the clinic, all 149 room identities, warden aliases, visitors, cleared enemies and watch alarms. The room-transcript browser suite checks repeated looks, empty rooms, named residents and doctors across travel and compact layouts. The roaming suite checks the visitor entering/leaving the same roster. Human acceptance remains pending.
+
+The visual playthrough now uses a fixed combat seed and fails immediately on death, so a random loss cannot silently redirect its scripted pump route through clinic recovery. This is test harness behavior only; production randomness and difficulty are unchanged.

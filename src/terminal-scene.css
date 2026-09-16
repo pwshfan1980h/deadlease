@@ -179,3 +179,10 @@ html,body,.app{cursor:auto!important}
 
 /* Guidance is the interface voice. World events and dialogue retain terminal green. */
 .playing .terminal .transcript-instruction{color:#a5aaa7;font-style:italic;text-shadow:none}
+
+/* One complete live roster; prose and command responses do not repeat a room roll call. */
+.playing .room-occupants .occupant-roster{align-items:baseline;gap:8px;text-transform:none}
+.playing .occupant-roster ul{display:flex;flex-wrap:wrap;gap:4px 0;list-style:none;margin:0;padding:0}
+.playing .occupant-roster li+li::before{content:'·';color:#818a82;margin:0 9px}
+.playing .occupant-roster .visitor{display:block;margin:0;padding:0;border:0;font:inherit}
+.playing .occupant-roster .visitor>span{display:inline}

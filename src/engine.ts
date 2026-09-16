@@ -1,7 +1,7 @@
 import {weaponChance,weaponDamage,attackVerb,combatAssessment,incomingDamage} from './combat';
 export {incomingDamage} from './combat';
 import {instruction} from './instructions';
-import {medicalCommand,medicalJournal,doctors,injury,impaired} from './medicine';
+import {medicalCommand,medicalJournal,injury,impaired} from './medicine';
 import {runRecord,resolveLethal,drone,type Run} from './runs';
 import {enemyRole,behaviorIntent} from './enemyBehavior';
 import {missions,missionKey,missionActive,missionDone,missionProgress,resolveMission,missionConversation,missionJournal,recordCatch} from './missions';
@@ -80,7 +80,8 @@ SYSTEM: help; view (enlarge art); map [surface/sewers/local/world]; map labels/h
 Up/Down history · Tab minimap · Ctrl+Space completion · Escape close overlay / pause · PageUp/PageDown log. Reading and invalid commands never advance combat. Hunting grounds return after 12 world turns; leave and re-enter. Safe refuges restore HP/stamina and clear radiation. Type spare to accept an offered surrender. Bleeding costs 2 HP per combat action; heal stops it. Death ends the run. A packed Stitch Drone rescues you once per item; unpacked drones cannot activate. Level cap 10.`;
 /** Entering a room reveals presence, not a survey. Looking remains a free explicit action. */
 export function arrival(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['FALLEN / '+g.player.name+' · '+g.run.cause+'.'];return [r.name+'.',...(g.encounter?[g.encounter.name+' blocks your way.',intent(g.encounter)]:[])]}
-export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['FALLEN / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Wake at the clinic to continue.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(doctors[g.room]?[doctors[g.room].name+' tends a surgical bench. Type talk doctor for treatment and implants.']:[]),...(r.guard&&!g.encounter&&!theftObjects.some(object=>object.room===g.room&&g.rewards.includes(alarmFlag(object.id)))?[r.guard+' protects this refuge.']:[]),...(r.npc?['Here: '+r.npc+'.',instruction('Type talk '+r.npc+'.')]:[]),...(r.warning&&!g.encounter?[r.warning]:[]),...(g.encounter?[g.encounter.name+' · HP '+g.encounter.hp+'/'+g.encounter.maxHP,intent(g.encounter)]:[]),...(Object.keys(g.loot[g.room]).length?['Ground: '+Object.entries(g.loot[g.room]).map(([k,v])=>k+' ×'+v).join(', ')]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
+/** The UI owns the live occupant/ground roster; looking adds details, never a second list. */
+export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['FALLEN / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Wake at the clinic to continue.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(r.warning&&!g.encounter?[r.warning]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
 export function clearEncounter(g:Game){g.encounter=null;g.shield=0;g.exposed=0;g.exposeTurns=0;g.bleed=0}
 function rewardKill(g:Game,m:string[],peace=false){if(g.encounter&&g.encounter.hp<=0){
  const e=g.encounter,roaming=e.id.startsWith('roaming:'),theft=e.id.startsWith('theft:'),fishing=e.id.startsWith('fishing:');

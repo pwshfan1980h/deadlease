@@ -2,7 +2,8 @@
   "passed": true,
   "checks": [
     "Animated typed/button travel and stairs replace old text before fade-in, start at top, retain command focus/history; blocked exit preserves history",
-    "Reduced-motion combat arrival holds top through art decode and resize; next action follows new results; retreat keeps parting response but drops prior combat; return visits start clean"
+    "Reduced-motion combat arrival holds top through art decode and resize; next action follows new results; retreat keeps parting response but drops prior combat; return visits start clean",
+    "One complete live roster survives repeated look commands; empty rooms remove it, warden aliases deduplicate, named NPCs and doctors match each destination on compact screens"
   ],
   "errors": []
 }

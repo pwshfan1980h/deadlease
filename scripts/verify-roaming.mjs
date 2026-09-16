@@ -18,6 +18,7 @@ try{
  await page.goto('http://127.0.0.1:4191');await newGame(page);await saved();
  const original=await state();await input.fill('inspect scrap');await page.clock.runFor(89000);assert.equal(await page.locator('.visitor').count(),0);
  await page.clock.runFor(1000);await page.locator('.visitor').waitFor();assert.equal(await input.inputValue(),'inspect scrap');assert(await input.evaluate(e=>e===document.activeElement));assert.deepEqual(await state(),original);
+ assert.equal(await page.locator('.occupant-roster').count(),1);assert.equal(await page.locator('.occupant-roster [data-presence=visitor]').count(),1);await cmd('look around');assert.equal(await page.locator('.occupant-roster [data-presence=visitor]').count(),1);assert(!(await page.locator('.log > p').allTextContents()).some(line=>line.startsWith('Here now:')));
  await cmd('inspect scrap courier');await cmd('talk scrap courier');await cmd('attack scrap courier');assert.equal((await state()).encounter,null);await shot('neutral-visitor');
  await page.clock.runFor(24000);assert.equal(await page.locator('.visitor').count(),0);assert.equal(await page.getByText('The scrap courier shoulders the sack and moves on.',{exact:true}).count(),1);
  await page.clock.runFor(179000);assert.equal(await page.locator('.visitor').count(),0);checks.push('Rare neutral arrival/departure, inspect/talk, no fight, no save/turn mutation, no typing interruption or idle chatter');

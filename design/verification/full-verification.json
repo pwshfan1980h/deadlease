@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T21:33:00.761Z",
-  "finished": "2026-09-16T21:36:26.854Z",
+  "started": "2026-09-16T22:27:35.476Z",
+  "finished": "2026-09-16T22:31:17.621Z",
   "passed": true,
   "results": [
     {
@@ -31,7 +31,7 @@
     {
       "stage": "test:roaming",
       "passed": true,
-      "seconds": 49
+      "seconds": 50
     },
     {
       "stage": "test:clinic",
@@ -76,7 +76,7 @@
     {
       "stage": "test:interactions",
       "passed": true,
-      "seconds": 38
+      "seconds": 53
     },
     {
       "stage": "test:runs",
@@ -91,7 +91,7 @@
     {
       "stage": "test:scenes",
       "passed": true,
-      "seconds": 2
+      "seconds": 3
     },
     {
       "stage": "test:room-transcript",

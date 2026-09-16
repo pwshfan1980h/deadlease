@@ -1,3 +1,4 @@
+import {roomCharacters} from './presence';
 import {attackVerb} from './combat';
 import {ailments,doctors} from './medicine';
 import {CharacterName,TranscriptText} from './Transcript';
@@ -6,7 +7,7 @@ import {freshIdentity} from './runs';
 import {TimingGame,ItemDiscovery} from './TimingGame';
 import type {Challenge,TimingOutcome} from './challenges';
 import {PauseMenu} from './PauseMenu';
-import {objectsHere,objectCommands} from './roomObjects';
+import {objectCommands} from './roomObjects';
 import {TitleAtmosphere,useImpactFeedback} from './Motion';
 import {Ending} from './Ending';
 import {Minimap} from './Minimap';
@@ -33,7 +34,7 @@ export function completions(prefix:string,g:Game,visitor?:Visitor|null){return [
 function download(raw:string,name:string){const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver?:StorageDriver}){
  const [game,setGame]=useState<Game|null>(initialGame??null),[panel,setPanel]=useState<Panel>('Atlas'),[prefs,setPrefs]=useState<Preferences>(defaultPreferences),[entry,setEntry]=useState(''),[logs,setLogs]=useState<string[]>(initialGame?arrival(initialGame):[]),[notice,setNotice]=useState(''),[booted,setBooted]=useState(false),[saving,setSaving]=useState(false),[blocked,setBlocked]=useState(false),[backups,setBackups]=useState<Backup[]>([]);
- const [visitor,setVisitor]=useState<Visitor|null>(null);const visitorRef=useRef<Visitor|null>(null);
+ const [visitor,setVisitor]=useState<Visitor|null>(null);const visitorRef=useRef<Visitor|null>(null),visitorRoom=useRef<string|null>(null);
  const [activityVersion,setActivityVersion]=useState(0);
  const [atTitle,setAtTitle]=useState(!initialGame),[creating,setCreating]=useState(false);
  const [intakePanel,setIntakePanel]=useState<IntakePanel>(null),[intakeStep,setIntakeStep]=useState<'identity'|'training'>('identity'),[finalizing,setFinalizing]=useState(false),[intakeError,setIntakeError]=useState('');
@@ -86,20 +87,20 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  },[atTitle,!!game,panelOpen,finalizing]);
  function closePause(){pauseRef.current=false;setPauseOpen(false);audio.current?.play('ambience');audio.current?.battle(!creating&&!recovering&&!!gameRef.current?.encounter);input.current?.focus()}
  useEffect(()=>{
-  visitorRef.current=null;setVisitor(null);
+  visitorRef.current=null;visitorRoom.current=null;setVisitor(null);
   if(!booted||atTitle||creating||recovering||!gameRef.current||gameRef.current.run.status==='dead'||gameRef.current.encounter)return;
   const room=gameRef.current.room,activity=new RoomActivity(rooms[room]);
   const timer=setInterval(()=>{
    const current=gameRef.current;
    if(!current||current.run.status==='dead'||pauseRef.current||traveling.current||current.room!==room||current.encounter||blockedRef.current||document.hidden||document.querySelector('dialog[open],.reference-panel:not([hidden]) .settings'))return;
    const event=activity.advance(250);if(!event)return;
-   if(event.type==='departure'){visitorRef.current=null;setVisitor(null);append([event.visitor.departure]);return}
+   if(event.type==='departure'){visitorRef.current=null;visitorRoom.current=null;setVisitor(null);append([event.visitor.departure]);return}
    if(event.visitor.role==='hostile'){
     const result=engageVisitor(current,event.visitor.id);append(result.messages);
     if(result.changed){commit(result.state);audio.current?.battle(!!result.state.encounter);audio.current?.sequence(result,current);showImpacts(result);deathExperience(current,result.state)}
     // Even a lethal opening strike must not leave this room's timer running.
     clearInterval(timer);setActivityVersion(v=>v+1);
-   }else {append([event.visitor.arrival]);visitorRef.current=event.visitor;setVisitor(event.visitor)}
+   }else {append([event.visitor.arrival]);visitorRef.current=event.visitor;visitorRoom.current=room;setVisitor(event.visitor)}
   },250);
   return()=>clearInterval(timer);
  },[booted,atTitle,creating,recovering,game?.room,game?.encounter?.id,activityVersion]);
@@ -107,7 +108,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  useEffect(()=>{if(!booted||creating||!game||game.run.status==='dead')return;let active=true;const id=game.run.id;const timer=setInterval(()=>{void repo.current?.terminal(id).then(ended=>{if(active&&ended&&gameRef.current?.run.id===id&&gameRef.current.run.status==='alive'){const before=gameRef.current;resetActivity();commit(ended);deathExperience(before,ended);setNotice('This run ended in another session. Its record is preserved.')}}).catch(error)},1000);return()=>{active=false;clearInterval(timer)}},[booted,creating,game?.run.id,game?.run.status]);
  function clearInteractions(){audio.current?.cancelFeedback();timingRef.current=null;setTiming(null);setDiscovery(null);lastFlavor.current=''}
  function finishTiming(outcome:TimingOutcome){const pending=timingRef.current;if(!pending)return;timingRef.current=null;setTiming(null);if(gameRef.current!==pending.source){setNotice('The situation changed. Try the action again.');return}void run(pending.text,outcome)}
- function resetActivity(){visitorRef.current=null;setVisitor(null);setActivityVersion(v=>v+1)}
+ function resetActivity(){visitorRef.current=null;visitorRoom.current=null;setVisitor(null);setActivityVersion(v=>v+1)}
  const save=(slot:string,g:Game)=>{
   if(!repo.current){setNotice('Storage unavailable. Export JSON to keep this journey.');return Promise.resolve()}
   setSaving(true);const next=queue.current.then(()=>repo.current!.save(slot,g));queue.current=next.catch(()=>{});return next.then(()=>{if(slot==='manual')setNotice('Manual save written.')}).catch(e=>{if(slot==='auto'){blockedRef.current=true;setBlocked(true)}error(e)}).finally(()=>setSaving(false));
@@ -184,7 +185,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   audio.current?.battle(!!result.state.encounter);if(!audio.current?.travel(g,result.state,cmd)||result.sounds?.length)audio.current?.sequence(result,g);
   showImpacts(result);deathExperience(g,result.state);
   if(moved){if(!reduced){setTravelFade('in');await new Promise(resolve=>setTimeout(resolve,220));if(!mounted.current)return;}setTravelFade('');traveling.current=false;}
-  if(!roomChanged)append(['› '+text,...result.messages,...(/^look(?: around)?$/.test(cmd)&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus({preventScroll:true});return result.messages;
+  if(!roomChanged)append(['› '+text,...result.messages]);input.current?.focus({preventScroll:true});return result.messages;
  }
  async function finishIntake(){
   if(finalizing)return;setFinalizing(true);setIntakeError('');
@@ -244,6 +245,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  useEffect(()=>{if(!game)return;for(const id of [game.room,...Object.values(rooms[game.room].exits)])void warmScene(id)},[game?.room]);
  function actionButton(text:string,label=text,unavailable=false,reason?:string){return <button key={text} type="button" title={reason} disabled={unavailable||!!travelFade||pauseOpen||!!timing||!!discovery||mapOpen||inventoryOpen||endingOpen||game?.run.status==='dead'} onClick={()=>{follow.current=true;void run(text)}}>{label}</button>}
  const p=game?.player,r=game?rooms[game.room]:rooms.clinic;
+ const present=game?roomCharacters(game,visitorRoom.current===game.room?visitor:null).filter(person=>person.kind!=='enemy'):[];
  return <div className={"app "+(atTitle?"at-title":"playing")} data-paused={pauseOpen} data-motion={prefs.motion?"on":"off"} data-page-hidden={pageHidden}>
 
  <input hidden ref={file} type="file" accept=".json,application/json" aria-label="Import save file" onChange={e=>void importFile(e.target.files?.[0])}/>
@@ -270,15 +272,9 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
 
  <section className="terminal"><div className="section-heading"><span>TRANSCRIPT</span><span className="muted">PgDn ↓</span></div><div className="log" ref={logEl} role="log" aria-label="Field log" aria-live="polite" onWheel={()=>{manualScroll.current=true}} onTouchMove={()=>{manualScroll.current=true}} onPointerDown={e=>{if(!(e.target as HTMLElement).closest('button'))manualScroll.current=true}} onScroll={()=>{const el=logEl.current;if(el&&manualScroll.current)follow.current=el.scrollHeight-el.scrollTop-el.clientHeight<32}}>{logs.map((line,i)=><p key={i} className={line.startsWith('›')?'log-command':''}><TranscriptText text={line} playerName={game.player.name}/></p>)} <section className="room-occupants" aria-label="Room occupants and items">
   <div className="scene-contents">
-  {creating&&<p className="room-presence">A clerk waits beside your bed.</p>}
-  {!creating&&(r.npc||r.guard)&&<div className="npc room-presence">
-   {r.npc&&<div><CharacterName name={r.npc==='warden'&&r.guard?r.guard.split(' — ')[0]:({technician:'Iona',broker:'Moth',archivist:'Sen',postkeeper:'Ada'}[r.npc]??r.npc)}/></div>}
-   {r.guard&&r.npc!=='warden'&&!game.encounter&&!objectsHere(game.room).some(object=>game.rewards.includes('alarm:'+object.id))&&<div><CharacterName name={r.guard.split(' — ')[0]}/></div>}
-  </div>}
-  {!creating&&doctors[r.id]&&<span className="room-presence"><CharacterName name={doctors[r.id].name} tone="clinic"/></span>}
+  {present.length>0&&<div className="npc room-presence occupant-roster" aria-label="Characters here"><span className="muted">Here:</span><ul>{present.map(person=><li key={person.name} className={person.kind==='visitor'?'visitor':undefined} data-presence={person.kind}><CharacterName name={person.name} tone={person.tone}/></li>)}</ul></div>}
   {!creating&&Object.keys(game.loot[game.room]??{}).length>0&&<ul className="ground-items" aria-label="Items on the ground">{Object.entries(game.loot[game.room]).filter(([,count])=>count>0).map(([item,count])=><li key={item}>{item}{count>1?" ×"+count:""}</li>)}</ul>}
   </div>
-  {!game.encounter&&visitor&&<div className="visitor room-presence" aria-label="Passing visitor"><CharacterName name={visitor.name} tone={visitor.role==='hostile'?'enemy':'neutral'}/></div>}
   {r.radiation>0&&<span className="scene-hazard">RADIATION</span>}
   {game.encounter&&<div className="encounter"><div className="enemy-title"><EnemyPortrait name={game.encounter.name} palette={prefs.palette}/><div><strong><CharacterName name={game.encounter.name.toUpperCase()} hostile/></strong><p>HP {game.encounter.hp}/{game.encounter.maxHP}</p><p className="enemy-intent"><TranscriptText text={intent(game.encounter)}/></p></div></div></div>}
  </section> {game.encounter&&<div className="transcript-combat">  <div className="command-options" aria-label="Combat commands">{actionButton('inspect target')}{actionButton('attack','attack ('+attackVerb(p!.weapon)+')')}{actionButton('aim','aim',items[p!.weapon].skill!=='Firearms'||p!.stamina<(p!.className==='Surveyor'?BALANCE.surveyorAimCost:BALANCE.aimCost),'Requires a firearm and '+(p!.className==='Surveyor'?BALANCE.surveyorAimCost:BALANCE.aimCost)+' stamina')}{actionButton('brace')}{actionButton('cover','cover',p!.stamina<BALANCE.coverCost,'Requires '+BALANCE.coverCost+' stamina')}{actionButton('heal','heal',!p!.inventory['medical supplies']||(p!.hp===maxHP(p!)&&!game.bleed),'Requires medical supplies and missing HP or bleeding')}{actionButton('flee')}</div>
