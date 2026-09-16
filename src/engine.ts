@@ -1,3 +1,4 @@
+import {instruction} from './instructions';
 import {medicalCommand,medicalJournal,doctors,injury,accuracyModifier,impaired} from './medicine';
 import {runRecord,resolveLethal,drone,type Run} from './runs';
 import {enemyRole,behaviorIntent} from './enemyBehavior';
@@ -80,7 +81,7 @@ SYSTEM: help; view (enlarge art); map [surface/sewers/local/world]; map fog/labe
 Up/Down history · Tab minimap · Ctrl+Space completion · Escape close overlay / pause · PageUp/PageDown log. Reading and invalid commands never advance combat. Hunting grounds return after 12 world turns; leave and re-enter. Safe refuges restore HP/stamina and clear radiation. Type spare to accept an offered surrender. Bleeding costs 2 HP per combat action; heal stops it. Death ends the run. A packed Stitch Drone rescues you once per item; unpacked drones cannot activate. Level cap 10.`;
 /** Entering a room reveals presence, not a survey. Looking remains a free explicit action. */
 export function arrival(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['RUN ENDED / '+g.player.name+' · '+g.run.cause+'.'];return [r.name+'.',...(g.encounter?[g.encounter.name+' blocks your way.',intent(g.encounter)]:[])]}
-export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['RUN ENDED / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Begin a new patient.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(doctors[g.room]?[doctors[g.room].name+' tends a surgical bench. Type talk doctor for treatment and implants.']:[]),...(r.guard&&!g.encounter&&!theftObjects.some(object=>object.room===g.room&&g.rewards.includes(alarmFlag(object.id)))?[r.guard+' protects this refuge.']:[]),...(r.npc?['Here: '+r.npc+'. talk '+r.npc]:[]),...(r.warning&&!g.encounter?[r.warning]:[]),...(g.encounter?[g.encounter.name+' · HP '+g.encounter.hp+'/'+g.encounter.maxHP,intent(g.encounter)]:[]),...(Object.keys(g.loot[g.room]).length?['Ground: '+Object.entries(g.loot[g.room]).map(([k,v])=>k+' ×'+v).join(', ')]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
+export function look(g:Game){const r=rooms[g.room];if(g.run.status==='dead')return ['RUN ENDED / '+g.player.name+' · '+g.run.cause+' · '+r.name+'. Begin a new patient.'];return [r.name+' / '+zones[r.zone].name+' / level '+r.level,roomDescription(g),...(doctors[g.room]?[doctors[g.room].name+' tends a surgical bench. Type talk doctor for treatment and implants.']:[]),...(r.guard&&!g.encounter&&!theftObjects.some(object=>object.room===g.room&&g.rewards.includes(alarmFlag(object.id)))?[r.guard+' protects this refuge.']:[]),...(r.npc?['Here: '+r.npc+'.',instruction('Type talk '+r.npc+'.')]:[]),...(r.warning&&!g.encounter?[r.warning]:[]),...(g.encounter?[g.encounter.name+' · HP '+g.encounter.hp+'/'+g.encounter.maxHP,intent(g.encounter)]:[]),...(Object.keys(g.loot[g.room]).length?['Ground: '+Object.entries(g.loot[g.room]).map(([k,v])=>k+' ×'+v).join(', ')]:[]),'Ways out: '+Object.keys(r.exits).map(d=>({n:'north',s:'south',e:'east',w:'west'}[d]??d)).join(', ')+'.']}
 export function clearEncounter(g:Game){g.encounter=null;g.shield=0;g.exposed=0;g.exposeTurns=0;g.bleed=0}
 function rewardKill(g:Game,m:string[],peace=false){if(g.encounter&&g.encounter.hp<=0){
  const e=g.encounter,roaming=e.id.startsWith('roaming:'),theft=e.id.startsWith('theft:'),fishing=e.id.startsWith('fishing:');
@@ -288,7 +289,7 @@ export function command(source:Game,text:string,options:{timing?:TimingOutcome;i
 }
 export function consume(p:Player,item:string){if(--p.inventory[item]<=0)delete p.inventory[item]}
 export function journal(g:Game):string[]{return [
- 'THE WATER BELONGS TO / '+(g.pump==='lease'?'syndicate':g.pump).toUpperCase()+'. '+(g.pump==='commons'?pumpText.commons:g.pump==='lease'?pumpText.lease:'Talk technician at Toll Square → take pump component in Scrap Alley → install component in Pump Hall → Control Booth: give key commons OR give key syndicate.'),
+ 'THE WATER BELONGS TO / '+(g.pump==='lease'?'syndicate':g.pump).toUpperCase()+'. '+(g.pump==='commons'?pumpText.commons:g.pump==='lease'?pumpText.lease:'Talk technician at Toll Square → take pump component in Scrap Alley → install component in Pump Hall → Control Booth: Type give key commons or give key syndicate.'),
  ...(g.rewards.includes('freeborn')?['FREEBORN / You reached the city. Your journey is complete. The estuary remains available for free exploration.']:['THE CITY / Survive the estuary and reach Crown Receiver. Settle the master ledger, then depart for the city.']),
  ...courierJournal(g),
  ...missionJournal(g),...medicalJournal(g.player),
@@ -328,17 +329,17 @@ function worldAction(g:Game,verb:string,arg:string,m:string[]):true|string{
  }else if(verb==='talk'){
   const aliases:Record<string,string>={pell:'clerk',iona:'technician',moth:'broker',sera:'warden',fen:'warden',rusk:'warden',vale:'warden',orra:'warden',hal:'warden',sen:'archivist',ada:'postkeeper'};
   if(!r.npc||(aliases[arg]??arg)!==r.npc)return 'That person is not here. Type look.';
-  if(r.npc==='clerk')m.push('Pell: “Rest here any time. No charge. The replacement body is where we get you. Iona needs a runner in Toll Square.”');
-  if(r.npc==='technician'){if(g.pump==='new')g.pump='accepted';m.push('Iona: “Ceramic component. Scrap Alley. Install it in Pump Hall. Then give the key to commons or the syndicate at Control Booth. Fixing things is easy. Owning them is the disease.”');}
-  if(r.npc==='postkeeper')m.push('Ada: “District mail? Set it on the dry table. I have a return bag whenever you’re ready.” Type jobs.');
+  if(r.npc==='clerk')m.push('CLINIC CLERK / “Rest here any time. No charge. The replacement body is where we get you. Iona needs a runner in Toll Square.”');
+  if(r.npc==='technician'){if(g.pump==='new')g.pump='accepted';m.push('Iona: “Ceramic component. Scrap Alley. Install it in Pump Hall. Then take the access key to Control Booth. The Commons and the Syndicate both want it. Fixing things is easy. Owning them is the disease.”');}
+  if(r.npc==='postkeeper')m.push('Ada: “District mail? Set it on the dry table. I have a return bag whenever you’re ready.”','Type jobs.');
   if(['broker','clerk'].includes(r.npc))m.push('COURIER WORK / Type jobs to see paid deliveries from here.');
-  if(r.npc==='broker')m.push('Moth: “Buy medical supplies, armor vest or a weapon. Sell salvage. Everything guaranteed until you leave.”');
+  if(r.npc==='broker')m.push('Moth: “Medical supplies, armor, weapons. Tell me what you need. I pay for salvage, too. Everything guaranteed until you leave.”');
   m.push(...missionConversation(g));
   if(['warden','archivist'].includes(r.npc)){
    const q=Object.values(quests).find(q=>q.giver===g.room);if(q){if(!g.quests[q.id])g.quests[q.id]='accepted';m.push(q.title+' / '+(g.quests[q.id]==='done'?q.ending:q.brief));}
    else if(missions.some(m=>m.giver===g.room)){}
    else if(r.zone==='glass')m.push('Vale’s watch: “Prism Tip is sheltered. Find Keeper Vale at Glaziers Hearth, south through the diamond. Keep your shield between you and the glass.”');
-   else m.push('Orra: “Beyond this bunker: level eight to ten. They charge in amber before they strike. Bring insulation. Brace or break the charge. They return after twelve turns. We will always let you back in.”');
+   else m.push('Orra: “The things beyond this bunker will tear an unprepared runner apart. Watch for amber light. Bring insulation, and get behind cover when they charge. We will always let you back in.”',instruction('Enemies beyond this refuge are level 8–10 and return after 12 world turns away.'));
    m.push(r.guard+' keeps weapons lowered. Rest here freely; merchants sell region-appropriate gear.');
   }
  }else if(verb==='take'){
@@ -381,7 +382,7 @@ function worldAction(g:Game,verb:string,arg:string,m:string[]):true|string{
   if(!learn(p,arg))return 'Learning needs one point, the required level, and an unlearned ability from your class.';m.push('LEARNED / '+abilities[arg].name+'. use '+arg);
  }else if(verb==='install'){
   if(g.room!=='pump'||!['component','pump component'].includes(arg)||!p.inventory['pump component']||!['new','accepted'].includes(g.pump))return 'Install component in Pump Hall with the ceramic pump component.';
-  consume(p,'pump component');p.inventory['access key']=1;g.pump='repaired';award(g,'pump',PUMP_REWARDS.repairXP);m.push('PUMP REPAIRED / Water hammers through the pipes. The console prints an access key. North: Control Booth. give key commons OR give key syndicate.');
+  consume(p,'pump component');p.inventory['access key']=1;g.pump='repaired';award(g,'pump',PUMP_REWARDS.repairXP);m.push('PUMP REPAIRED / Water hammers through the pipes. The console prints an access key. North: Control Booth. Type give key commons or give key syndicate.');
  }else if(verb==='give'){
   if(g.room!=='booth'||g.pump!=='repaired'||!p.inventory['access key']||!['key commons','key lease','key syndicate'].includes(arg))return 'At Control Booth after repairs: give key commons OR give key syndicate. The choice is permanent.';
   g.pump=arg==='key commons'?'commons':'lease';consume(p,'access key');p.credits+=g.pump==='commons'?PUMP_REWARDS.commonsCredits:PUMP_REWARDS.leaseCredits;award(g,'ending',PUMP_REWARDS.endingXP);m.push(pumpText[g.pump],'THE WATER BELONGS TO / '+(g.pump==='lease'?'syndicate':g.pump).toUpperCase()+'. The estuary remains open.');

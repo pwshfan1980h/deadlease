@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T17:09:39.488Z",
-  "finished": "2026-09-16T17:12:24.348Z",
+  "started": "2026-09-16T18:22:34.139Z",
+  "finished": "2026-09-16T18:25:15.003Z",
   "passed": true,
   "results": [
     {
@@ -31,7 +31,7 @@
     {
       "stage": "test:roaming",
       "passed": true,
-      "seconds": 49
+      "seconds": 45
     },
     {
       "stage": "test:clinic",
@@ -61,7 +61,7 @@
     {
       "stage": "test:pause",
       "passed": true,
-      "seconds": 8
+      "seconds": 7
     },
     {
       "stage": "test:theft",

@@ -176,3 +176,6 @@ html,body,.app{cursor:auto!important}
 }
 .playing .player-card{position:relative}
 @media(max-width:800px){.playing .player-card .rad{right:8px;top:8px}}
+
+/* Guidance is the interface voice. World events and dialogue retain terminal green. */
+.playing .terminal .transcript-instruction{color:#a5aaa7;font-style:italic;text-shadow:none}

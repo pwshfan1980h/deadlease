@@ -1,6 +1,7 @@
 {
   "passed": true,
   "checks": [
+    "Doctor dialogue stays in-world and green; separate control hints are grey italic on black, with no item/name color leaking into hints",
     "Immediate plain grey ground inventory, grey transcript ground list, typed pickup updates without stale items",
     "Detailed prose requires look around; actual item mentions highlighted green without revealing hidden objects on arrival",
     "Adjacent outdoor and vertical travel arrives with decoded matching art; neutral inhabitants remain immediately visible",

@@ -12,6 +12,7 @@ User accepted the improved readability/art, then requested a transcript-led layo
 
 - [x] Small room painting beside player data; large transient hover/focus preview; tall transcript by default.
 - [x] Put inhabitants, ground items and illustrated encounters inside the transcript; restore clickable actions alongside typing, preserving hidden prose opportunities.
+- [x] Separate grey italic command guidance from green world/dialogue/combat text; remove command syntax and level/turn explanations from NPC speech. Unit coverage and browser color/typography assertions added.
 - [x] Red HP gauge, yellow stamina gauge, radiation number with ☢ symbol; visible condition/implant labels.
 - [x] Six lasting conditions from attack families and radiation, with defensive counterplay and paid treatment.
 - [x] Dr. Pell and Ripper Voss, three implant paths with three ranks, and the Spare Parts mission as an alternative to buying an upgrade.

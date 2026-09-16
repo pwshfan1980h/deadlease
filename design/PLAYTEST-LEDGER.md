@@ -1,12 +1,16 @@
 # FREEBORN — playtest accountability
 
+## Transcript voice separation — 16 September 2026
+
+Implemented and verified: control hints are grey italic on black; world prose, dialogue and combat retain green. Doctor and mission command prompts are separate from speech; the Crown warning keeps level/turn details in interface guidance. Browser checks assert computed colors, italics and no name/item highlighting inside hints. Full release gate passed (156 unit tests, 14 browser suites). Human reading-comfort acceptance remains pending.
+
 ## Fresh-run button review — 16 September 2026
 
 Three fresh public sessions completed: Enforcer (40 turns), Street Medic (27 turns), Glassrunner (47 turns, ended). Mixed clicks/typing, pump progression, real fishing mission, injury and paid repair, retreat, and persistent death tested. One unavailable-action button issue found and fixed. See [full report](PLAYTEST-2026-09-16-BUTTONS.md). This is agent verification; human acceptance and full-run pacing remain pending.
 
 ## Current priority: transcript and lasting conditions
 
-Published candidate: Pages `6732b09` (combat button availability fix). 154 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+Published candidate: Pages `a9057fc` (grey italic instructions and in-world dialogue). 156 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
 
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.

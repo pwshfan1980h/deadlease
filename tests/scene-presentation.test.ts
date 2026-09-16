@@ -27,3 +27,27 @@ it('transcript colors only identified names, with hostile priority and safe lite
 it('treats player names literally and keeps unprovoked visitors neutral when requested',()=>{
  const html=renderToStaticMarkup(createElement(TranscriptText,{text:'Ari (X) draws a knife.',playerName:'Ari (X)'}));expect(html).toContain('name-neutral">Ari (X)');expect(html).toContain('item-mention">knife');expect(renderToStaticMarkup(createElement(CharacterName,{name:'street cutthroat',tone:'neutral'}))).toContain('name-neutral');
 });
+
+it('separates interface hints from green world prose and colored item mentions',()=>{
+ const render=(text:string)=>renderToStaticMarkup(createElement(TranscriptText,{text}));
+ const mixed=render('Iona leaves a knife. Type take knife. The clerk waits.');
+ expect(mixed).toContain('item-mention">knife');expect(mixed).toContain('<em class="transcript-instruction">Type take knife.</em>');expect(mixed).toContain('name-clinic">clerk');
+ const explicit=render('HINT / Press Enter to confirm. Type buy knife.');
+ expect(explicit).toBe('<em class="transcript-instruction">Press Enter to confirm. Type buy knife.</em>');
+ expect(render('This type of knife is blunt.')).not.toContain('transcript-instruction');
+ expect(render('› Type take knife')).not.toContain('transcript-instruction');
+ expect(render('Type treat <condition> or treat all.')).toContain('&lt;condition&gt;');
+});
+
+it('keeps command syntax outside doctor, mission and regional NPC dialogue',()=>{
+ const doctor=command(createGame(),'talk doctor').messages;
+ expect(doctor).toContain('HINT / Type accept spare parts.');
+ expect(doctor.some(line=>line.startsWith('Dr. Pell: “Bring me three pieces of salvage'))).toBe(true);
+ for(const [room,who] of [['clinic','doctor'],['bellwether-0','doctor'],['square','technician'],['crown-0','warden'],['bellwether-1','postkeeper'],['sewer-0','warden']]){
+  const g=createGame();g.room=room;const messages=command(g,'talk '+who).messages;
+  for(const line of messages)for(const quote of line.matchAll(/“([^”]*)”/g))expect(quote[1]).not.toMatch(/\bType\b|\blevel (eight|\d)|\btwelve turns\b/);
+ }
+ const g=createGame();g.room='sewer-0';g.rewards.push('mission:five-from-the-water:active',...Array.from({length:5},(_,i)=>'mission:five-from-the-water:'+(i+1)));
+ const ready=command(g,'talk warden').messages;
+ expect(ready).toContain('Hal: “You have the count? Tell me what you found.”');expect(ready).toContain('Type report five-from-the-water.');
+});

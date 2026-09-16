@@ -16,7 +16,9 @@ Room arrivals announce the place and any immediate threat. `look around` reveals
 
 ## Text colors
 
-- Transcript prose: pale phosphor green on black, unaffected by interface palette selection.
+- World prose, dialogue and combat results: pale phosphor green on black, unaffected by interface palette selection.
+- Control instructions: muted grey (`#a5aaa7`), italic, on the same black transcript. Keep item/name highlighting out of instructional text. Explicit interface messages use `instruction()`; appended `Type …` sentences also render as hints. Typed player command echoes keep their existing treatment.
+- Characters never speak command syntax or explain keyboard controls, levels or turn counters. Put the human-facing hint outside the quotation, preferably on its own line. Doctor, mission, clerk, merchant and regional warning dialogue follow this rule.
 - Item names in prose: brighter green and bold. The item catalog and authored theft-object names supply the vocabulary; names remain plain text, not links or buttons.
 - Items actually on the ground: plain grey list, visible immediately and derived from current room loot. Counts greater than one are shown. Pickups update the list. `Ground:` entries in the transcript are also grey.
 - Neutral character names: blue. Hostile names: red. Clinic, Commons, Union, and Syndicate affiliations retain separate colors.

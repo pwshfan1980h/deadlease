@@ -11,7 +11,11 @@ export const missionActive=(g:Game,m:Mission)=>g.rewards.includes(missionKey(m.i
 export const missionDone=(g:Game,m:Mission)=>g.rewards.includes(missionKey(m.id,'done'));
 export const missionProgress=(g:Game,m:Mission)=>Array.from({length:m.target},(_,i)=>i+1).filter(n=>g.rewards.includes(missionKey(m.id,n))).length;
 export function resolveMission(text:string){const name=text.replace(/^mission /,'');return missions.find(m=>m.id===name||m.title.toLowerCase()===name)}
-export function missionConversation(g:Game){return missions.filter(m=>m.giver===g.room).flatMap(m=>missionDone(g,m)?[m.person+': '+m.thanks]:missionActive(g,m)?[m.person+': '+m.title+' — '+missionProgress(g,m)+'/'+m.target+' catches. '+(missionProgress(g,m)===m.target?'Tell me how it went. Type report '+m.id+'.':'Come back when you have the count.')]:[m.person+': '+m.offer,'MISSION / '+m.title+' · '+m.credits+' credits, '+m.xp+' XP. Type accept mission '+m.id+'.'])}
+export function missionConversation(g:Game){return missions.filter(m=>m.giver===g.room).flatMap(m=>{
+ if(missionDone(g,m))return [m.person+': '+m.thanks];
+ if(missionActive(g,m)){const ready=missionProgress(g,m)===m.target;return [m.person+': '+(ready?'“You have the count? Tell me what you found.”':'“Come back when you have the count.”'),'MISSION / '+m.title+' — '+missionProgress(g,m)+'/'+m.target+' catches.',...(ready?['Type report '+m.id+'.']:[])];}
+ return [m.person+': '+m.offer,'MISSION / '+m.title+' · '+m.credits+' credits, '+m.xp+' XP.','Type accept mission '+m.id+'.'];
+})}
 export function missionJournal(g:Game){const active=missions.filter(m=>missionActive(g,m));return ['MISSIONS / Personal requests from people. Talk to residents to find them.',...active.map(m=>m.title+' / '+(missionDone(g,m)?'completed':missionProgress(g,m)+'/'+m.target+' catches'+(missionProgress(g,m)===m.target?' · ready to report':''))+' · '+m.person+' · '+m.credits+' credits'+(missionDone(g,m)?' paid':'. Return to the giver; report '+m.id+'.'))]}
 /** Count only actual catches after acceptance; hostile reels and bought fish never count. */
 export function recordCatch(g:Game,messages:string[]){for(const m of missions){if(!missionActive(g,m)||missionDone(g,m)||(m.waters.length&&!m.waters.includes(g.room)))continue;const n=missionProgress(g,m);if(n>=m.target)continue;g.rewards.push(missionKey(m.id,n+1));messages.push('MISSION / '+m.title+' '+(n+1)+'/'+m.target+'.'+(n+1===m.target?' Return to '+m.person+'.':''))}}

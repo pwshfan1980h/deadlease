@@ -121,14 +121,14 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
    if(cmd==='talk clerk'||cmd==='talk registrar'){append(['› '+text,'CLINIC CLERK / “Let’s put a name to that face.”']);setIntakeError('');setIntakePanel(intakeStep)}
    else if(cmd==='menu')returnToMenu();
    else if(cmd==='look')append(['› '+text,'A clerk waits beside your bed, an open register in one hand.']);
-   else append(['› '+text,'CLINIC CLERK / “A moment. We need to finish your discharge.” Type talk clerk.']);
+   else append(['› '+text,'CLINIC CLERK / “A moment. We need to finish your discharge.”','Type talk clerk.']);
    return;
   }
   if(recovering){
    setEntry('');
    if(cmd==='talk clerk'||cmd==='talk registrar'){append(['› '+text]);setIntakePanel('recovery')}
    else if(cmd==='menu')returnToMenu();
-   else append(['› '+text,'CLINIC CLERK / “Before you go—your discharge.” Type talk clerk.']);
+   else append(['› '+text,'CLINIC CLERK / “Before you go—your discharge.”','Type talk clerk.']);
    return;
   }
   if(!resolution){history.current.push(text);histIndex.current=history.current.length;}setEntry('');audio.current?.battle(!!g.encounter);audio.current?.play('ambience');
@@ -262,7 +262,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   </div>
   {!game.encounter&&visitor&&<div className="visitor room-presence" aria-label="Passing visitor"><CharacterName name={visitor.name} tone={visitor.role==='hostile'?'enemy':'neutral'}/></div>}
   {r.radiation>0&&<span className="scene-hazard">RADIATION</span>}
-  {game.encounter&&<div className="encounter"><div className="enemy-title"><EnemyPortrait name={game.encounter.name} palette={prefs.palette}/><div><strong><CharacterName name={game.encounter.name.toUpperCase()} hostile/></strong><p>HP {game.encounter.hp}/{game.encounter.maxHP}</p><p className="enemy-intent">{intent(game.encounter)}</p></div></div></div>}
+  {game.encounter&&<div className="encounter"><div className="enemy-title"><EnemyPortrait name={game.encounter.name} palette={prefs.palette}/><div><strong><CharacterName name={game.encounter.name.toUpperCase()} hostile/></strong><p>HP {game.encounter.hp}/{game.encounter.maxHP}</p><p className="enemy-intent"><TranscriptText text={intent(game.encounter)}/></p></div></div></div>}
  </section> {game.encounter&&<div className="transcript-combat">  <div className="command-options" aria-label="Combat commands">{actionButton('attack')}{actionButton('aim','aim',items[p!.weapon].skill!=='Firearms'||p!.stamina<(p!.className==='Surveyor'?BALANCE.surveyorAimCost:BALANCE.aimCost),'Requires a firearm and '+(p!.className==='Surveyor'?BALANCE.surveyorAimCost:BALANCE.aimCost)+' stamina')}{actionButton('brace')}{actionButton('cover','cover',p!.stamina<BALANCE.coverCost,'Requires '+BALANCE.coverCost+' stamina')}{actionButton('heal','heal',!p!.inventory['medical supplies']||(p!.hp===maxHP(p!)&&!game.bleed),'Requires medical supplies and missing HP or bleeding')}{actionButton('flee')}</div>
   <div className="ability-commands">{p!.abilities.map(id=><p className={(game.cooldowns[id]??0)>game.turns||p!.stamina<abilities[id].cost?'muted':''} key={id} title={abilities[id].description}>{actionButton('use '+id,abilities[id].name,(game.cooldowns[id]??0)>game.turns||p!.stamina<abilities[id].cost)}<small>{abilities[id].cost} STA{(game.cooldowns[id]??0)>game.turns?' · '+(game.cooldowns[id]-game.turns)+' turns':''}</small></p>)}</div></div>}{!recovering&&!game.encounter&&<div className="command-options world-actions" aria-label="Available commands">{creating?actionButton('talk clerk'):<> {actionButton('look around')}{actionButton('rest')}{r.npc&&actionButton('talk '+r.npc)}{doctors[r.id]&&actionButton('talk doctor')}{Object.keys(game.loot[game.room]??{}).length>0&&actionButton('take all')}{Object.keys(r.exits).map(d=>actionButton(({n:'north',s:'south',e:'east',w:'west'} as Record<string,string>)[d]??d))}</>}</div>}</div>
 

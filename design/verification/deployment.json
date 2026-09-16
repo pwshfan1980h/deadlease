@@ -1,17 +1,17 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T17:14:23.269Z",
+  "verifiedAt": "2026-09-16T18:26:19.263Z",
   "url": "https://pwshfan1980h.github.io/deadlease/",
-  "pagesCommit": "6732b09deea32eb1e9ed3d7da160a2e9ef90b86f",
+  "pagesCommit": "a9057fcc68f4abf493c8bd5577a38dc8ef39a9d6",
   "sourceBranch": "source",
   "assets": [
     {
-      "path": "./assets/index-KS-x3nTQ.js",
-      "sha256": "cdfefc2b43cae5f5e07db94f4c5542f63d7af081555fe564799e94c87ce32483"
+      "path": "./assets/index-C4m81DK4.js",
+      "sha256": "05699d30af921e68a61d6309935f2daa565338f742b403b0c04da6b34da65b1e"
     },
     {
-      "path": "./assets/index-dnSjCQXs.css",
-      "sha256": "4e8bcf877be57ffaf63d3b6865099c52a0bb130a86a9b3a807f3421f55055a41"
+      "path": "./assets/index-DgUltaSA.css",
+      "sha256": "76ec5e80e8305cd683610c26072022428946aed7c43aab00789b6d9a6f94b1ff"
     },
     {
       "path": "./assets/items/stitch-drone.png",
@@ -40,7 +40,7 @@
   ],
   "checks": [
     "Public JS/CSS, sampled room paintings, complete location provenance, drone image and revival sound exactly match tested build hashes",
-    "Tall green-on-black transcript with clickable actions, compact room art, radiation count and doctor/implant conversation at 1280×800",
+    "Green world prose and grey italic command hints, in-world doctor dialogue, clickable actions, compact room art and radiation count at 1280×800",
     "Fresh keyboard clinic intake and downward sewer travel",
     "Packed drone consumes one and continues combat",
     "Unpacked drone does not rescue; death persists through reload"
