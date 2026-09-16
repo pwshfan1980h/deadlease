@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "checks": [
+    "Animated typed/button travel and stairs replace old text before fade-in, start at top, retain command focus/history; blocked exit preserves history",
+    "Reduced-motion combat arrival holds top through art decode and resize; next action follows new results; retreat keeps parting response but drops prior combat; return visits start clean"
+  ],
+  "errors": []
+}

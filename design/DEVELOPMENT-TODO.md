@@ -24,6 +24,8 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [x] NPC reply chirps and distinct level-up fanfare; verify dialogue routing, earned-level triggers, pause/mute/reload behavior and audio assets. See [AUDIO-FEEDBACK.md](AUDIO-FEEDBACK.md).
 - [x] Correct minimap SVG focus artifacts, floor framing, label/marker readability and room-inspection hit targets; verify all 149 markers and five window sizes. See [MINIMAP-REVIEW.md](MINIMAP-REVIEW.md).
 - [ ] Human visual acceptance of minimap rendering after fixes.
+- [x] Reset the transcript on room changes and show its top with command focus retained; verify fades, stairs, blocked movement, retreat and revisits. See [ROOM-TRANSCRIPTS.md](ROOM-TRANSCRIPTS.md).
+- [ ] Human acceptance of room-by-room transcript flow.
 - [ ] Human listening acceptance of reply chirps and level-up prominence. Music received positive feedback; preserve current mix.
 - [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
 

@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T18:55:22.426Z",
-  "finished": "2026-09-16T18:58:52.521Z",
+  "started": "2026-09-16T19:10:08.633Z",
+  "finished": "2026-09-16T19:13:32.042Z",
   "passed": true,
   "results": [
     {
@@ -31,7 +31,7 @@
     {
       "stage": "test:roaming",
       "passed": true,
-      "seconds": 45
+      "seconds": 49
     },
     {
       "stage": "test:clinic",
@@ -46,7 +46,7 @@
     {
       "stage": "test:minimap",
       "passed": true,
-      "seconds": 30
+      "seconds": 31
     },
     {
       "stage": "test:frontier",
@@ -66,7 +66,7 @@
     {
       "stage": "test:pause",
       "passed": true,
-      "seconds": 7
+      "seconds": 8
     },
     {
       "stage": "test:theft",
@@ -76,7 +76,7 @@
     {
       "stage": "test:interactions",
       "passed": true,
-      "seconds": 53
+      "seconds": 38
     },
     {
       "stage": "test:runs",
@@ -85,6 +85,11 @@
     },
     {
       "stage": "test:scenes",
+      "passed": true,
+      "seconds": 3
+    },
+    {
+      "stage": "test:room-transcript",
       "passed": true,
       "seconds": 3
     },

@@ -35,14 +35,14 @@ try{
  const requestSeen=new Promise(resolve=>{requestedImage=resolve});
  const imageGate=new Promise(resolve=>{releaseImage=resolve});
  await page.route('**/assets/locations/quay-11.jpg',async route=>{requestedImage();await imageGate;await route.continue()});
- const slow=createGame();slow.room=slow.previous='quay-10';slow.discovered.push('quay-10');await load(slow);await requestSeen;
+ const slow=createGame();slow.room=slow.previous='quay-10';slow.discovered.push('quay-10');await load(slow);await requestSeen;const sourceLines=await page.locator('.log > p').allTextContents();
  await input.fill('s');await input.press('Enter');await page.locator('.travel-loading').waitFor();
- assert.equal(await page.locator('.room-title h2').innerText(),rooms['quay-10'].name);
+ assert.equal(await page.locator('.room-title h2').innerText(),rooms['quay-10'].name);assert.deepEqual(await page.locator('.log > p').allTextContents(),sourceLines);
  assert((await page.locator('.scene-painting img').getAttribute('src')).includes('quay-10.jpg'));
  await input.fill('s');await input.press('Enter');await input.press('Tab');assert.equal(await page.locator('.minimap-dialog[open]').count(),0);
  releaseImage();await page.getByRole('heading',{name:rooms['quay-11'].name,exact:true}).waitFor();await settled();
  assert(await page.locator('.scene-painting img').evaluate(i=>i.complete&&i.naturalWidth>0));
- assert.equal(await page.locator('.room-title h2').innerText(),rooms['quay-11'].name);await page.unroute('**/assets/locations/quay-11.jpg');
+ assert.equal(await page.locator('.room-title h2').innerText(),rooms['quay-11'].name);assert(!(await page.locator('.log > p').allTextContents()).some(line=>sourceLines.includes(line)));assert.equal(await page.locator('.log').evaluate(e=>e.scrollTop),0);await page.unroute('**/assets/locations/quay-11.jpg');
  checks.push('Delayed destination keeps the old scene; duplicate movement and map invocation blocked until decoded arrival');
  // Decode every shipped room image in the browser, including rooms not on the playtest route.
  const decoded=await page.evaluate(async paths=>{let next=0,count=0;async function worker(){while(next<paths.length){const src=paths[next++],img=new Image();img.src=src;await img.decode();if(img.naturalWidth<1400)throw Error('Undersized scene '+src);count++}}await Promise.all([worker(),worker(),worker(),worker()]);return count},Object.values(locations));

@@ -12,7 +12,7 @@ import {Minimap} from './Minimap';
 import {Inventory} from './Inventory';
 import {deliveryRoutes} from './courier';
 import {placeBundle,type Placement} from './backpack';
-import {useState,useRef,useEffect,type KeyboardEvent} from 'react';
+import {useState,useRef,useEffect,useLayoutEffect,type KeyboardEvent} from 'react';
 import {createGame,command,engageVisitor,arrival,journal,intent,HELP,type Game} from './engine';
 import {classes,abilities,maxHP,maxStamina,xpForLevel} from './progression';
 import {SKILLS,BALANCE} from './config';
@@ -38,7 +38,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  const [intakePanel,setIntakePanel]=useState<IntakePanel>(null),[intakeStep,setIntakeStep]=useState<'identity'|'training'>('identity'),[finalizing,setFinalizing]=useState(false),[intakeError,setIntakeError]=useState('');
  const previousGame=useRef<Game|null>(null);const [recovering,setRecovering]=useState(false);
  const [name,setName]=useState('Mara'),[origin,setOrigin]=useState('Baseline'),[cls,setClass]=useState('Enforcer'),[bonus,setBonus]=useState('Tech');
- const gameRef=useRef(game),repo=useRef<SaveRepository|null>(null),driver=useRef<StorageDriver|null>(null),audio=useRef<Sound|null>(null),input=useRef<HTMLInputElement>(null),file=useRef<HTMLInputElement>(null),logEl=useRef<HTMLDivElement>(null),follow=useRef(true),manualScroll=useRef(false),history=useRef<string[]>([]),histIndex=useRef(0),queue=useRef(Promise.resolve()),blockedRef=useRef(false);
+ const gameRef=useRef(game),repo=useRef<SaveRepository|null>(null),driver=useRef<StorageDriver|null>(null),audio=useRef<Sound|null>(null),input=useRef<HTMLInputElement>(null),file=useRef<HTMLInputElement>(null),logEl=useRef<HTMLDivElement>(null),follow=useRef(true),resetTranscriptScroll=useRef(false),manualScroll=useRef(false),history=useRef<string[]>([]),histIndex=useRef(0),queue=useRef(Promise.resolve()),blockedRef=useRef(false);
  const [panelOpen,setPanelOpen]=useState(false);
  const [timing,setTiming]=useState<{challenge:Challenge;text:string;source:Game}|null>(null);const timingRef=useRef<typeof timing>(null);
  const [discovery,setDiscovery]=useState<{item:string;first:boolean}|null>(null);const lastFlavor=useRef('');
@@ -67,7 +67,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  useEffect(()=>{audio.current?.battle(!atTitle&&!creating&&!!game?.encounter)},[game?.encounter?.id,booted,atTitle,creating]);
  useEffect(()=>{if(atTitle&&booted)document.querySelector<HTMLButtonElement>('.title-menu button:not(:disabled)')?.focus()},[atTitle,booted]);
  useEffect(()=>{if(!atTitle&&!pauseOpen&&!intakePanel&&!inventoryOpen&&!mapOpen)input.current?.focus()},[atTitle,pauseOpen,intakePanel,booted,inventoryOpen,mapOpen]);
- useEffect(()=>{if(follow.current&&logEl.current)logEl.current.scrollTop=logEl.current.scrollHeight},[logs]);
+ useLayoutEffect(()=>{const el=logEl.current;if(!el)return;if(resetTranscriptScroll.current){el.scrollTop=0;resetTranscriptScroll.current=false}else if(follow.current)el.scrollTop=el.scrollHeight},[logs]);
  useEffect(()=>{const el=logEl.current;if(!el||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>{if(follow.current)el.scrollTop=el.scrollHeight});observer.observe(el);return()=>observer.disconnect()},[atTitle,!!game]);
  useEffect(()=>{
   if(atTitle||!game)return;
@@ -169,16 +169,20 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   if(result.challenge){const pending={challenge:result.challenge,text,source:g};timingRef.current=pending;setTiming(pending);audio.current?.cancelEffects();showImpacts({state:g,changed:false,messages:[],sound:''});if(result.challenge.kind==='fishing')audio.current?.play('travel-water-1',.85);return}
   if(result.flavor){if(lastFlavor.current===result.flavor.id)result.messages[0]=result.flavor.again;lastFlavor.current=result.flavor.id}else if(result.changed)lastFlavor.current='';
   if(result.discovery)setDiscovery(result.discovery);
-  const moved=result.state.room!==g.room&&result.state.run.status==='alive';
+  const roomChanged=result.state.room!==g.room;
+  const moved=roomChanged&&result.state.run.status==='alive';
   const reduced=!prefs.motion||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if(moved){const from=rooms[g.room],to=rooms[result.state.room];setTravelDirection(to.layer!==from.layer?(to.layer<from.layer?'down':'up'):to.x!==from.x?(to.x>from.x?'east':'west'):(to.y>from.y?'south':'north'));}
   if(moved){traveling.current=true;setTravelFade('loading');await warmScene(result.state.room);if(!mounted.current)return;if(!reduced){setTravelFade('out');await new Promise(resolve=>setTimeout(resolve,160));if(!mounted.current)return;}}
+  // Swap room prose with the scene, before the arrival fade. Keep the top in
+  // view until the next command, including while encounter artwork loads.
+  if(roomChanged){follow.current=false;manualScroll.current=false;resetTranscriptScroll.current=true;setLogs(result.messages.slice(-BALANCE.logLimit))}
   if(result.changed)commit(result.state);
   if(!g.rewards.includes('freeborn')&&result.state.rewards.includes('freeborn'))setEndingOpen(true);
   audio.current?.battle(!!result.state.encounter);if(!audio.current?.travel(g,result.state,cmd)||result.sounds?.length)audio.current?.sequence(result,g);
   showImpacts(result);deathExperience(g,result.state);
   if(moved){if(!reduced){setTravelFade('in');await new Promise(resolve=>setTimeout(resolve,220));if(!mounted.current)return;}setTravelFade('');traveling.current=false;}
-  append(['› '+text,...result.messages,...(/^look(?: around)?$/.test(cmd)&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus();return result.messages;
+  if(!roomChanged)append(['› '+text,...result.messages,...(/^look(?: around)?$/.test(cmd)&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus({preventScroll:true});return result.messages;
  }
  async function finishIntake(){
   if(finalizing)return;setFinalizing(true);setIntakeError('');

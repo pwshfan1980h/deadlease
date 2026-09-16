@@ -1,13 +1,13 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T19:00:15.126Z",
+  "verifiedAt": "2026-09-16T19:14:33.067Z",
   "url": "https://pwshfan1980h.github.io/deadlease/",
-  "pagesCommit": "9e8ea44e65629de120d2b85eb2cd6b67ea8029e2",
+  "pagesCommit": "0c7790f248533154d43d721e8cacce42d6400bf8",
   "sourceBranch": "source",
   "assets": [
     {
-      "path": "./assets/index-BxDixdlR.js",
-      "sha256": "010d9ad39ade1a93ce23298bcc08cdedcf2094bdfed3c4c985ac10ae4cd7465d"
+      "path": "./assets/index-C3lf0VD2.js",
+      "sha256": "40d56a157da5f15b0cdfc5c614dc805f43ef13b898b1039b9f14c9cb646f2d54"
     },
     {
       "path": "./assets/index-NCHPIKKU.css",
@@ -58,7 +58,7 @@
     "Public JS/CSS, sampled room paintings, complete location provenance, drone image and revival sound exactly match tested build hashes",
     "Green world prose and grey italic command hints, in-world doctor dialogue, clickable actions, compact room art and radiation count at 1280×800",
     "NPC replies chirp once without the submit beep; all four new feedback audio files match tested hashes",
-    "Fresh keyboard clinic intake and downward sewer travel",
+    "Fresh keyboard clinic intake, clean top-scrolled room transcript and downward sewer travel",
     "Packed drone consumes one and continues combat",
     "Unpacked drone does not rescue; death persists through reload"
   ],

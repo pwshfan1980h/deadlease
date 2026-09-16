@@ -1,5 +1,11 @@
 # FREEBORN — playtest accountability
 
+## Room-by-room transcripts
+
+Published candidate: Pages `0c7790f`. 163 unit tests, 17 browser suites, build, asset audit and public smoke checks passed. Focused report: `verification/room-transcript.json`.
+
+Successful navigation starts a clean transcript at the top, synchronized with the new scene. Same-room actions preserve history; retreat retains its own parting response. Focused animated/reduced-motion browser tests pass. [Behavior and human retest](ROOM-TRANSCRIPTS.md); human acceptance pending.
+
 ## Minimap rendering review
 
 Published candidate: Pages `9e8ea44`. 163 unit tests, 16 browser suites, build, asset audit and live smoke checks passed. Focused report: `verification/minimap.json`.
@@ -26,7 +32,7 @@ Three fresh public sessions completed: Enforcer (40 turns), Street Medic (27 tur
 
 ## Current priority: transcript and lasting conditions
 
-Published candidate: Pages `9e8ea44` (minimap rendering fixes; audio and transcript styling retained). 163 unit tests, 16 browser suites, build and asset audit passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+Published candidate: Pages `0c7790f` (room-by-room transcripts; minimap, audio and transcript styling retained). 163 unit tests, 17 browser suites, build and asset audit passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
 
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.

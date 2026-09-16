@@ -40,9 +40,9 @@ async function stored(target=page){return target.evaluate(async()=>{
  try{return await new Promise((resolve,reject)=>{const r=db.transaction('slots').objectStore('slots').get('auto');r.onsuccess=()=>resolve(JSON.parse(r.result));r.onerror=()=>reject(r.error)})}finally{db.close()}
 })}
 async function cmd(text,target=page){
- const count=await target.locator('.log-command').count();await target.getByRole('textbox',{name:'Command',exact:true}).fill(text);await target.getByRole('textbox',{name:'Command',exact:true}).press('Enter');if(await target.locator('.timing-strike[open]').count())await target.keyboard.press('Enter');
- await target.waitForFunction(n=>document.querySelectorAll('.log-command').length>n,count);
- await target.waitForFunction(()=>!document.querySelector('.command-hint').textContent.includes('SAVING…'));
+ const count=await target.locator('.log').textContent();await target.getByRole('textbox',{name:'Command',exact:true}).fill(text);await target.getByRole('textbox',{name:'Command',exact:true}).press('Enter');if(await target.locator('.timing-strike[open]').count())await target.keyboard.press('Enter');
+ await target.waitForFunction(before=>document.querySelector('.log')?.textContent!==before,count);
+ await target.waitForFunction(()=>!document.querySelector('.command-hint').textContent.includes('SAVING…')&&document.querySelector('.room-panel')?.getAttribute('aria-busy')==='false');
 }
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{

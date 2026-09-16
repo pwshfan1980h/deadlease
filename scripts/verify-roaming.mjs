@@ -10,8 +10,8 @@ page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.statu
 await page.addInitScript(()=>{Math.random=()=>.5});
 await page.clock.install();await page.clock.pauseAt(new Date());
 const input=page.getByRole('textbox',{name:'Command',exact:true});
-async function cmd(text){const n=await page.locator('.log-command').count();await input.fill(text);await input.press('Enter');await page.waitForFunction(n=>document.querySelectorAll('.log-command').length>n,n);await saved()}
-async function saved(){await page.waitForFunction(()=>!document.querySelector('.command-hint').textContent.includes('SAVING…'))}
+async function cmd(text){const n=await page.locator('.log').textContent();await input.fill(text);await input.press('Enter');await page.waitForFunction(before=>document.querySelector('.log')?.textContent!==before,n);await saved()}
+async function saved(){await page.waitForFunction(()=>!document.querySelector('.command-hint').textContent.includes('SAVING…')&&document.querySelector('.room-panel')?.getAttribute('aria-busy')==='false')}
 async function state(){return page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('deadlease-v2',1);r.onsuccess=()=>resolve(r.result)});try{return await new Promise(resolve=>{const r=db.transaction('slots').objectStore('slots').get('auto');r.onsuccess=()=>resolve(JSON.parse(r.result))})}finally{db.close()}})}
 const shot=async name=>page.screenshot({path:new URL(name+'.png',out).pathname,fullPage:true});
 try{

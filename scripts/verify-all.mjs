@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const env={...process.env};delete env.PLAYTEST_URL;
-const stages=['test','build','audit:assets','test:browser','test:noir','test:roaming','test:clinic','test:inventory','test:minimap','test:frontier','test:motion','test:boards','test:pause','test:theft','test:interactions','test:runs','test:scenes','test:medicine','test:feedback'];
+const stages=['test','build','audit:assets','test:browser','test:noir','test:roaming','test:clinic','test:inventory','test:minimap','test:frontier','test:motion','test:boards','test:pause','test:theft','test:interactions','test:runs','test:scenes','test:room-transcript','test:medicine','test:feedback'];
 const started=new Date().toISOString(),results=[];
 const report=new URL('../evidence/full-verification.json',import.meta.url);
 fs.mkdirSync(new URL('../evidence/',import.meta.url),{recursive:true});
