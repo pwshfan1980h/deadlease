@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "Clerk intake and typed/clicked NPC replies chirp once without submit beep; ordinary reads and invalid talk do not chirp",
+    "Mute and pause stop feedback; normal follow-up commands do not swallow a pending level-up",
+    "Courier and combat XP gains each trigger one decodable fanfare; reload never replays it"
+  ],
+  "errors": []
+}

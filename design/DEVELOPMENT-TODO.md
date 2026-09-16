@@ -21,6 +21,8 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [ ] Follow up on playtest usability: fishing-kit alias, courier destination directions, compact-arrival warning before high-level territory, and individual loot selection.
 - [x] Audit 89 rendered transcript entries and screenshots across dialogue, jobs, exploration, combat, progression and injury; record category misses in [TRANSCRIPT-CATEGORY-AUDIT.md](TRANSCRIPT-CATEGORY-AUDIT.md).
 - [ ] Finish semantic transcript categories: non-Type control advice, system notices, stronger player-command separation and warning/refusal emphasis. Current audit is only a partial pass.
+- [x] NPC reply chirps and distinct level-up fanfare; verify dialogue routing, earned-level triggers, pause/mute/reload behavior and audio assets. See [AUDIO-FEEDBACK.md](AUDIO-FEEDBACK.md).
+- [ ] Human listening acceptance of reply chirps and level-up prominence. Music received positive feedback; preserve current mix.
 - [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
 
 Verification: 154 unit tests, production build, asset audit and 14 browser suites pass. Source mirror builds independently. Live Pages assets match the tested hashes; doctor conversation, restored controls, intake, downward travel, revival and persistent death pass.

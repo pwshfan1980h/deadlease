@@ -56,3 +56,36 @@ it('resumes requested ambience after unmuting, but keeps the title menu silent',
   sound.close();sound.apply(defaultPreferences);expect(made[0].paused).toBe(true);
  }finally{vi.unstubAllGlobals()}
 });
+
+it('uses conversational chirps only for actual NPC replies, not data reads or rejected talk',()=>{
+ const g=createGame();expect(command(g,'talk doctor').sound).toBe('npc-reply');expect(command(g,'talk clerk').sound).toBe('npc-reply');
+ for(const text of ['status','look','jobs','talk nobody'])expect(command(g,text).sound).not.toBe('npc-reply');
+ g.room='square';expect(command(g,'talk iona').sound).toBe('npc-reply');expect(command(g,'talk doctor').sound).not.toBe('npc-reply');
+ g.room='sewer-0';g.rewards.push('mission:five-from-the-water:active',...Array.from({length:5},(_,i)=>'mission:five-from-the-water:'+(i+1)));expect(command(g,'report five-from-the-water').sound).toBe('npc-reply');
+});
+it('varies short reply phrases, interrupts old speech, and respects effect volume and mute',()=>{
+ const made:{path:string;volume:number;pause:ReturnType<typeof vi.fn>;play:ReturnType<typeof vi.fn>}[]=[];
+ vi.stubGlobal('Audio',class{volume=0;loop=false;currentTime=0;playbackRate=1;pause=vi.fn();play=vi.fn(()=>Promise.resolve());constructor(public path:string){made.push(this)}});
+ try{const sound=new Sound();sound.apply({...defaultPreferences,master:.5,effects:.4});for(let i=0;i<4;i++)sound.play('npc-reply');
+ expect(made.map(a=>a.path)).toEqual([1,2,3].map(i=>'./assets/sounds/npc-reply-'+i+'.wav'));expect(made[0].play).toHaveBeenCalledTimes(2);expect(made[0].pause).toHaveBeenCalled();expect(made.every(a=>a.volume===.2)).toBe(true);
+ sound.apply({...defaultPreferences,muted:true});sound.play('npc-reply');expect(made.reduce((n,a)=>n+a.play.mock.calls.length,0)).toBe(4);sound.close();
+ }finally{vi.unstubAllGlobals()}
+});
+it('plays one fanfare for a level gain, survives the next normal command, and cancels on pause, mute or death',()=>{
+ vi.useFakeTimers();const made:{path:string;play:ReturnType<typeof vi.fn>;pause:ReturnType<typeof vi.fn>}[]=[];
+ vi.stubGlobal('Audio',class{volume=0;loop=false;currentTime=0;playbackRate=1;play=vi.fn(()=>Promise.resolve());pause=vi.fn();constructor(public path:string){made.push(this)}});
+ try{const sound=new Sound(),g=createGame(),after=structuredClone(g);after.player.level=3;
+ const result={state:after,changed:true,messages:[],sound:'loot',sounds:[{cue:'attack-impact',delay:140}]};
+ sound.sequence(result,g);sound.sequence(command(after,'look'),after);vi.advanceTimersByTime(600);const cue=made.find(a=>a.path.endsWith('/level-up.wav'))!;expect(cue.play).toHaveBeenCalledTimes(1);
+ sound.sequence(command(after,'status'),after);vi.advanceTimersByTime(1000);expect(cue.play).toHaveBeenCalledTimes(1);
+ sound.sequence(result,g);sound.close();vi.advanceTimersByTime(1000);expect(cue.play).toHaveBeenCalledTimes(1);expect(cue.pause).toHaveBeenCalled();
+ sound.sequence(result,g);sound.apply({...defaultPreferences,muted:true});vi.advanceTimersByTime(1000);expect(cue.play).toHaveBeenCalledTimes(1);
+ sound.apply(defaultPreferences);sound.sequence(result,g);const dead=structuredClone(after);dead.run.status='dead';sound.sequence({state:dead,changed:true,messages:[],sound:'death'},after);vi.advanceTimersByTime(1000);expect(cue.play).toHaveBeenCalledTimes(1);
+ sound.close();expect(vi.getTimerCount()).toBe(0);
+ }finally{vi.unstubAllGlobals();vi.useRealTimers()}
+});
+it('ships unclipped distinct chirps and a longer, stronger fanfare with silent endpoints',()=>{
+ const inspect=(name:string)=>{const b=readFileSync('public/assets/sounds/'+name+'.wav');const rate=b.readUInt32LE(24);const samples=Array.from({length:(b.length-44)/2},(_,i)=>b.readInt16LE(44+2*i));return {duration:samples.length/rate,peak:Math.max(...samples.map(Math.abs)),first:samples[0],last:samples.at(-1)}};
+ const chirp=inspect('npc-reply-1'),fanfare=inspect('level-up');expect(chirp.duration).toBeCloseTo(.72);expect(fanfare.duration).toBeCloseTo(1.85);expect(fanfare.peak).toBeGreaterThan(chirp.peak*1.9);
+ for(const name of ['npc-reply-1','npc-reply-2','npc-reply-3','level-up']){const a=inspect(name);expect(a.peak).toBeLessThan(32767);expect(a.first).toBe(0);expect(a.last).toBe(0)}
+});

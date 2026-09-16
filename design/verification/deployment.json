@@ -1,13 +1,13 @@
 {
   "passed": true,
-  "verifiedAt": "2026-09-16T18:26:19.263Z",
+  "verifiedAt": "2026-09-16T18:40:35.221Z",
   "url": "https://pwshfan1980h.github.io/deadlease/",
-  "pagesCommit": "a9057fcc68f4abf493c8bd5577a38dc8ef39a9d6",
+  "pagesCommit": "93af4f04b7e9e71721139d1cded5c24070b1c3b6",
   "sourceBranch": "source",
   "assets": [
     {
-      "path": "./assets/index-C4m81DK4.js",
-      "sha256": "05699d30af921e68a61d6309935f2daa565338f742b403b0c04da6b34da65b1e"
+      "path": "./assets/index-AbH1mG2N.js",
+      "sha256": "c504fa21d0519e365bed67e85573cc20011984671c86ef0fffbb8ed53159b428"
     },
     {
       "path": "./assets/index-DgUltaSA.css",
@@ -36,11 +36,28 @@
     {
       "path": "./assets/location-art-provenance.json",
       "sha256": "9f1dd875ea803b9bfc45603fbb02095c6a5df5c3fac046a9dc443586c8cc0c09"
+    },
+    {
+      "path": "./assets/sounds/npc-reply-1.wav",
+      "sha256": "913cb81e8252569414a4906162600dee3289f1ba527a8a35340d7a081970a934"
+    },
+    {
+      "path": "./assets/sounds/npc-reply-2.wav",
+      "sha256": "16dc43393bb60be9bc8f37f38be6e12a94c0e1e1fe00aeb4edb5f05c9f108538"
+    },
+    {
+      "path": "./assets/sounds/npc-reply-3.wav",
+      "sha256": "2c4f1ee9397bf2b46f1aacdb0d850187a96aaa8379f8de80be8df47e508e257f"
+    },
+    {
+      "path": "./assets/sounds/level-up.wav",
+      "sha256": "e2c5a4d69a65efd2dbb02c6ad832aeb169571ac29acaae588e0bb3f06016755b"
     }
   ],
   "checks": [
     "Public JS/CSS, sampled room paintings, complete location provenance, drone image and revival sound exactly match tested build hashes",
     "Green world prose and grey italic command hints, in-world doctor dialogue, clickable actions, compact room art and radiation count at 1280×800",
+    "NPC replies chirp once without the submit beep; all four new feedback audio files match tested hashes",
     "Fresh keyboard clinic intake and downward sewer travel",
     "Packed drone consumes one and continues combat",
     "Unpacked drone does not rescue; death persists through reload"

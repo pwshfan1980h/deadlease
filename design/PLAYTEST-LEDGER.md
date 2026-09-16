@@ -1,5 +1,11 @@
 # FREEBORN — playtest accountability
 
+## Conversation and level-up audio
+
+Published audio candidate: Pages `93af4f0`. 160 unit tests, 15 browser suites, build and asset audit passed. Report: `verification/feedback-audio.json`.
+
+User feedback: current music sounded good; more personal playtesting is planned. Music track/mix unchanged. Added three NPC chirp phrases and a distinct level-up fanfare; [rules and listening checklist](AUDIO-FEEDBACK.md). Technical verification and human listening acceptance remain separate.
+
 ## Transcript category audit — partial pass
 
 Line-by-line inspection of 89 rendered entries found clear grey italic hints and character colors, but missed non-Type instructions, green system notices, and weak separation of player commands, routine results and warnings. See [audit and exact lines](TRANSCRIPT-CATEGORY-AUDIT.md). No game UI changes made during this audit.
@@ -14,7 +20,7 @@ Three fresh public sessions completed: Enforcer (40 turns), Street Medic (27 tur
 
 ## Current priority: transcript and lasting conditions
 
-Published candidate: Pages `a9057fc` (grey italic instructions and in-world dialogue). 156 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+Published candidate: Pages `93af4f0` (NPC chirps and level-up fanfare; transcript styling retained). 160 unit tests, 15 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
 
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.

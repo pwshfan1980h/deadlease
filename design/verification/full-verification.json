@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T18:22:34.139Z",
-  "finished": "2026-09-16T18:25:15.003Z",
+  "started": "2026-09-16T18:36:15.054Z",
+  "finished": "2026-09-16T18:39:19.159Z",
   "passed": true,
   "results": [
     {
@@ -31,7 +31,7 @@
     {
       "stage": "test:roaming",
       "passed": true,
-      "seconds": 45
+      "seconds": 49
     },
     {
       "stage": "test:clinic",
@@ -61,7 +61,7 @@
     {
       "stage": "test:pause",
       "passed": true,
-      "seconds": 7
+      "seconds": 8
     },
     {
       "stage": "test:theft",
@@ -71,7 +71,7 @@
     {
       "stage": "test:interactions",
       "passed": true,
-      "seconds": 38
+      "seconds": 53
     },
     {
       "stage": "test:runs",
@@ -87,6 +87,11 @@
       "stage": "test:medicine",
       "passed": true,
       "seconds": 2
+    },
+    {
+      "stage": "test:feedback",
+      "passed": true,
+      "seconds": 3
     }
   ]
 }

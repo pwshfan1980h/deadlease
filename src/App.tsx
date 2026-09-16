@@ -95,7 +95,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
    if(event.type==='departure'){visitorRef.current=null;setVisitor(null);append([event.visitor.departure]);return}
    if(event.visitor.role==='hostile'){
     const result=engageVisitor(current,event.visitor.id);append(result.messages);
-    if(result.changed){commit(result.state);audio.current?.battle(!!result.state.encounter);audio.current?.sequence(result);showImpacts(result);deathExperience(current,result.state)}
+    if(result.changed){commit(result.state);audio.current?.battle(!!result.state.encounter);audio.current?.sequence(result,current);showImpacts(result);deathExperience(current,result.state)}
     // Even a lethal opening strike must not leave this room's timer running.
     clearInterval(timer);setActivityVersion(v=>v+1);
    }else {append([event.visitor.arrival]);visitorRef.current=event.visitor;setVisitor(event.visitor)}
@@ -104,7 +104,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  },[booted,atTitle,creating,recovering,game?.room,game?.encounter?.id,activityVersion]);
  useEffect(()=>{if(!timing&&!discovery&&!document.querySelector('dialog[open]'))input.current?.focus()},[timing,discovery]);
  useEffect(()=>{if(!booted||creating||!game||game.run.status==='dead')return;let active=true;const id=game.run.id;const timer=setInterval(()=>{void repo.current?.terminal(id).then(ended=>{if(active&&ended&&gameRef.current?.run.id===id&&gameRef.current.run.status==='alive'){const before=gameRef.current;resetActivity();commit(ended);deathExperience(before,ended);setNotice('This run ended in another session. Its record is preserved.')}}).catch(error)},1000);return()=>{active=false;clearInterval(timer)}},[booted,creating,game?.run.id,game?.run.status]);
- function clearInteractions(){timingRef.current=null;setTiming(null);setDiscovery(null);lastFlavor.current=''}
+ function clearInteractions(){audio.current?.cancelFeedback();timingRef.current=null;setTiming(null);setDiscovery(null);lastFlavor.current=''}
  function finishTiming(outcome:TimingOutcome){const pending=timingRef.current;if(!pending)return;timingRef.current=null;setTiming(null);if(gameRef.current!==pending.source){setNotice('The situation changed. Try the action again.');return}void run(pending.text,outcome)}
  function resetActivity(){visitorRef.current=null;setVisitor(null);setActivityVersion(v=>v+1)}
  const save=(slot:string,g:Game)=>{
@@ -117,6 +117,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   const g=gameRef.current;if(!g||g.run.status==='dead'||pauseRef.current||timingRef.current||discovery||traveling.current||endingOpen)return;const cmd=text.trim().toLowerCase();if(!cmd)return;manualScroll.current=false;follow.current=true;
   if(cmd==='pause'){setPanelOpen(false);pauseRef.current=true;setPauseOpen(true);setNotice('');audio.current?.close();return}
   if(creating){
+   if(cmd!=='menu'&&cmd!=='look')audio.current?.play('npc-reply');
    setEntry('');
    if(cmd==='talk clerk'||cmd==='talk registrar'){append(['› '+text,'CLINIC CLERK / “Let’s put a name to that face.”']);setIntakeError('');setIntakePanel(intakeStep)}
    else if(cmd==='menu')returnToMenu();
@@ -157,10 +158,10 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   const occupant=visitorRef.current;
   if(occupant){
    if(cmd==='inspect '+occupant.name||cmd==='inspect visitor'||cmd==='inspect target'){append(['› '+text,occupant.description]);return}
-   if(cmd==='talk '+occupant.name){append(['› '+text,occupant.speech??'It watches you without answering.']);return}
+   if(cmd==='talk '+occupant.name){if(occupant.speech)audio.current?.play('npc-reply');append(['› '+text,occupant.speech??'It watches you without answering.']);return}
    if(cmd==='attack '+occupant.name||cmd==='a '+occupant.name||['attack','a','attack target'].includes(cmd)){
     const result=engageVisitor(g,occupant.id,true);append(['› '+text,...result.messages]);
-    if(result.changed){resetActivity();commit(result.state);audio.current?.battle(!!result.state.encounter);audio.current?.sequence(result);showImpacts(result);deathExperience(g,result.state)}
+    if(result.changed){resetActivity();commit(result.state);audio.current?.battle(!!result.state.encounter);audio.current?.sequence(result,g);showImpacts(result);deathExperience(g,result.state)}
     return;
    }
   }
@@ -174,7 +175,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   if(moved){traveling.current=true;setTravelFade('loading');await warmScene(result.state.room);if(!mounted.current)return;if(!reduced){setTravelFade('out');await new Promise(resolve=>setTimeout(resolve,160));if(!mounted.current)return;}}
   if(result.changed)commit(result.state);
   if(!g.rewards.includes('freeborn')&&result.state.rewards.includes('freeborn'))setEndingOpen(true);
-  audio.current?.battle(!!result.state.encounter);if(!audio.current?.travel(g,result.state,cmd)||result.sounds?.length)audio.current?.sequence(result);
+  audio.current?.battle(!!result.state.encounter);if(!audio.current?.travel(g,result.state,cmd)||result.sounds?.length)audio.current?.sequence(result,g);
   showImpacts(result);deathExperience(g,result.state);
   if(moved){if(!reduced){setTravelFade('in');await new Promise(resolve=>setTimeout(resolve,220));if(!mounted.current)return;}setTravelFade('');traveling.current=false;}
   append(['› '+text,...result.messages,...(/^look(?: around)?$/.test(cmd)&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus();return result.messages;
@@ -186,7 +187,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
    if(previousGame.current&&repo.current)await repo.current.recover('manual',previousGame.current);
    resetActivity();commit(g);previousGame.current=null;setCreating(false);setIntakePanel(null);setNotice('');setPanelOpen(false);setPanel('Atlas');
    setLogs(['CLINIC CLERK / “'+g.player.name+'. Right. Your things are by the door. Iona is waiting in Toll Square.”','CLINIC CLERK / “Need money? Read the jobs board by the door. Paid runs, whenever you need them.”']);
-   audio.current?.play('submit');audio.current?.play('ambience');
+   audio.current?.play('npc-reply');audio.current?.play('ambience');
   }catch(e){setIntakeError(e instanceof Error?e.message:String(e))}finally{setFinalizing(false)}
  }
  function deathExperience(before:Game,after:Game){
@@ -194,6 +195,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   setInventoryOpen(false);setMapOpen(false);setRecovering(true);setIntakePanel(null);setIntakeError('');setEntry('');setPanelOpen(false);setPanel('Atlas');
  }
  function dismissIntake(){
+  if(['backstory','death','recovery'].includes(intakePanel??''))audio.current?.play('npc-reply');
   setIntakePanel(null);
   if(intakePanel==='backstory')setLogs(['CLINIC CLERK / “Easy. Stay with me. Can you tell me who you are?”','Type talk clerk.']);
   if(intakePanel==='death')setLogs(['CLINIC CLERK / “'+gameRef.current?.player.name+'? You’re back. Let me check your record.”','Type talk clerk.']);
@@ -284,6 +286,6 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  {endingOpen&&game&&<Ending name={game.player.name} onClose={()=>{setEndingOpen(false);input.current?.focus()}}/>}
  {mapOpen&&game&&!atTitle&&<Minimap game={game} palette={prefs.palette} request={mapRequest} onRequest={text=>setMapRequest(old=>({text,serial:(old?.serial??0)+1}))} onClose={()=>{setMapOpen(false);input.current?.focus()}}/>}
  {inventoryOpen&&game&&!atTitle&&<Inventory game={game} onClose={()=>{setInventoryOpen(false);input.current?.focus()}} onPlace={(key:string,at:Placement)=>{const current=gameRef.current;if(!current||current.run.status==='dead')return false;const next=structuredClone(current);if(!placeBundle(next.player,key,at))return false;commit(next);return true}} onCommand={run}/>}
- {creating&&<ClinicIntake panel={intakePanel} name={recovering?p!.name:name} origin={recovering?p!.origin:origin} cls={recovering?p!.className:cls} bonus={bonus} debt={p?.debt??0} busy={finalizing} error={intakeError} onName={setName} onOrigin={setOrigin} onClass={setClass} onBonus={setBonus} onDismiss={dismissIntake} onNext={()=>{if(!name.trim()){setIntakeError('The clerk waits for your name.');return}setIntakeError('');setIntakeStep('training');setIntakePanel('training')}} onBack={()=>{setIntakeStep('identity');setIntakePanel('identity')}} onFinish={()=>void finishIntake()}/> }
+ {creating&&<ClinicIntake panel={intakePanel} name={recovering?p!.name:name} origin={recovering?p!.origin:origin} cls={recovering?p!.className:cls} bonus={bonus} debt={p?.debt??0} busy={finalizing} error={intakeError} onName={setName} onOrigin={setOrigin} onClass={setClass} onBonus={setBonus} onDismiss={dismissIntake} onNext={()=>{if(!name.trim()){setIntakeError('The clerk waits for your name.');return}setIntakeError('');audio.current?.play('npc-reply');setIntakeStep('training');setIntakePanel('training')}} onBack={()=>{setIntakeStep('identity');setIntakePanel('identity')}} onFinish={()=>void finishIntake()}/> }
  </div>;
 }

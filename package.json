@@ -11,7 +11,7 @@
     "test:browser": "node scripts/verify-browser.mjs",
     "audit:assets": "node --import ./scripts/register-ts.mjs scripts/audit-assets.mjs",
     "assets:rebuild": "node --import ./scripts/register-ts.mjs scripts/build-atlases.mjs",
-    "audio:rebuild": "node scripts/build-travel-audio.mjs && node scripts/build-battle-music.mjs && node scripts/build-combat-audio.mjs",
+    "audio:rebuild": "node scripts/build-travel-audio.mjs && node scripts/build-battle-music.mjs && node scripts/build-combat-audio.mjs && node scripts/build-feedback-audio.mjs",
     "test:noir": "node --import ./scripts/register-ts.mjs scripts/verify-noir.mjs",
     "test:roaming": "node scripts/verify-roaming.mjs",
     "deploy:pages": "node scripts/deploy-pages.mjs",
@@ -26,7 +26,8 @@
     "test:interactions": "node --import ./scripts/register-ts.mjs scripts/verify-interactions.mjs",
     "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs",
     "test:scenes": "node --import ./scripts/register-ts.mjs scripts/verify-scenes.mjs",
-    "test:medicine": "node --import ./scripts/register-ts.mjs scripts/verify-medicine.mjs"
+    "test:medicine": "node --import ./scripts/register-ts.mjs scripts/verify-medicine.mjs",
+    "test:feedback": "node --import ./scripts/register-ts.mjs scripts/verify-feedback.mjs"
   },
   "dependencies": {
     "react": "19.2.7",

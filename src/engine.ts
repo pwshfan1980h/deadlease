@@ -271,7 +271,7 @@ export function command(source:Game,text:string,options:{timing?:TimingOutcome;i
    }}sound='attack-'+abilitySound(p.className,a.id,a.effects.map(e=>e.kind));sounds.push({cue:sound,delay:0});if(a.effects.some(e=>e.kind==='damage'||e.kind==='leech'))sounds.push({cue:'attack-impact',delay:140,impact:'enemy'});
   }
  }else{
-  const result=worldAction(g,verb,arg,m);if(result!==true)return unchanged(result);sound=['take','scrounge','install','give','deliver','resolve','buy','sell'].includes(verb)?'loot':'submit';
+  const result=worldAction(g,verb,arg,m);if(result!==true)return unchanged(result);sound=verb==='talk'||verb==='report'?'npc-reply':['take','scrounge','install','give','deliver','resolve','buy','sell'].includes(verb)?'loot':'submit';
  }
  if(sound==='attack-block'&&!sounds.length)sounds.push({cue:sound,delay:0});
  g.turns++;rewardKill(g,m);morale(g,m);if(response&&g.encounter&&g.bleed){g.player.hp=Math.max(0,g.player.hp-2);g.bleed--;m.push('BLEED / 2 HP lost; '+g.bleed+' actions remain.');sounds.push({cue:'attack-drain',delay:0,impact:'player'});if(!g.player.hp)resolveLethal(g,'bleeding',m);}

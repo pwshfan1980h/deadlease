@@ -17,6 +17,9 @@ export class Sound {
  private cache=new Map<string,HTMLAudioElement>();
  private prefs=defaultPreferences;
  private travelCount=0;
+ private replyCount=0;
+ private celebration:ReturnType<typeof setTimeout>|null=null;
+ private cancelCelebration(){if(this.celebration!==null)clearTimeout(this.celebration);this.celebration=null;this.cache.get('level-up')?.pause()}
  private ambienceRequested=false;
  private battleActive=false;
  private musicAudio:HTMLAudioElement|null=null;
@@ -25,7 +28,7 @@ export class Sound {
  private activeCombat=new Set<HTMLAudioElement>();
  private activeTravel=new Set<HTMLAudioElement>();
  apply(prefs:Preferences){this.prefs=prefs;for(const [name,audio] of this.cache){audio.volume=this.volume(name);if(prefs.muted)audio.pause()}
-  if(prefs.muted){this.cancelCombat();this.stopFade();if(this.musicAudio){this.musicAudio.volume=0;this.musicAudio.pause()}}else {this.battle(this.battleActive);if(this.ambienceRequested)this.play('ambience');}
+  if(prefs.muted){this.cancelCelebration();this.cancelCombat();this.stopFade();if(this.musicAudio){this.musicAudio.volume=0;this.musicAudio.pause()}}else {this.battle(this.battleActive);if(this.ambienceRequested)this.play('ambience');}
  }
  private volume(name:string){return this.prefs.muted?0:this.prefs.master*(name==='ambience'?this.prefs.ambience*(this.battleActive?.3:1):this.prefs.effects)}
  private stopFade(){if(this.fade!==null){clearInterval(this.fade);this.fade=null}}
@@ -46,13 +49,21 @@ export class Sound {
  }
  play(name:string,rate=1){
   if(name==='ambience')this.ambienceRequested=true;
+  if(name==='npc-reply'){for(let i=1;i<=3;i++)this.cache.get('npc-reply-'+i)?.pause();name='npc-reply-'+(1+this.replyCount++%3)}
   if(!name||typeof Audio==='undefined'||this.prefs.muted)return;
   try{let a=this.cache.get(name);if(!a){a=new Audio('./assets/sounds/'+(cues[name]??name)+'.wav');a.loop=name==='ambience';this.cache.set(name,a)}a.volume=this.volume(name);a.playbackRate=rate;if(name!=='ambience')a.currentTime=0;else if(!a.paused)return;void a.play().catch(()=>{});return a;}catch{/* Audio failure must never block play. */}
  }
+ cancelFeedback(){this.cancelCelebration();for(let i=1;i<=3;i++)this.cache.get('npc-reply-'+i)?.pause()}
  cancelEffects(){this.cancelCombat();for(const a of this.activeTravel)a.pause();this.activeTravel.clear()}
  private cancelCombat(){for(const timer of this.scheduled)clearTimeout(timer);this.scheduled.clear();for(const a of this.activeCombat)a.pause();this.activeCombat.clear()}
- sequence(result:Result){
+ sequence(result:Result,before?:Game){
   this.cancelCombat();
+  if(result.state.run.status==='dead')this.cancelCelebration();
+  else if(before&&result.changed&&result.state.player.level>before.player.level&&!this.prefs.muted){
+   this.cancelCelebration();
+   const delay=Math.max(0,...(result.sounds??[]).map(cue=>cue.delay))+350;
+   this.celebration=setTimeout(()=>{this.celebration=null;this.play('level-up')},delay);
+  }
   if(!result.sounds?.length){this.play(result.sound);return}
   if(this.prefs.muted)return;
   for(const event of result.sounds){const play=()=>{const a=this.play(event.cue);if(a)this.activeCombat.add(a)};
@@ -68,5 +79,5 @@ export class Sound {
   if(profile.arrival){const arrival=this.play(`travel-${profile.arrival}-1`);if(arrival)this.activeTravel.add(arrival)}
   return true;
  }
- close(){this.cancelCombat();this.ambienceRequested=false;this.stopFade();this.musicAudio?.pause();this.battleActive=false;for(const a of this.cache.values())a.pause();this.activeTravel.clear()}
+ close(){this.cancelCelebration();this.cancelCombat();this.ambienceRequested=false;this.stopFade();this.musicAudio?.pause();this.battleActive=false;for(const a of this.cache.values())a.pause();this.activeTravel.clear()}
 }

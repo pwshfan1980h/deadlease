@@ -1,0 +1,32 @@
+{
+  "creator": "FREEBORN / original synthesized feedback",
+  "source": "scripts/build-feedback-audio.mjs",
+  "sampleRate": 22050,
+  "format": "16-bit mono PCM",
+  "files": {
+    "npc-reply-1": {
+      "sha256": "913cb81e8252569414a4906162600dee3289f1ba527a8a35340d7a081970a934",
+      "peak": 13762,
+      "duration": 0.72,
+      "rms": 0.17784394850761237
+    },
+    "npc-reply-2": {
+      "sha256": "16dc43393bb60be9bc8f37f38be6e12a94c0e1e1fe00aeb4edb5f05c9f108538",
+      "peak": 13762,
+      "duration": 0.72,
+      "rms": 0.17789973666441916
+    },
+    "npc-reply-3": {
+      "sha256": "2c4f1ee9397bf2b46f1aacdb0d850187a96aaa8379f8de80be8df47e508e257f",
+      "peak": 13762,
+      "duration": 0.72,
+      "rms": 0.1781453242158034
+    },
+    "level-up": {
+      "sha256": "e2c5a4d69a65efd2dbb02c6ad832aeb169571ac29acaae588e0bb3f06016755b",
+      "peak": 27524,
+      "duration": 1.8500226757369616,
+      "rms": 0.20751388586687672
+    }
+  }
+}

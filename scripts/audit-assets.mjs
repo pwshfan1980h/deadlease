@@ -40,11 +40,12 @@ const shipped=await fs.readdir(new URL('atlases/',assets));assert.deepEqual(ship
 const provenance=JSON.parse(await fs.readFile(new URL('audio-provenance.json',assets),'utf8'));
 const travel=JSON.parse(await fs.readFile(new URL('travel-audio-provenance.json',assets),'utf8'));
 const combat=JSON.parse(await fs.readFile(new URL('combat-audio-provenance.json',assets),'utf8'));
+const feedback=JSON.parse(await fs.readFile(new URL('feedback-audio-provenance.json',assets),'utf8'));
 const sounds=[];
-for(const name of ['submit','error','hit','gunshot','heal','loot','death','ambience',...Object.keys(provenance.files),...Object.keys(travel.files),...Object.keys(combat.files)]){
+for(const name of ['submit','error','hit','gunshot','heal','loot','death','ambience',...Object.keys(provenance.files),...Object.keys(travel.files),...Object.keys(combat.files),...Object.keys(feedback.files)]){
  const data=await fs.readFile(new URL('sounds/'+name+'.wav',assets));
  if(provenance.files[name])assert.equal(sha(data),provenance.files[name].sha256);
- else if(combat.files[name])assert.equal(sha(data),combat.files[name].sha256);
+ else if((combat.files[name]??feedback.files[name]))assert.equal(sha(data),(combat.files[name]??feedback.files[name]).sha256);
  else if(travel.files[name])assert.equal(sha(data),travel.files[name].sha256);
  else assert.equal(sha(data),sha(await fs.readFile(new URL('art-source/sounds/'+name+'.wav',root))));
  assert.equal(data.toString('ascii',0,4),'RIFF');assert.equal(data.toString('ascii',8,12),'WAVE');
