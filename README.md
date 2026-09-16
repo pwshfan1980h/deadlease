@@ -33,7 +33,7 @@ npm run build          # also rebuilds atlases, checks TypeScript, creates dist/
 npm run preview
 ```
 
-The noir art includes responsive landscape paintings and distinct painted portraits for 23 resident enemy identities and two fishing predators; type `view` to enlarge the current scene. The frontier pass adds four landscapes and fourteen human or humanoid portraits. Other rooms still use native 256×144 legacy scenes. The desktop workspace stacks the room, player data and command transcript. Tab opens the fixed map popover while exploring; travel pauses until it closes. Local and whole-estuary views are available. Atlas PNGs load for the current and adjacent areas plus shared portraits/icons, in the selected palette. Paintings load separately and preserve their authored colors.
+Every one of the 149 locations has a distinct full-scene industrial-noir painting. Twenty-three resident enemy identities and two fishing predators have separate painted portraits; type `view` to enlarge the current scene. Arrivals stay brief: inhabitants, threats and grey ground items appear immediately, while `look around` reveals detailed prose and opportunities. Item names in prose glow brighter green; neutral names are blue and hostile names red. Tab opens the fixed map popover while exploring; travel pauses until it closes. Scene images decode before travel fades; adjacent scenes preload. Paintings preserve their authored colors. Legacy atlases remain for icons, portraits and fallback rendering.
 
 Start with `talk clerk`, `s`, `e`, `talk technician`. `help` lists commands. The command input supports history, completion and log scrolling. Gameplay requires typed commands; nearby exits and available actions appear as non-clickable hints. Type `map`, `inventory`, `skills`, `journal`, `settings`, or `help` to open the relevant popover or reference panel. At Clinic Steps, type `down` to descend through the manhole into Steps Undercroft, then `up` to return. The map follows the current floor and marks ladders. Settings includes palettes, text size, audio credits, saves and recovery. A stale tab cannot silently overwrite another session: load the latest save, or explicitly recover a living branch. An ended identity cannot be restored through recovery. Conflicting branches can be downloaded from quarantine.
 
@@ -77,7 +77,7 @@ Room activity pauses during combat, the Escape menu, settings, artwork viewing, 
 Play: https://pwshfan1980h.github.io/deadlease/
 Published build repository: https://github.com/pwshfan1980h/deadlease
 
-The primary design target is **3440 × 1440**. Ultrawide uses a 3200px game frame with three stacked sections: the current room, a compact player strip, and the command transcript. Gameplay has no masthead or permanent sidebar. Smaller desktop and mobile layouts remain available.
+The desktop frame is centered near **4:3**, capped at **1440 × 1080**, and scales to the available height. Large room art, a compact player strip, and a green-on-black transcript form the stack. Complete 16:9 paintings remain visible. Ultrawide monitors retain dark gutters; narrow screens flow vertically. Gameplay has no masthead or permanent sidebar. The mouse remains visible as a fallback; typing is primary. See `design/VISUAL-DIRECTION.md`.
 
 GitHub Pages publishes the `main` branch of the dedicated build repository. Its local checkout is `.pages-deploy/` (ignored by source tooling); only compiled game files and asset credits are uploaded. Run `npm run deploy:pages` from this directory to build and publish a subsequent update. It verifies the destination and refuses an already-dirty deployment checkout. GitHub then runs its Pages deployment.
 
@@ -85,7 +85,7 @@ Saves live in each browser and origin. To bring a localhost run to the hosted si
 
 ### Backpack and minimap
 
-`inventory` (also `inv` or `i`) opens a painted, physical backpack. Drag multi-cell items into the grid, press **R** to rotate, or use arrows and Enter to pick up/place items. Escape cancels a carried item before closing the popover. Mouse controls are an intentional inventory exception; ordinary travel and combat remain typed. Rearrangement does not consume a turn.
+`inventory` (also `inv` or `i`) opens a painted, physical backpack. Drag multi-cell items into the grid, press **R** to rotate, or use arrows and Enter to pick up/place items. Escape cancels a carried item before closing the popover. The visible mouse supports inventory dragging and fallback interaction; ordinary travel and combat remain typed. Rearrangement does not consume a turn.
 
 - Canvas satchel: 6 columns, 3 base rows. Field backpack: 7 columns, 4 base rows. Expedition frame: 8 columns, 5 base rows. Grit, the current physical-strength attribute, adds one row per point above 3 (maximum 3 extra rows). Baseline starts at 6×4; Radborn starts at 6×5.
 - Supplies and salvage stack in bundles of five. Equipment/artifacts have their own footprints. Equipped weapons and armor still occupy space; the active backpack itself does not.
@@ -110,3 +110,5 @@ The [interaction guide](design/INTERACTIONS.md) records prose-only theft, conseq
 The GitHub **source** branch contains the editable browser game, tests, art inputs and documentation. **main** contains the GitHub Pages build. Clone with `git clone --branch source https://github.com/pwshfan1980h/deadlease.git`; then `npm ci` and `npm run dev`. Atlas inputs are bundled under `art-source/`, so no sibling Python checkout is needed. Original Python files in the local District67 project are untouched.
 
 `npm run test:all` performs unit tests, a production build, asset/provenance checks and twelve browser suites. Compact release reports are kept in `design/verification/`; large screenshots/videos are generated locally under ignored `evidence/`. For a publish checkout, run `git clone --branch main https://github.com/pwshfan1980h/deadlease.git .pages-deploy`, then `npm run deploy:pages`. The publish command runs the full gate before committing or pushing the built game.
+
+`npm run test:scenes` checks arrival detail gating, green prose items, grey ground items and pickups, faction colors, delayed-image travel guards, all 149 image decodes, and desktop/mobile/large-text bounds. `npm run audit:assets` also verifies every room image against its receipt and checks unique hashes, JPEG dimensions and runtime coverage.

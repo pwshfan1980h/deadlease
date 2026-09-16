@@ -1,0 +1,11 @@
+{
+  "id": "sump",
+  "name": "Drain Sump",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sump.jpg",
+  "sha256": "0a4b170a5b5e630b961a59c7659698c4f98cdc828b21ce045da88552d594df2f",
+  "bytes": 580089,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Drain Sump. Region: District 67. Physical description for inspiration: A sump toad drags its heavy tail through luminous runoff. Its scarred skin catches the light from a cracked pipe. [RAD] Exposure here: 8 per world action.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-30235f0f-1975-4c54-b6a9-a73ef8685c12.png"
+}

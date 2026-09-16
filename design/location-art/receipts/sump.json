@@ -1,0 +1,12 @@
+{
+  "id": "sump",
+  "name": "Drain Sump",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sump.jpg",
+  "sha256": "3923fe164113bac94235558a50f1a4121311ae3a6b6b7de49acb6f856cad72da",
+  "bytes": 538430,
+  "prompt": "Precise object edit of the supplied FREEBORN room painting. Remove the large foreground amphibian monster entirely. Fill its former silhouette with rippled polluted water and scattered inert rubble matching the surrounding water. Keep industrial drainage architecture, pipes, lights and composition unchanged. No creatures. Maintain landscape 16:9 size, industrial noir style, and every unrelated scene detail. No text, UI or borders.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-7bcc3772-b268-4101-b94c-e06857e0e59c.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-30235f0f-1975-4c54-b6a9-a73ef8685c12.png"
+}

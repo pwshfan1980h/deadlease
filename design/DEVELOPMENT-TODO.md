@@ -2,7 +2,22 @@
 
 Status: in progress. Checked implementation tasks have passed their recorded verification; unchecked tasks remain planned. See the milestone record below.
 
+Visual priority override (latest user playtest): finish the scene/UI pass below before resuming feature phases.
+
 Build in this order: room interactions → enemy behavior → backpack synergies → courier reputation → discoveries → tutorial. Complete a playable, tested increment in each phase before expanding it. The tutorial comes last so it teaches the finished controls and mechanics.
+
+## Current priority — scene and terminal presentation
+
+User withdrew the 3440×1440 design target. Use a centered frame near 4:3 (up to 1440×1080), preserving the large scene / compact player data / transcript stack. Ordinary desktop windows come first; ultrawide gets quiet gutters. Keep complete 16:9 paintings visible inside the scene.
+
+- [x] Brief room arrivals; detailed prose and exit directions require `look around`. Unit coverage verifies that looking costs no turn.
+- [x] High-contrast green-on-black transcript, faction/hostility name colors, restored fallback cursor. Unit and browser checks pass, including large text and UI palette changes.
+- [x] Item mentions in prose use brighter green; actual ground items appear immediately as a plain grey list. Ground transcript listings also stay grey. Unit checks and browser pickup assertions pass.
+- [x] Install unique generated paintings for all 149 locations. Per-room prompts, hashes, dimensions and generation receipts live under `design/location-art/`; runtime and provenance maps cover every room without biome fallbacks.
+- [x] Inspect all 149 scenes in 17 contact sheets, correct misleading ladders and permanent foreground enemies, and review neighboring/vertical routes. Browser checks verify every image decodes and delayed travel blocks duplicate movement and map invocation.
+- [x] Complete production build, asset audit, 145 unit tests and all 13 browser suites. Standard/short desktop, 18px text, ultrawide and mobile checks pass; reports are in `design/verification/`.
+- [ ] Update playtest evidence, commit source, publish tested build, and run public smoke checks.
+- [ ] User visual acceptance: scene scale, terminal readability, item color distinction, encounter overlays, scene continuity. Automated tests do not establish acceptance.
 
 ## Roguelike identity and run length
 

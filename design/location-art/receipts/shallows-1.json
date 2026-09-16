@@ -1,0 +1,12 @@
+{
+  "id": "shallows-1",
+  "name": "Copper Run",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/shallows-1.jpg",
+  "sha256": "b7a02a8e627b1f22f777dd7de98ee247888469d3d0d13bf65a428794c23fb9e0",
+  "bytes": 487081,
+  "prompt": "Precise object edit of the supplied FREEBORN location painting. Remove the large central masked man holding the wrench. Continue the wet brick pillar, valve pipes and empty shallow water through his former silhouette. No people or enemies. Keep all unrelated architecture, focal features, props, landscape, colors, lighting, perspective and framing unchanged. Landscape 16:9 industrial noir. No text or UI.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-80799dd1-e758-49d8-ab2c-ca65d2b95db5.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-c5bce77c-607c-473a-8174-ba3880f30303.png"
+}

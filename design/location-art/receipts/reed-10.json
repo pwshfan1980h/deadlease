@@ -1,0 +1,12 @@
+{
+  "id": "reed-10",
+  "name": "Amber Weir",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/reed-10.jpg",
+  "sha256": "1703b98ce4c7c9e02a9c379d2a364c659faebfa9d700c97c30a5f00c5f762fff",
+  "bytes": 617321,
+  "prompt": "Precise object edit of the supplied FREEBORN location painting. Remove the coat-wearing person standing on the left-hand wooden walkway. Continue the empty wood walkway, reeds and railing through the former silhouette. No people or enemies. Keep all unrelated architecture, focal features, props, landscape, colors, lighting, perspective and framing unchanged. Landscape 16:9 industrial noir. No text or UI.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-0fafb558-87e4-4883-a93d-7592ecdeddd8.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-b3b488a9-89b7-4190-a0d9-0aa64a48139f.png"
+}

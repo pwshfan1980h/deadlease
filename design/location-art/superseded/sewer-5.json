@@ -1,0 +1,11 @@
+{
+  "id": "sewer-5",
+  "name": "Blind Culvert",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sewer-5.jpg",
+  "sha256": "a563789e94edc55b2a19bd1aa6ce00e91505b58979837182308b044c30ff24f4",
+  "bytes": 525789,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Blind Culvert. Region: Deep Drains. Physical description for inspiration: The culvert bends beneath a bricked-up street. Someone painted an eye on the wall, then carefully covered it with a scrap of cloth. A sump knifer watches the passage ahead. Visual continuity: Continuous old red-brown brick drainage network below those streets, shallow dark runoff, cream utility pipes and warm caged lamps, industrial iron ladders at surface shafts. Adjacent places in the actual map: s connects to Rat Parliament; e connects to Chain Drain; w connects to Salt Interceptor. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-34ddd8d8-2f3f-4531-86c0-057677dd83e3.png"
+}

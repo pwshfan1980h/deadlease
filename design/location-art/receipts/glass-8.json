@@ -1,0 +1,11 @@
+{
+  "id": "glass-8",
+  "name": "Window Border",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-8.jpg",
+  "sha256": "b571fece778ebe80f4f4b7a6647937a441a9029c1a3dd6fbeb1ecd2bcfd2664e",
+  "bytes": 649903,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Window Border. Region: Vitreous Ward. Physical description for inspiration: The district's brickwork meets the glassworks at a ragged seam. Warning plates advise level six travelers to carry insulation and learn to brace. Visual continuity: One abandoned pale concrete and blue-grey glass manufacturing district with angular broken windows and sparse cold reflected light; overcast dusk. Adjacent places in the actual map: e connects to Reclamation Clinic; w connects to Glare Walk. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-60363292-1efe-4e09-a8b6-b123b842648a.png"
+}

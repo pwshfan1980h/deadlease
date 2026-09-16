@@ -1,0 +1,12 @@
+{
+  "id": "crown-2",
+  "name": "Debt Mile",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/crown-2.jpg",
+  "sha256": "42f4cee7b439b1bf11b881847df98378449719b331876d20d238ff16fda69117",
+  "bytes": 560123,
+  "prompt": "Precise object edit of the supplied FREEBORN Debt Mile room painting. Remove both armored humanoid robots patrolling the causeway. Fill their former silhouettes with the existing empty walkway, railings and misty architecture. Preserve the brass studs in the road, triangular radio pylons, wet stone, sky and distant city. Keep all unrelated scene details unchanged. No people, creatures, robots, text, UI or borders. Landscape 16:9 industrial noir.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-70687a9c-59b7-4f5c-87ba-36364b8e2e50.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-678d1d45-79cd-4cc7-bad8-42307d4594ff.png"
+}

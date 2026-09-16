@@ -1,0 +1,11 @@
+{
+  "id": "foundry-0",
+  "name": "Union Canteen",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/foundry-0.jpg",
+  "sha256": "8f0cabef0ccf610e76f7a79daef559fd147a5885ce8dc6bfcec77272d1e05aa0",
+  "bytes": 601927,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Union Canteen. Region: Cinder Union. Physical description for inspiration: Steward Rusk keeps a guard at each door and soup on the stove. The union owns no factory now, but it still owns these two doors. Visual continuity: One massive red-brick industrial complex of rust gantries, pressure pipes and amber furnace glow against soot; exterior overcast dusk. Adjacent places in the actual map: n connects to Strike Memorial; s connects to Customs Awning; e connects to Punch Clock Arch. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-a9207242-8a46-40b8-9e94-25a59c631084.png"
+}

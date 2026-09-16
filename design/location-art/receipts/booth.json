@@ -1,0 +1,12 @@
+{
+  "id": "booth",
+  "name": "Control Booth",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/booth.jpg",
+  "sha256": "3ad2bb6d12823ae5b5dc51d9bc746ae55a8335a50a616a9705d3637f999bc6bf",
+  "bytes": 484328,
+  "prompt": "Precise object edit of the supplied FREEBORN room painting. Remove all readable lettering from the foreground control panel, especially LEASE. Replace the two label plates with worn blank rusty metal. Preserve all dials, intercoms, architecture, lighting, water and camera exactly. Maintain landscape 16:9 size, industrial noir style, and every unrelated scene detail. No text, UI or borders.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-8dc69e8a-28f7-4445-a966-a1261e432e2a.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-491d3c6a-8712-4417-9ec6-8951f708cdf3.png"
+}

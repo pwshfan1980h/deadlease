@@ -1,0 +1,11 @@
+{
+  "id": "reed-13",
+  "name": "Peat Kiln",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/reed-13.jpg",
+  "sha256": "78ff2bd4d77c4563466ea1b3b04144066d267c553f3cb326866e012e285bbd92",
+  "bytes": 644228,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Peat Kiln. Region: Reedward Fen. Physical description for inspiration: A squat kiln breathes through cracks in its brick skin. Workers once slept against the warm wall; their bedrolls remain outlined in ash. Visual continuity: One flooded estuary fen, crooked reeds and willows, old raised timber causeways and drainage channels, faint foundry smoke on the horizon; overcast dusk. Adjacent places in the actual map: n connects to Mudlark Crossing; e connects to Willow Switch; w connects to Eel Ladder. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-6fe19ea9-1791-4174-8be7-65d9403b295f.png"
+}

@@ -1,0 +1,35 @@
+{
+  "reviewedAt": "2026-09-16T04:25:42.034378+00:00",
+  "rooms": 149,
+  "contactSheets": 17,
+  "reviewMethod": "Visual inspection of all location contact sheets and full-size targeted corrections; production-browser route and layout screenshots.",
+  "corrections": [
+    "sewer-2",
+    "sewer-3",
+    "sewer-4",
+    "sewer-5",
+    "sewer-6",
+    "sewer-7",
+    "sewer-8",
+    "sewer-9",
+    "sewer-10",
+    "sump",
+    "alley",
+    "booth",
+    "glass-7",
+    "crown-2",
+    "shallows-1",
+    "shallows-3",
+    "reed-10"
+  ],
+  "checks": [
+    "Individual industrial-noir painting for each authored room",
+    "Biome materials, lighting and adjoining passage continuity",
+    "Only authored sewer surface connections show usable ladders",
+    "Removed prominent baked-in combatants that would remain after defeat",
+    "Full 16:9 paintings retained without cropping at tested viewport sizes"
+  ],
+  "humanAcceptance": "Pending user playtest",
+  "receipts": "design/location-art/receipts/",
+  "screenshots": "evidence/location-art-review/ and evidence/scene-terminal-pass/"
+}

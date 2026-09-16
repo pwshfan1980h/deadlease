@@ -1,0 +1,11 @@
+{
+  "id": "bellwether-2",
+  "name": "Rope Market",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/bellwether-2.jpg",
+  "sha256": "b7866ab792e224783b8d14d8ad5de4db4604317ada5d0f1f8408d9d0a8bbfed6",
+  "bytes": 662784,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Rope Market. Region: Bellwether. Physical description for inspiration: Rope makers share a covered market with a traveling gunsmith. The watch keeps the aisles clear, and every stall has a lamp burning above its wares. Visual continuity: One small distant frontier town of low patched brick and timber workshops, covered loading yards, lanterns and gravel roads, surrounded by the same grassy dike; overcast dusk. Adjacent places in the actual map: s connects to Lantern Inn; e connects to East Workshops; w connects to Bellwether Gate. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-d60412ce-205d-458a-a1c7-841d5a84d32d.png"
+}

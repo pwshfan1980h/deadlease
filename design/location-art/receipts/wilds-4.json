@@ -1,0 +1,11 @@
+{
+  "id": "wilds-4",
+  "name": "Wind Pump Rise",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/wilds-4.jpg",
+  "sha256": "ebb3e312e9f5513f7848e7da9431bde772cdaa19364e8665435bda466a23f09a",
+  "bytes": 573903,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Wind Pump Rise. Region: The Long Dike. Physical description for inspiration: A wooden wind pump turns slowly above the dike. Through its legs you glimpse a poacher waiting with a rifle laid across a rolled raincoat. Visual continuity: A continuous uninhabited outer dike landscape, gravel embankments, coarse grass, blackwater creeks, reeds and skeletal power lines; overcast dusk. Adjacent places in the actual map: n connects to Wayfarer Fire; s connects to Blackwater Bridge; e connects to Sunken Orchard. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-2924e20e-a88e-453f-b91b-614f5fa925e4.png"
+}

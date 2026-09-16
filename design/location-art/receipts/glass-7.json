@@ -1,0 +1,12 @@
+{
+  "id": "glass-7",
+  "name": "Glare Walk",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-7.jpg",
+  "sha256": "a22ebfcbc8142e1d9544aef608031fb7b17197b5ff1a1e20d07e9487dd9d3144",
+  "bytes": 626705,
+  "prompt": "Precise object edit of the supplied FREEBORN room painting. Remove the entire robed armed figure on the right edge. Continue the existing empty walkway, railing, and glass architecture through its former silhouette. Keep the abstract face mosaic on the left and all other architecture, colors and lighting unchanged. No characters. Maintain landscape 16:9 size, industrial noir style, and every unrelated scene detail. No text, UI or borders.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-7693ac7c-f597-45f8-8e7f-8d5de8fc1ee4.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-ffcbbf8f-84b1-406b-b97a-a3e5624f1805.png"
+}

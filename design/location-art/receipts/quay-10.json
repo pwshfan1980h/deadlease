@@ -1,0 +1,11 @@
+{
+  "id": "quay-10",
+  "name": "Crane Heel",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-10.jpg",
+  "sha256": "4534a9cbf5834673182fc29c3da50ed0badbc69a7883ad6792b38b5b4dd744c9",
+  "bytes": 545329,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Crane Heel. Region: Salt Quay. Physical description for inspiration: A crane's immense foot crushes a tram kiosk. The operator's lunch tin dangles high above, patiently circling the same cold sandwich.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-f5301195-766a-4c99-bb9f-f0d26ef0dc26.png"
+}

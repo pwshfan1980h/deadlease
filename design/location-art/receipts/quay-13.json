@@ -1,0 +1,11 @@
+{
+  "id": "quay-13",
+  "name": "Net Chapel",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-13.jpg",
+  "sha256": "a09f4934d6440c3ff7cdc8f806a7663cf281a303b0b59003884e3a046e158dd3",
+  "bytes": 683798,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Net Chapel. Region: Salt Quay. Physical description for inspiration: Fishing nets form a roof over an altar of engine parts. Someone leaves fresh water here for the dead who drowned thirsty. Visual continuity: One continuous rain-dark stone seawall and timber harbor, weathered rope and steel mooring rings, slate estuary water, distant brick gantries; late overcast dusk. Adjacent places in the actual map: e connects to Widows Turn; w connects to Dry Boat School. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-c0946cbb-aed6-420e-a446-e14fb08c1428.png"
+}

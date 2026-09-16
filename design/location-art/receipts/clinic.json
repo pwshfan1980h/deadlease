@@ -1,0 +1,11 @@
+{
+  "id": "clinic",
+  "name": "Reclamation Clinic",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/clinic.jpg",
+  "sha256": "fb26ee952765eebb0a1709ca43048677ff22c488ae9263e08a549fe7743df433",
+  "bytes": 526549,
+  "prompt": "Use case: stylized-concept. Asset: FREEBORN Reclamation Clinic location painting for a text RPG, landscape 16:9. Immersive eye-level view from the foot of an empty battered clinic cot into a cramped industrial reclamation ward. One counter hatch, worn bone-white tiled walls, pipes, an old analog medical monitor, hanging work coats, amber desk lamp, rain running down a high window. World: discarded human workers revived in clinics, gritty estuary city. Painterly industrial noir, rich oil/gouache brush texture, evocative grounded science fiction, strong readable silhouettes and deep spatial perspective. Restrained charcoal black, bone, desaturated steel blue, rust and warm amber. More visual storytelling, less clutter. The scene itself occupies the entire picture; player feels inside it. Architectural eye-level composition, no fisheye. Keep main features safely inside the central 85% for responsive fit. No lettering, signs with words, captions, HUD, UI, borders, logos, watermark. No bright green wash. No prominent characters or monsters; occupants are separate game overlays. Render a single complete scene, not a collage.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-3c770b90-cda5-4868-a262-1b604142c384.png"
+}

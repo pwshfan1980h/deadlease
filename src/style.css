@@ -202,8 +202,8 @@ code{font:inherit;color:var(--amber)}
 
 .recovery-record{display:flex;flex-direction:column;gap:8px;border-block:1px solid var(--gunmetal);padding:16px 0;margin:20px 0 28px;color:var(--ash);font-size:.8rem}
 
-/* The pointer is hidden; every action remains available from the keyboard. */
-html,body,.app,.app *{cursor:none!important}
+/* Typed actions stay primary; the pointer remains available for inspection and inventory. */
+html,body,.app{cursor:auto}
 .title-menu .title-keys{font-size:.65rem;margin:32px 0 0;color:var(--ash);letter-spacing:.02em}
 .clinic-dialog .intake-keys{font-family:inherit;font-size:.62rem;color:var(--ash);margin:24px 0 0;line-height:1.6}
 

@@ -1,0 +1,11 @@
+{
+  "id": "crown-3",
+  "name": "Receiver Spine",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/crown-3.jpg",
+  "sha256": "3eb4d975dec26ac3b2e02b13f077ff6729b27f0ba34fee6dca8a72ad6c6813e7",
+  "bytes": 557601,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Receiver Spine. Region: The Survey Crown. Physical description for inspiration: A line of receivers points toward the storm. Their needles lean together whenever a revenant begins storing power for a heavy strike. Visual continuity: One elevated storm-battered stone-and-steel causeway with triangular radio pylons, rain and distant estuary. The real city appears only in final northern views, far beyond the water. Adjacent places in the actual map: n connects to Execution Lift; s connects to Debt Mile. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-b9d6bdea-91a1-42a0-af92-9ed95b8242b5.png"
+}

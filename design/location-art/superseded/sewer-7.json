@@ -1,0 +1,11 @@
+{
+  "id": "sewer-7",
+  "name": "Fishbone Screen",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sewer-7.jpg",
+  "sha256": "558e18e6a20408606caccabba4314cd0cc40450cdd6080bac1b672abcad254bc",
+  "bytes": 641282,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Fishbone Screen. Region: Deep Drains. Physical description for inspiration: Fish bones lace a rusted filter screen. Behind it, the tunnel wind makes a sound like someone quietly sharpening a saw. Visual continuity: Continuous old red-brown brick drainage network below those streets, shallow dark runoff, cream utility pipes and warm caged lamps, industrial iron ladders at surface shafts. Adjacent places in the actual map: s connects to Outfall Shrine; w connects to Chain Drain. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-62378142-842d-4e8a-a12f-4eb04ed5cae3.png"
+}

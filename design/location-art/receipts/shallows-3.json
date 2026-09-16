@@ -1,0 +1,12 @@
+{
+  "id": "shallows-3",
+  "name": "Settling Steps",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/shallows-3.jpg",
+  "sha256": "9193d6c310918028b8ba3143e9519cf50d4c81d40e763af164881a0379c078e4",
+  "bytes": 573119,
+  "prompt": "Precise object edit of the supplied FREEBORN location painting. Remove the frog-like creature on the lower-right foreground steps. Continue the empty wet steps and dark water through its former silhouette. No animals or monsters. Keep all unrelated architecture, focal features, props, landscape, colors, lighting, perspective and framing unchanged. Landscape 16:9 industrial noir. No text or UI.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-636fc80d-01cd-4f65-812b-fa2837c986f4.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-91f72eec-c935-4a64-826a-dfa72ef3a5fc.png"
+}

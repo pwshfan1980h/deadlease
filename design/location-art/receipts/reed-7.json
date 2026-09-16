@@ -1,0 +1,11 @@
+{
+  "id": "reed-7",
+  "name": "Silt Observatory",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/reed-7.jpg",
+  "sha256": "c00a344c4d783425bb97b178f91a7bf553ca7ef58cd556573820038bd975d590",
+  "bytes": 621099,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Silt Observatory. Region: Reedward Fen. Physical description for inspiration: A telescope points into the mud through a collapsed roof. Its logbook follows the migration of lights below the surface. A reed poacher watches the passage ahead. Visual continuity: One flooded estuary fen, crooked reeds and willows, old raised timber causeways and drainage channels, faint foundry smoke on the horizon; overcast dusk. Adjacent places in the actual map: n connects to Drowned Tram; s connects to Flooded Registry; w connects to Filter Garden. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-c1dd0646-d792-49e8-b37d-43c10d7c41c7.png"
+}

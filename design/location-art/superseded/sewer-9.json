@@ -1,0 +1,11 @@
+{
+  "id": "sewer-9",
+  "name": "Maintenance Belly",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sewer-9.jpg",
+  "sha256": "f0c15c86625c3c80795e011171ed1ad664e5b6355d602c09e149f975718f96b0",
+  "bytes": 588594,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Maintenance Belly. Region: Deep Drains. Physical description for inspiration: A dry bench fits between pipes under the service tunnel. Chalk notes explain which noises mean pressure and which mean teeth. Visual continuity: Continuous old red-brown brick drainage network below those streets, shallow dark runoff, cream utility pipes and warm caged lamps, industrial iron ladders at surface shafts. Adjacent places in the actual map: n connects to Bucket Drain; e connects to Luminous Outfall; w connects to Scrap Invert. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-b3a9f747-07d6-475b-87a4-d6a8276ea40a.png"
+}

@@ -7,7 +7,7 @@ it('uses a neutral noir base with two eight-color alternatives',()=>{
 });
 it('renders every room as deterministic distinct 256×144 indexed pixel art in all palettes',()=>{
  const hashes=new Set<string>();for(const r of Object.values(rooms)){
-  const pixels=scenePixels(r);expect(pixels).toHaveLength(256*144);expect(scenePixels(r)).toEqual(pixels);expect(Math.max(...pixels)).toBeLessThan(8);
+  const pixels=scenePixels(r);expect(pixels).toHaveLength(256*144);expect(Buffer.from(scenePixels(r)).equals(Buffer.from(pixels))).toBe(true);expect(Math.max(...pixels)).toBeLessThan(8);
   hashes.add(Buffer.from(pixels).toString('base64'));
   for(const p of Object.values(palettes)){const rgba=colorize(pixels,p);expect(rgba).toHaveLength(256*144*4);expect(rgba[3]).toBe(255)}
  }expect(hashes.size).toBe(Object.keys(rooms).length);

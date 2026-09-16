@@ -1,3 +1,4 @@
+import {CharacterName,TranscriptText} from './Transcript';
 import {RunEnd} from './RunEnd';
 import {freshIdentity} from './runs';
 import {TimingGame,ItemDiscovery} from './TimingGame';
@@ -11,7 +12,7 @@ import {Inventory} from './Inventory';
 import {deliveryRoutes} from './courier';
 import {placeBundle,type Placement} from './backpack';
 import {useState,useRef,useEffect,type KeyboardEvent} from 'react';
-import {createGame,command,engageVisitor,look,journal,intent,HELP,type Game} from './engine';
+import {createGame,command,engageVisitor,arrival,journal,intent,HELP,type Game} from './engine';
 import {classes,abilities,maxHP,maxStamina,xpForLevel} from './progression';
 import {SKILLS,BALANCE} from './config';
 import {items} from './items';
@@ -20,7 +21,7 @@ import {palettes} from './visual-data';
 import {SaveRepository,IndexedDBDriver,encode,decode,type Backup,type StorageDriver} from './saves';
 import {Sound,defaultPreferences,type Preferences} from './audio';
 import {Scene,Portrait,EnemyPortrait} from './visuals';
-import {scenePaintings} from './paintings';
+import {scenePaintings,warmScene} from './paintings';
 import {RoomActivity,type Visitor} from './roaming';
 import {ClinicIntake,type IntakePanel} from './ClinicIntake';
 type Panel='Atlas'|'Inventory'|'Progression'|'Journal'|'Settings'|'Help';
@@ -29,7 +30,7 @@ const commonCommands=['spare','accept surrender','depart','missions','jobs','del
 export function completions(prefix:string,g:Game,visitor?:Visitor|null){return [...commonCommands,...objectCommands(g.room),...(visitor?['inspect '+visitor.name,...(visitor.role==='neutral'?['talk '+visitor.name]:['attack '+visitor.name])]:[]),...Object.keys(items).flatMap(id=>['equip '+id,'buy '+id,'sell '+id,'inspect '+id,'deliver '+id]),...classes[g.player.className].abilities.flatMap(id=>['use '+id,'learn '+id,'inspect '+id]),...SKILLS.map(s=>'train '+s.toLowerCase()),...['clerk','technician','broker','warden','archivist','postkeeper'].map(n=>'talk '+n)].filter(c=>c.startsWith(prefix.toLowerCase()))}
 function download(raw:string,name:string){const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver?:StorageDriver}){
- const [game,setGame]=useState<Game|null>(initialGame??null),[panel,setPanel]=useState<Panel>('Atlas'),[prefs,setPrefs]=useState<Preferences>(defaultPreferences),[entry,setEntry]=useState(''),[logs,setLogs]=useState<string[]>(initialGame?look(initialGame):[]),[notice,setNotice]=useState(''),[booted,setBooted]=useState(false),[saving,setSaving]=useState(false),[blocked,setBlocked]=useState(false),[backups,setBackups]=useState<Backup[]>([]);
+ const [game,setGame]=useState<Game|null>(initialGame??null),[panel,setPanel]=useState<Panel>('Atlas'),[prefs,setPrefs]=useState<Preferences>(defaultPreferences),[entry,setEntry]=useState(''),[logs,setLogs]=useState<string[]>(initialGame?arrival(initialGame):[]),[notice,setNotice]=useState(''),[booted,setBooted]=useState(false),[saving,setSaving]=useState(false),[blocked,setBlocked]=useState(false),[backups,setBackups]=useState<Backup[]>([]);
  const [visitor,setVisitor]=useState<Visitor|null>(null);const visitorRef=useRef<Visitor|null>(null);
  const [activityVersion,setActivityVersion]=useState(0);
  const [atTitle,setAtTitle]=useState(!initialGame),[creating,setCreating]=useState(false);
@@ -43,7 +44,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  const [pauseOpen,setPauseOpen]=useState(false);const pauseRef=useRef(false);
  const [inventoryOpen,setInventoryOpen]=useState(false);
  const [mapOpen,setMapOpen]=useState(false);const [endingOpen,setEndingOpen]=useState(false);
- const [travelFade,setTravelFade]=useState<'out'|'in'|''>('');const traveling=useRef(false);
+ const [travelFade,setTravelFade]=useState<'out'|'in'|'loading'|''>('');const traveling=useRef(false);
  const [travelDirection,setTravelDirection]=useState('south');
  const [pageHidden,setPageHidden]=useState(()=>typeof document!=='undefined'&&document.hidden);
  useEffect(()=>{const update=()=>setPageHidden(document.hidden);document.addEventListener('visibilitychange',update);return()=>document.removeEventListener('visibilitychange',update)},[]);
@@ -57,7 +58,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   (async()=>{try{
    const d=storageDriver??new IndexedDBDriver();driver.current=d;const r=new SaveRepository(d);repo.current=r;
    const pref=await d.read('preferences');if(pref){try{const p=JSON.parse(pref);if((p.motion===undefined||typeof p.motion==='boolean')&&Object.hasOwn(palettes,p.palette)&&typeof p.muted==='boolean'&&['master','effects','ambience'].every(k=>typeof p[k]==='number'&&p[k]>=0&&p[k]<=1)&&(p.music===undefined||(typeof p.music==='number'&&p.music>=0&&p.music<=1))&&[14,15,16,18].includes(p.fontSize)){if(live)setPrefs({...defaultPreferences,...p})}}catch{}}
-   if(!initialGame&&await d.read('auto')!==undefined){try{const loaded=await r.load('auto');if(live){setGame(loaded);gameRef.current=loaded;setLogs(['AUTOSAVE / Journey resumed.',...look(loaded)])}}catch(e){if(live){blockedRef.current=true;setBlocked(true);error(e)}}}
+   if(!initialGame&&await d.read('auto')!==undefined){try{const loaded=await r.load('auto');if(live){setGame(loaded);gameRef.current=loaded;setLogs(['AUTOSAVE / Journey resumed.',...arrival(loaded)])}}catch(e){if(live){blockedRef.current=true;setBlocked(true);error(e)}}}
   }catch(e){if(live)error('Local storage unavailable. Play remains available; export regularly. '+String(e))}finally{if(live)setBooted(true)}})();
   return()=>{live=false;audio.current?.close()};
  },[initialGame,storageDriver]);
@@ -109,7 +110,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   setSaving(true);const next=queue.current.then(()=>repo.current!.save(slot,g));queue.current=next.catch(()=>{});return next.then(()=>{if(slot==='manual')setNotice('Manual save written.')}).catch(e=>{if(slot==='auto'){blockedRef.current=true;setBlocked(true)}error(e)}).finally(()=>setSaving(false));
  };
  function commit(g:Game,auto=true){gameRef.current=g;setGame(g);if(auto&&!blockedRef.current)void save('auto',g)}
- async function load(slot:string){if(traveling.current)return;try{await queue.current;if(!repo.current)throw Error('Storage unavailable. Import an exported save.');const loaded=await repo.current.load(slot);clearInteractions();resetActivity();commit(loaded,false);setAtTitle(false);setCreating(false);setRecovering(false);setIntakePanel(null);setInventoryOpen(false);setMapOpen(false);previousGame.current=null;if(slot==='auto'){blockedRef.current=false;setBlocked(false)}if(pauseRef.current)closePause();setLogs(['LOADED / '+slot,...look(loaded)]);setNotice('Loaded '+slot+' save.');input.current?.focus()}catch(e){error(e)}}
+ async function load(slot:string){if(traveling.current)return;try{await queue.current;if(!repo.current)throw Error('Storage unavailable. Import an exported save.');const loaded=await repo.current.load(slot);clearInteractions();resetActivity();commit(loaded,false);setAtTitle(false);setCreating(false);setRecovering(false);setIntakePanel(null);setInventoryOpen(false);setMapOpen(false);previousGame.current=null;if(slot==='auto'){blockedRef.current=false;setBlocked(false)}if(pauseRef.current)closePause();setLogs(['LOADED / '+slot,...arrival(loaded)]);setNotice('Loaded '+slot+' save.');input.current?.focus()}catch(e){error(e)}}
  async function run(text:string,resolution?:TimingOutcome):Promise<string[]|undefined>{
   const g=gameRef.current;if(!g||g.run.status==='dead'||pauseRef.current||timingRef.current||discovery||traveling.current||endingOpen)return;const cmd=text.trim().toLowerCase();if(!cmd)return;
   if(cmd==='pause'){setPanelOpen(false);pauseRef.current=true;setPauseOpen(true);setNotice('');audio.current?.close();return}
@@ -168,13 +169,13 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   const moved=result.state.room!==g.room&&result.state.run.status==='alive';
   const reduced=!prefs.motion||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if(moved){const from=rooms[g.room],to=rooms[result.state.room];setTravelDirection(to.layer!==from.layer?(to.layer<from.layer?'down':'up'):to.x!==from.x?(to.x>from.x?'east':'west'):(to.y>from.y?'south':'north'));}
-  if(moved&&!reduced){traveling.current=true;setTravelFade('out');await new Promise(resolve=>setTimeout(resolve,160));if(!mounted.current)return;}
+  if(moved){traveling.current=true;setTravelFade('loading');await warmScene(result.state.room);if(!mounted.current)return;if(!reduced){setTravelFade('out');await new Promise(resolve=>setTimeout(resolve,160));if(!mounted.current)return;}}
   if(result.changed)commit(result.state);
   if(!g.rewards.includes('freeborn')&&result.state.rewards.includes('freeborn'))setEndingOpen(true);
   audio.current?.battle(!!result.state.encounter);if(!audio.current?.travel(g,result.state,cmd)||result.sounds?.length)audio.current?.sequence(result);
   showImpacts(result);deathExperience(g,result.state);
-  if(moved&&!reduced){setTravelFade('in');await new Promise(resolve=>setTimeout(resolve,220));if(!mounted.current)return;setTravelFade('');traveling.current=false;}
-  append(['› '+text,...result.messages,...(cmd==='look'&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus();return result.messages;
+  if(moved){if(!reduced){setTravelFade('in');await new Promise(resolve=>setTimeout(resolve,220));if(!mounted.current)return;}setTravelFade('');traveling.current=false;}
+  append(['› '+text,...result.messages,...(/^look(?: around)?$/.test(cmd)&&occupant?['Here now: '+occupant.name+'. '+occupant.description]:[])]);input.current?.focus();return result.messages;
  }
  async function finishIntake(){
   if(finalizing)return;setFinalizing(true);setIntakeError('');
@@ -200,7 +201,7 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
  function returnToMenu(){
   clearInteractions();
   pauseRef.current=false;setPauseOpen(false);setPanelOpen(false);
-  if(creating){const previous=previousGame.current;gameRef.current=previous;setGame(previous);setLogs(previous?look(previous):[]);previousGame.current=null}
+  if(creating){const previous=previousGame.current;gameRef.current=previous;setGame(previous);setLogs(previous?arrival(previous):[]);previousGame.current=null}
   setCreating(false);setRecovering(false);setIntakePanel(null);setInventoryOpen(false);setMapOpen(false);setAtTitle(true);setNotice('');audio.current?.close();
  }
  function openMap(){
@@ -213,13 +214,14 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
   if(e.code==='Space'&&e.ctrlKey&&entry.trim()&&game){const options=completions(entry,game,visitor);if(options.length){e.preventDefault();setEntry(options[0]);if(options.length>1)setNotice('Completions: '+options.slice(0,5).join(' · '))}}
   if(e.key==='PageUp'||e.key==='PageDown'){e.preventDefault();logEl.current?.scrollBy({top:e.key==='PageUp'?-220:220});follow.current=e.key==='PageDown'}
  }
- async function importFile(f:File|undefined){if(!f||traveling.current)return;try{if(f.size>BALANCE.maxSaveBytes)throw Error('Save file exceeds one megabyte.');const raw=await f.text(),g=decode(raw);await queue.current;if(repo.current)await repo.current.import(raw,'manual');clearInteractions();resetActivity();commit(g);setAtTitle(false);setCreating(false);setRecovering(false);setIntakePanel(null);setInventoryOpen(false);setMapOpen(false);previousGame.current=null;if(pauseRef.current)closePause();setLogs(['IMPORTED / Valid browser save.',...look(g)]);setNotice('Imported valid save into manual slot and loaded it.')}catch(e){error(e)}if(file.current)file.current.value=''}
+ async function importFile(f:File|undefined){if(!f||traveling.current)return;try{if(f.size>BALANCE.maxSaveBytes)throw Error('Save file exceeds one megabyte.');const raw=await f.text(),g=decode(raw);await queue.current;if(repo.current)await repo.current.import(raw,'manual');clearInteractions();resetActivity();commit(g);setAtTitle(false);setCreating(false);setRecovering(false);setIntakePanel(null);setInventoryOpen(false);setMapOpen(false);previousGame.current=null;if(pauseRef.current)closePause();setLogs(['IMPORTED / Valid browser save.',...arrival(g)]);setNotice('Imported valid save into manual slot and loaded it.')}catch(e){error(e)}if(file.current)file.current.value=''}
  async function recover(slot='auto'){if(!game||!repo.current)return;try{await queue.current;await repo.current.recover(slot,game);if(slot==='auto'){blockedRef.current=false;setBlocked(false)}setNotice(slot+' recovered. Previous bytes retained in quarantine.')}catch(e){error(e)}}
  async function newTenant(){
   clearInteractions();await queue.current;if(gameRef.current?.run.status==='dead'&&(blockedRef.current||!repo.current)){setNotice('Keep this run record: restore storage and retry saving before starting the next patient. You can export the record.');return}previousGame.current=gameRef.current;
   const preview=createGame('Unknown patient');resetActivity();commit(preview,false);
   setRecovering(false);setName('');setOrigin('Baseline');setClass('Enforcer');setBonus('Tech');setEntry('');setIntakeError('');setIntakeStep('identity');setIntakePanel('backstory');setCreating(true);setAtTitle(false);setNotice('');setPanelOpen(false);setPanel('Atlas');setLogs([]);audio.current?.close();audio.current?.play('ambience');
  }
+ useEffect(()=>{if(!game)return;for(const id of [game.room,...Object.values(rooms[game.room].exits)])void warmScene(id)},[game?.room]);
  const p=game?.player,r=game?rooms[game.room]:rooms.clinic;
  return <div className={"app "+(atTitle?"at-title":"playing")} data-paused={pauseOpen} data-motion={prefs.motion?"on":"off"} data-page-hidden={pageHidden}>
 
@@ -238,20 +240,24 @@ export function App({initialGame,storageDriver}:{initialGame?:Game;storageDriver
    </nav><p className="title-keys">↑↓ choose · Enter confirm</p>
   </div>
  </main>:game?<>
- <div className="district-bar"><span><span className="amber">{zones[r.zone].name.toUpperCase()}</span> / LEVELS {zones[r.zone].band.join('–')}</span><span>{game.encounter?'ENCOUNTER ACTIVE':r.safe?'GUARDED REFUGE':'EXPLORING'} · TURN {game.turns}</span></div>
+ <div className="district-bar"><span>{zones[r.zone].name.toUpperCase()}</span><span>{game.encounter?'ENCOUNTER ACTIVE':r.safe?'GUARDED REFUGE':'EXPLORING'} · TURN {game.turns}</span></div>
  <main className="play-grid"><div className="play-column">
- <section className={"room-panel travel-"+travelFade} aria-busy={!!travelFade} data-travel-direction={travelDirection}><div className="room-title"><div><div className="eyebrow">{r.layer===0?'SURFACE':'BELOW STREET LEVEL'} / {r.x},{r.y}</div><h2>{r.name}</h2></div><span className={'pill '+(r.safe&&!game.encounter?'teal':'amber')}>{game.encounter?'L'+game.encounter.level:r.safe?'SAFE':'L'+r.level}</span></div><div className={"room-body"+(game.encounter?" in-combat":"")}><div><p>{creating?'Rain taps the clinic windows. A clerk waits beside your bed.':game&&look(game)[1]}</p>{r.guard&&!game.encounter&&!objectsHere(r.id).some(object=>game.rewards.includes('alarm:'+object.id))&&<p className="muted small">{r.guard} keeps watch.</p>}{r.npc&&!game.encounter&&<div className="npc"><Portrait name={['clerk','technician','broker'].includes(r.npc)?r.npc:'guard'} palette={prefs.palette} label={r.guard||r.npc}/><code>talk {r.npc}</code></div>}</div>{!game.encounter&&<Scene room={r} palette={prefs.palette} caption={false}/>}</div>
- {r.warning&&!r.safe&&<div className="warning">{r.warning}</div>}
- {!game.encounter&&visitor&&<div className="visitor" aria-label="Passing visitor"><span><strong>{visitor.name}</strong><small>{visitor.role==='neutral'?'PASSING THROUGH':'FIGHTS IF PROVOKED'}</small></span><div><code>inspect {visitor.name}</code><code>{visitor.role==='neutral'?'talk':'attack'} {visitor.name}</code></div></div>}
- {game.encounter&&<div className="encounter"><div className="enemy-title"><EnemyPortrait name={game.encounter.name} palette={prefs.palette}/><div><strong>{game.encounter.name.toUpperCase()}</strong><p>HP {game.encounter.hp}/{game.encounter.maxHP} · Armor {game.encounter.armor} · Damage {game.encounter.damage}</p><p className={game.encounter.phase===2?'red':'amber'}>{intent(game.encounter)}</p></div></div>
-
- </div>}
- {!game.encounter&&<div className="movement" aria-label="Exits"><span className="eyebrow">EXITS</span>{Object.entries(r.exits).map(([d,id])=><span className={"exit-hint"+(d==='up'||d==='down'?' vertical-exit':'')} key={d}><code>{d==='down'?'↓ down':d==='up'?'↑ up':d}</code> {rooms[id].name}<small>L{rooms[id].level}</small></span>)}</div>}
-
-
- {!game.encounter&&Object.keys(game.loot[game.room]).length>0&&<p className="small muted ground">ON THE GROUND / {Object.entries(game.loot[game.room]).map(([id,n])=>id+' ×'+n).join(' · ')}</p>}
+ <section className={"room-panel travel-"+travelFade} aria-busy={!!travelFade} data-travel-direction={travelDirection}>
+  <div className="room-title"><div><h2>{r.name}</h2></div><span className={'pill '+(r.safe&&!game.encounter?'teal':'amber')}>{game.encounter?'L'+game.encounter.level:r.safe?'SAFE':r.layer<0?'BELOW':'OUTSIDE'}</span></div>
+  <div className={"room-body"+(game.encounter?" in-combat":"")}><Scene room={r} palette={prefs.palette} caption={false}/></div>
+  <div className="scene-contents">
+  {creating&&<p className="room-presence">A clerk waits beside your bed.</p>}
+  {!creating&&(r.npc||r.guard)&&<div className="npc room-presence">
+   {r.npc&&<div><CharacterName name={r.npc==='warden'&&r.guard?r.guard.split(' — ')[0]:({technician:'Iona',broker:'Moth',archivist:'Sen',postkeeper:'Ada'}[r.npc]??r.npc)}/></div>}
+   {r.guard&&r.npc!=='warden'&&!game.encounter&&!objectsHere(game.room).some(object=>game.rewards.includes('alarm:'+object.id))&&<div><CharacterName name={r.guard.split(' — ')[0]}/></div>}
+  </div>}
+  {!creating&&Object.keys(game.loot[game.room]??{}).length>0&&<ul className="ground-items" aria-label="Items on the ground">{Object.entries(game.loot[game.room]).filter(([,count])=>count>0).map(([item,count])=><li key={item}>{item}{count>1?" ×"+count:""}</li>)}</ul>}
+  </div>
+  {!game.encounter&&visitor&&<div className="visitor room-presence" aria-label="Passing visitor"><CharacterName name={visitor.name} tone={visitor.role==='hostile'?'enemy':'neutral'}/></div>}
+  {r.radiation>0&&<span className="scene-hazard">RADIATION</span>}
+  {game.encounter&&<div className="encounter"><div className="enemy-title"><EnemyPortrait name={game.encounter.name} palette={prefs.palette}/><div><strong><CharacterName name={game.encounter.name.toUpperCase()} hostile/></strong><p>HP {game.encounter.hp}/{game.encounter.maxHP}</p><p className="enemy-intent">{intent(game.encounter)}</p></div></div></div>}
  </section>
- <section className="terminal"><div className="section-heading"><span>TRANSCRIPT</span><span className="muted">PgDn ↓</span></div><div className="log" ref={logEl} role="log" aria-label="Field log" aria-live="polite" onScroll={()=>{const el=logEl.current;if(el)follow.current=el.scrollHeight-el.scrollTop-el.clientHeight<32}}>{logs.map((line,i)=><p key={i} className={line.startsWith('›')?'log-command':/SPIKE|CLONE|DANGER|attacks on sight/.test(line)?'red':/LEVEL|DEFEATED|REPAIRED|TAKEN/.test(line)?'amber':''}>{line}</p>)}</div> {!creating&&!recovering&&!game.encounter&&<div className="command-options" aria-label="Available commands"><code>rest</code>{objectsHere(r.id).filter(object=>object.hint).map(object=><code key={object.id}>{object.hint}</code>)}{game.courier.route&&deliveryRoutes[game.courier.route].to===r.id&&<code>deliver parcel</code>}{r.id==='crown-15'&&['erase','disclose'].includes(game.quests.ledger)&&!game.rewards.includes('freeborn')&&<code>depart</code>}{r.salvage&&!game.scrounged.includes(r.id)&&<code>scrounge</code>}{Object.keys(game.loot[game.room]).length>0&&<code>take all</code>}{r.id==='pump'&&p!.inventory['pump component']&&<code>install component</code>}{r.id==='booth'&&game.pump==='repaired'&&<><code>give key commons</code><code>give key syndicate</code></>}</div>}
+ <section className="terminal"><div className="section-heading"><span>TRANSCRIPT</span><span className="muted">PgDn ↓</span></div><div className="log" ref={logEl} role="log" aria-label="Field log" aria-live="polite" onScroll={()=>{const el=logEl.current;if(el)follow.current=el.scrollHeight-el.scrollTop-el.clientHeight<32}}>{logs.map((line,i)=><p key={i} className={line.startsWith('›')?'log-command':''}><TranscriptText text={line} playerName={game.player.name}/></p>)}</div> {!creating&&!recovering&&!game.encounter&&<div className="command-options" aria-label="Available commands"><code>look around</code></div>}
  {game.encounter&&<div className="transcript-combat">  <div className="command-options" aria-label="Combat commands">{['attack','aim','brace','cover','heal','flee'].map(a=><code key={a}>{a}</code>)}</div>
   <div className="ability-commands">{p!.abilities.map(id=><p className={(game.cooldowns[id]??0)>game.turns||p!.stamina<abilities[id].cost?'muted':''} key={id} title={abilities[id].description}><code>use {id}</code><small>{abilities[id].cost} STA{(game.cooldowns[id]??0)>game.turns?' · '+(game.cooldowns[id]-game.turns)+' turns':''}</small></p>)}</div></div>}
   <div className="panel-commands" aria-label="Panel commands"><span className="eyebrow muted">TYPE</span>{panels.map(x=><code key={x.command} className={panel===x.name?'active':''}>{x.command}</code>)}</div>

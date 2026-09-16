@@ -1,0 +1,11 @@
+{
+  "id": "bellwether-5",
+  "name": "Bell Tower Yard",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/bellwether-5.jpg",
+  "sha256": "00c5f77ee1992049a86d6d0081d0ce6f2eb6f1d6d960d5638694675209520116",
+  "bytes": 547811,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Bell Tower Yard. Region: Bellwether. Physical description for inspiration: The low bell tower overlooks the wetlands and the distant industrial haze. Its rope is freshly repaired, and an armed watch keeps the yard open to travelers. Visual continuity: One small distant frontier town of low patched brick and timber workshops, covered loading yards, lanterns and gravel roads, surrounded by the same grassy dike; overcast dusk. Adjacent places in the actual map: n connects to East Workshops; w connects to Lantern Inn. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-03518903-d2e8-4555-acca-e8f5bd9cfbcc.png"
+}

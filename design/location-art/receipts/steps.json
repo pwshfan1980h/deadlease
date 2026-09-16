@@ -1,0 +1,11 @@
+{
+  "id": "steps",
+  "name": "Clinic Steps",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/steps.jpg",
+  "sha256": "1cbc0f8e75485b7302f701dec96c34c23ee4fe0cfcb2b314f803406befe3d8d6",
+  "bytes": 679079,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Clinic Steps. Region: District 67. Physical description for inspiration: Rain ticks on a roof made of expired safety notices. Far below the street, a pump coughs in its sleep. Someone has chalked FREE WATER over a tariff schedule. Someone else has underlined the fine. An open manhole beside the steps holds a ladder down to the lamplit undercroft.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-b87369ca-ffc8-4bdc-a35f-d3f105b225a0.png"
+}

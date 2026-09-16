@@ -1,0 +1,11 @@
+{
+  "id": "crown-0",
+  "name": "Crown Warning Gate",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/crown-0.jpg",
+  "sha256": "9f354d691fe4f9880cb40e7c52eaff9a62c0b896b899cec30b2eddb4dabbfd82",
+  "bytes": 596741,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Crown Warning Gate. Region: The Survey Crown. Physical description for inspiration: Warden Orra guards a warm bunker below the causeway. Beyond it lie level eight to ten revenants; their amber charge always precedes a devastating heavy strike. Visual continuity: One elevated storm-battered stone-and-steel causeway with triangular radio pylons, rain and distant estuary. The real city appears only in final northern views, far beyond the water. Adjacent places in the actual map: n connects to Survey Causeway; s connects to Ration Kiosk. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-7fb6e80e-a0c8-4a76-93a2-9fcc421dbec9.png"
+}

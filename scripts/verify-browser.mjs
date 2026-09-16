@@ -54,7 +54,9 @@ try{
  await cmd('map');assert.equal(await page.getByRole('button',{name:'Whole estuary',exact:true}).getAttribute('aria-pressed'),'true');await page.keyboard.press('Escape');
  await page.screenshot({path:path.join(evidence,'compact-clinic.png')});
  await cmd('s');await cmd('s');await page.getByText('STRIKE · a measured attack is next.',{exact:true}).first().waitFor();await compact();await crops();await page.screenshot({path:path.join(evidence,'compact-combat.png')});
- await cmd('attack');await cmd('attack');await cmd('attack');await cmd('take all');
+ // Run seeds vary damage; finish the encounter instead of assuming three hits.
+ for(let turns=0;turns<8&&await page.locator('.encounter').count();turns++)await cmd('attack');
+ assert.equal(await page.locator('.encounter').count(),0,'Opening encounter defeated before map/loot checks');await cmd('take all');
  await cmd('map');await page.getByRole('button',{name:'Sewers',exact:true}).click();await page.getByRole('button',{name:'Surface',exact:true}).click();await page.keyboard.press('Escape');
  await cmd('settings');await page.getByLabel('Palette').selectOption('tidal');
  assert.equal(await page.locator('html').getAttribute('data-palette'),'tidal');await crops();

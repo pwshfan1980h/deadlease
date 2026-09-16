@@ -1,5 +1,6 @@
 // Shared keyboard-only clinic registration for production browser checks.
 export async function newGame(page,name='Mara'){
+ await page.waitForFunction(()=>Array.from(document.querySelectorAll('button')).some(button=>button.textContent==='New game'&&!button.disabled));
  await page.getByRole('button',{name:'New game',exact:true}).press('Enter');
  await page.getByRole('dialog',{name:'You wake.',exact:true}).waitFor();
  await page.keyboard.press('Escape');

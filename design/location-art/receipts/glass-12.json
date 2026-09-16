@@ -1,0 +1,11 @@
+{
+  "id": "glass-12",
+  "name": "Cutters Neck",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-12.jpg",
+  "sha256": "4718418c8fa9cb4b175b350398a11c277817b31bb0acd1021e338c3c5c1a1a2c",
+  "bytes": 658780,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Cutters Neck. Region: Vitreous Ward. Physical description for inspiration: The only southern path narrows between stacks of razor glass. Wrappings snag on the edges; some have been there long enough to become flags. Visual continuity: One abandoned pale concrete and blue-grey glass manufacturing district with angular broken windows and sparse cold reflected light; overcast dusk. Adjacent places in the actual map: n connects to Refraction Well; s connects to Long Reflection. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-8f389893-0e31-458c-9b4d-d2d85f0b7c56.png"
+}

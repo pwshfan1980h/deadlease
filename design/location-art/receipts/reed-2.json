@@ -1,0 +1,11 @@
+{
+  "id": "reed-2",
+  "name": "Mosquito Court",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/reed-2.jpg",
+  "sha256": "5d60a1336b9e04d880d6471e6dc8bc7a210ed494dfc94d1c3cbade87c539e51b",
+  "bytes": 680859,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Mosquito Court. Region: Reedward Fen. Physical description for inspiration: A courthouse has sunk to its windows in the marsh. Insects pass judgment in a continuous whine, and every verdict requires blood. Visual continuity: One flooded estuary fen, crooked reeds and willows, old raised timber causeways and drainage channels, faint foundry smoke on the horizon; overcast dusk. Adjacent places in the actual map: n connects to Drain Sump; s connects to Filter Garden; e connects to Drowned Tram; w connects to Sluice Orchard. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-afa8b53d-85a1-47ba-aae4-ae3e84e2955a.png"
+}

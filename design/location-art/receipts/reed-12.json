@@ -1,0 +1,11 @@
+{
+  "id": "reed-12",
+  "name": "Eel Ladder",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/reed-12.jpg",
+  "sha256": "c67b642eb617098932c9aeca7fd8793397940cab2c2f6ffe6af71637d9aa2762",
+  "bytes": 650713,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Eel Ladder. Region: Reedward Fen. Physical description for inspiration: An eel ladder climbs a wall to nowhere. The fish continue upward, trusting a design whose final page has long been missing. Visual continuity: One flooded estuary fen, crooked reeds and willows, old raised timber causeways and drainage channels, faint foundry smoke on the horizon; overcast dusk. Adjacent places in the actual map: n connects to Heron Gantry; s connects to Fen Catwalk; e connects to Peat Kiln. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-f35f68ac-9c9b-470a-a51f-e8f728405b9e.png"
+}

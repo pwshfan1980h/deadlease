@@ -1,0 +1,11 @@
+{
+  "id": "quay-0",
+  "name": "Customs Awning",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-0.jpg",
+  "sha256": "d4b43cc53af3598ff2064a3c4f3f3ab3e9ed9c1ef5339b037cd03d64fa4879e9",
+  "bytes": 608220,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Customs Awning. Region: Salt Quay. Physical description for inspiration: A customs officer has become a coat on a peg. Dockwatch Sera checks the living for fever and waves you toward the sheltered bunks.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-5d3d0c4a-d10c-4cd2-a23e-ed40231a5f41.png"
+}

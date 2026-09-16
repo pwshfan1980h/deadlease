@@ -9,7 +9,7 @@ it('opens on a focused game menu with no registration form or product labels',()
 });
 it('renders painted scene, command entry, resource labels, movement, panels and contextual actions',()=>{
  const html=renderToStaticMarkup(createElement(App,{initialGame:createGame()}));expect(html).not.toContain('DEADLEASE');expect(html).not.toContain('masthead');
- for(const text of ['Reclamation Clinic','assets/paintings/clinic.png','Enlarge Reclamation Clinic','Command','inventory','skills','journal','settings','map','rest','HP','STAMINA'])expect(html).toContain(text);
+ for(const text of ['Reclamation Clinic','assets/locations/clinic.jpg','Enlarge Reclamation Clinic','Command','inventory','skills','journal','settings','map','look around','HP','STAMINA'])expect(html).toContain(text);
 });
 it('offers keyboard completion for multiword abilities, items, directions and safe commands',()=>{
  const g=createGame();expect(completions('use riot',g)).toContain('use riot stance');expect(completions('equip battered',g)).toContain('equip battered handgun');expect(completions('go s',g)).toContain('go south');

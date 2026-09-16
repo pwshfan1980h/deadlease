@@ -1,0 +1,11 @@
+{
+  "id": "wilds-1",
+  "name": "Rook Causeway",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/wilds-1.jpg",
+  "sha256": "4e641757be2a56cddb390732555a55a5c24d23281a747423ea9c0f93510b8fbf",
+  "bytes": 568499,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Rook Causeway. Region: The Long Dike. Physical description for inspiration: Rooks lift from the gravel ahead of you. There are no roofs now, only reeds, a low grey sky and the distant line of the road raised above the tide. Visual continuity: A continuous uninhabited outer dike landscape, gravel embankments, coarse grass, blackwater creeks, reeds and skeletal power lines; overcast dusk. Adjacent places in the actual map: n connects to Last Streetlight; s connects to Broken Toll. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-937bcf21-372b-44ec-afbb-1ffec525a5eb.png"
+}

@@ -67,6 +67,21 @@ assert.equal(licensed.isrc,'USUAN1300031');assert.equal(licensed.license,'CC BY 
 const fishingArt=JSON.parse(await fs.readFile(new URL('fishing-art-provenance.json',assets),'utf8'));
 for(const [file,entry] of Object.entries(fishingArt.files)){const data=await fs.readFile(new URL(file,assets));assert.equal(sha(data),entry.sha256);const img=PNG.sync.read(data);assert.equal(img.width,entry.width);assert.equal(img.height,entry.height);if(file.includes('atlas')){assert.equal(img.width,img.height);assert(img.width>=1024)}}
 const runArt=JSON.parse(await fs.readFile(new URL('run-art-provenance.json',assets),'utf8'));for(const [file,entry] of Object.entries(runArt.files)){const data=await fs.readFile(new URL(file,assets));assert.equal(sha(data),entry.sha256);const img=PNG.sync.read(data);assert.equal(img.width,entry.width);assert.equal(img.height,entry.height)}
+const locationArt=JSON.parse(await fs.readFile(new URL('location-art-provenance.json',assets),'utf8'));
+const locations=JSON.parse(await fs.readFile(new URL('src/generated/location-art.json',root),'utf8'));
+assert.deepEqual(Object.keys(locationArt.files).sort(),Object.keys(rooms).sort());
+assert.deepEqual(Object.keys(locations).sort(),Object.keys(rooms).sort());
+assert.equal(locationArt.expected,Object.keys(rooms).length);
+const locationHashes=new Set();
+for(const [id,entry] of Object.entries(locationArt.files)){
+ assert.equal(entry.id,id);assert.equal(entry.name,rooms[id].name);assert.equal(entry.file,'locations/'+id+'.jpg');assert.equal(locations[id],'./assets/'+entry.file);
+ const data=await fs.readFile(new URL(entry.file,assets));assert.equal(data.length,entry.bytes);assert.equal(sha(data),entry.sha256);assert(!locationHashes.has(entry.sha256),'Repeated room image '+id);locationHashes.add(entry.sha256);
+ assert.equal(data.readUInt16BE(0),0xffd8);let dimensions;
+ for(let p=2;p+4<data.length;){assert.equal(data[p],0xff);const marker=data[p+1],size=data.readUInt16BE(p+2);assert(size>=2&&p+size+2<=data.length);if([0xc0,0xc1,0xc2].includes(marker)){dimensions={height:data.readUInt16BE(p+5),width:data.readUInt16BE(p+7)};break}if(marker===0xda)break;p+=size+2}
+ assert(dimensions,'JPEG frame missing: '+id);assert.equal(dimensions.width,entry.width);assert.equal(dimensions.height,entry.height);assert(dimensions.width>=1400);assert(Math.abs(dimensions.width/dimensions.height-16/9)<.01);
+ assert(entry.prompt.length>100);const receipt=JSON.parse(await fs.readFile(new URL('design/location-art/receipts/'+id+'.json',root),'utf8'));assert.deepEqual(receipt,entry);
+}
+assert.deepEqual((await fs.readdir(new URL('locations/',assets))).sort(),Object.keys(rooms).map(id=>id+'.jpg').sort());
 const credits=await fs.readFile(new URL('ATTRIBUTION.md',assets),'utf8');for(const text of ['Dark Fog','Kevin MacLeod','https://creativecommons.org/licenses/by/4.0/'])assert(credits.includes(text));
 assert.deepEqual((await fs.readdir(new URL('music/',assets))).sort(),['dark-fog.mp3','incompetech.json','provenance.json','under-pressure.wav']);
-console.log(JSON.stringify({passed:true,sprites:checked,atlases:images.size,nativeRoom:[256,144],maxSize:manifest.maxSize,padding:manifest.padding,sounds,music:{title:licensed.title,sha256:licensed.sha256,retainedSynth:{title:music.title,peak:musicPeak,sha256:music.sha256}}},null,2));
+console.log(JSON.stringify({passed:true,locationPaintings:locationHashes.size,sprites:checked,atlases:images.size,nativeRoom:[256,144],maxSize:manifest.maxSize,padding:manifest.padding,sounds,music:{title:licensed.title,sha256:licensed.sha256,retainedSynth:{title:music.title,peak:musicPeak,sha256:music.sha256}}},null,2));

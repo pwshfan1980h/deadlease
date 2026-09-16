@@ -1,0 +1,11 @@
+{
+  "id": "glass-2",
+  "name": "Optic Arcade",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-2.jpg",
+  "sha256": "19baba722863f1475b2a13849a398601c4b5272d8fbda4fe3cb9a2cce48f1c0a",
+  "bytes": 705470,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Optic Arcade. Region: Vitreous Ward. Physical description for inspiration: Display lenses multiply your face into a crowd of possible tenants. Mirror husks move among them with no reflection of their own. Visual continuity: One abandoned pale concrete and blue-grey glass manufacturing district with angular broken windows and sparse cold reflected light; overcast dusk. Adjacent places in the actual map: n connects to Prism Tip; s connects to Glaziers Hearth; e connects to Mirror Toll; w connects to Lens Baths. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-d50cd75e-baac-4087-9dfb-34d13be6cbda.png"
+}

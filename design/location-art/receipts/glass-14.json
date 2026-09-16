@@ -1,0 +1,11 @@
+{
+  "id": "glass-14",
+  "name": "Broken Spectrum",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-14.jpg",
+  "sha256": "ee9348b1b4804a260981ac5391a1c9dfd271665cb16e45cc2c97d3c1af7d7fbb",
+  "bytes": 630739,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Broken Spectrum. Region: Vitreous Ward. Physical description for inspiration: Colored tiles cover the street in strict order. Someone has swept a missing color into a jar and hidden it beneath the curb. Visual continuity: One abandoned pale concrete and blue-grey glass manufacturing district with angular broken windows and sparse cold reflected light; overcast dusk. Adjacent places in the actual map: n connects to Long Reflection; s connects to Annealing Steps. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-c8410da6-bc27-4d06-b52c-22f3dabef9ad.png"
+}

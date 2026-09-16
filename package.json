@@ -24,7 +24,8 @@
     "test:pause": "node scripts/verify-pause.mjs",
     "test:theft": "node --import ./scripts/register-ts.mjs scripts/verify-theft.mjs",
     "test:interactions": "node --import ./scripts/register-ts.mjs scripts/verify-interactions.mjs",
-    "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs"
+    "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs",
+    "test:scenes": "node --import ./scripts/register-ts.mjs scripts/verify-scenes.mjs"
   },
   "dependencies": {
     "react": "19.2.7",

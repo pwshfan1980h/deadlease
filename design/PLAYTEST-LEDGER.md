@@ -1,8 +1,22 @@
 # FREEBORN — playtest accountability
 
+## Current priority: scene and terminal pass
+
+User feedback received: previous room descriptions, UI contrast, scene size and art were unsatisfactory. This feedback sets the current priority; it is not a sign-off on the replacement visuals.
+
+- [ ] Start a new patient. Judge the large scene / compact player strip / terminal proportions in your usual window.
+- [ ] Walk south. Before `look around`, check that the room stays concise; after it, check the manhole clue. Go `down`, then `up`, and judge whether the paintings feel connected.
+- [ ] Find loose loot. It should be immediately listed in grey. `take all` should remove it from the list.
+- [ ] At the kiosk, type `look around`. The sealed medical kit should be green in the prose; it must not appear in the grey ground list.
+- [ ] Enter combat. Check green-on-black transcript readability and red enemy names; check that immediate people and threats remain easy to identify.
+- [ ] Resize the window. The command line should stay visible on desktop and the full painting should remain uncropped. The pointer should be available without making clicks necessary.
+
+Human acceptance of this pass: **pending**. Automated verification and artwork-generation receipts are tracked separately in `DEVELOPMENT-TODO.md` and `VISUAL-DIRECTION.md`.
+
+
 Implementation verification and Will's playtest sign-off are separate. Never mark human approval from an automated result. At each playable milestone, record the build, reproducible steps, expected behavior, automation evidence, and Will's feedback. Carry unresolved feedback into the next milestone.
 
-## Current milestone: runs, revival, and enemy roles
+## Previous milestone: runs, revival, and enemy roles
 
 Status: implemented, automation verified and published; ready for Will’s playtest. Pages build: `39447ff`; [play FREEBORN](https://pwshfan1980h.github.io/deadlease/). See [rules and six disposable test saves](RUNS-AND-COMBAT.md#quick-human-playtest). Compact release reports live in `verification/`; generated screenshots remain in `../evidence/run-pass/`.
 

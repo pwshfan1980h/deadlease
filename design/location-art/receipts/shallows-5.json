@@ -1,0 +1,11 @@
+{
+  "id": "shallows-5",
+  "name": "Wrench Bend",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/shallows-5.jpg",
+  "sha256": "902beb6b41ec87fe9ad6bdeef77337744d35c19d8118c08763c17f64224723a6",
+  "bytes": 616191,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Wrench Bend. Region: Lamplight Drains. Physical description for inspiration: A narrow doorway opens above the runoff. A sump knifer steps from the darkness, one hand braced against the bricks, the other hidden beneath a patched coat. Visual continuity: Low old brick culverts and ankle-deep dark water, old cream utility pipes and caged amber lamps, connected to the deeper city drainage system. No glowing green water. Adjacent places in the actual map: n connects to Lamplight Junction; e connects to Scrap Invert; w connects to Broken Sieve. Depict logical connected paths or openings without signs, arrows or labels.  Navigation constraint: there is no vertical travel here. The ceiling is continuous sealed brick or concrete. No ladders, no staircases, no manholes, no shafts, no hatches, no openings overhead, and no daylight from above. Only horizontal tunnels connect this room. Keep its distinctive feature and environment; light comes from lamps.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-c9f008f9-844b-4c70-9633-b66b12b529d5.png"
+}

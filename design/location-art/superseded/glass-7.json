@@ -1,0 +1,11 @@
+{
+  "id": "glass-7",
+  "name": "Glare Walk",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/glass-7.jpg",
+  "sha256": "ae18fe5fd7984517fd01b87a2931e4d86ca8ec8264a7d5a535fa0abdd677baaa",
+  "bytes": 673617,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Glare Walk. Region: Vitreous Ward. Physical description for inspiration: Light runs along a walkway with nowhere obvious to come from. A shattered advertisement still promises permanent clarity at an introductory rate. A shard duelist watches the passage ahead. Visual continuity: One abandoned pale concrete and blue-grey glass manufacturing district with angular broken windows and sparse cold reflected light; overcast dusk. Adjacent places in the actual map: n connects to Mirror Toll; s connects to Pane Orchard; e connects to Window Border; w connects to Glaziers Hearth. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-ffcbbf8f-84b1-406b-b97a-a3e5624f1805.png"
+}

@@ -1,12 +1,12 @@
 {
-  "started": "2026-09-16T02:44:37.170Z",
-  "finished": "2026-09-16T02:47:15.751Z",
+  "started": "2026-09-16T04:26:54.306Z",
+  "finished": "2026-09-16T04:29:42.304Z",
   "passed": true,
   "results": [
     {
       "stage": "test",
       "passed": true,
-      "seconds": 5
+      "seconds": 3
     },
     {
       "stage": "build",
@@ -31,12 +31,12 @@
     {
       "stage": "test:roaming",
       "passed": true,
-      "seconds": 45
+      "seconds": 49
     },
     {
       "stage": "test:clinic",
       "passed": true,
-      "seconds": 2
+      "seconds": 3
     },
     {
       "stage": "test:inventory",
@@ -46,7 +46,7 @@
     {
       "stage": "test:frontier",
       "passed": true,
-      "seconds": 13
+      "seconds": 14
     },
     {
       "stage": "test:motion",
@@ -56,12 +56,12 @@
     {
       "stage": "test:boards",
       "passed": true,
-      "seconds": 4
+      "seconds": 5
     },
     {
       "stage": "test:pause",
       "passed": true,
-      "seconds": 7
+      "seconds": 8
     },
     {
       "stage": "test:theft",
@@ -76,7 +76,12 @@
     {
       "stage": "test:runs",
       "passed": true,
-      "seconds": 6
+      "seconds": 7
+    },
+    {
+      "stage": "test:scenes",
+      "passed": true,
+      "seconds": 3
     }
   ]
 }

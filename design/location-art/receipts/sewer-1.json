@@ -1,0 +1,11 @@
+{
+  "id": "sewer-1",
+  "name": "Bucket Drain",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/sewer-1.jpg",
+  "sha256": "9e19988a38215d80884c15e131ddfb3803ff7f2abc7a88421fa73186c1ac553d",
+  "bytes": 570159,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Bucket Drain. Region: Deep Drains. Physical description for inspiration: Water from Toll Square rattles through a grate overhead. The drain carries more coins than water, but most are obsolete ration tokens. Visual continuity: Continuous old red-brown brick drainage network below those streets, shallow dark runoff, cream utility pipes and warm caged lamps, industrial iron ladders at surface shafts. Adjacent places in the actual map: s connects to Maintenance Belly; e connects to Gate Cistern; w connects to Steps Undercroft; up connects to Toll Square. Depict logical connected paths or openings without signs, arrows or labels. Include an iron ladder rising toward the surface hatch, matching the street access above.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-40d1ee8e-2a21-446b-96c5-b0c8b465cc85.png"
+}

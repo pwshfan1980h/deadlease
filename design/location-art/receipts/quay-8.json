@@ -1,0 +1,11 @@
+{
+  "id": "quay-8",
+  "name": "Tide Gauge",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-8.jpg",
+  "sha256": "ff8e5708a8be4d9d9131ac0785a8f4ae954102f02d41265cc28012f826345ca7",
+  "bytes": 667922,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Tide Gauge. Region: Salt Quay. Physical description for inspiration: Red ceramic floats click against a measuring pole. A brass recorder logs each flood as an increase in municipal liquid assets. A chain brawler watches the passage ahead.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-1a609c3a-0e21-48e4-a885-91953d347564.png"
+}

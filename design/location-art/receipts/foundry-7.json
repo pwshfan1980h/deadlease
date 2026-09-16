@@ -1,0 +1,11 @@
+{
+  "id": "foundry-7",
+  "name": "Casting Bay",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/foundry-7.jpg",
+  "sha256": "8793bebcdd3bd0f8ed2e800d70bb4f78bc4ac5f71f868e4a95324d1c28767012",
+  "bytes": 624268,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Casting Bay. Region: Cinder Union. Physical description for inspiration: Empty molds hold the shapes of tools no one remembers. Footprints in cooling slag suggest something recently tried them on. Visual continuity: One massive red-brick industrial complex of rust gantries, pressure pipes and amber furnace glow against soot; exterior overcast dusk. Adjacent places in the actual map: n connects to Smelter Vein; s connects to Punch Clock Arch; e connects to Hammer Nave; w connects to Strike Memorial. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-ac57409c-11dc-4a6e-9142-01911c78b89e.png"
+}

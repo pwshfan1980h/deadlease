@@ -1,0 +1,11 @@
+{
+  "id": "foundry-4",
+  "name": "Pressure Street",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/foundry-4.jpg",
+  "sha256": "bee726d0ab35d2f1cb36ce2462c4eee551d536cb68855877f22e249d7aea75b2",
+  "bytes": 624196,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Pressure Street. Region: Cinder Union. Physical description for inspiration: Steam grates hiss in sequence down the street. The rhythm leaves a clear interval for crossing, if you resist the urge to hurry. Visual continuity: One massive red-brick industrial complex of rust gantries, pressure pipes and amber furnace glow against soot; exterior overcast dusk. Adjacent places in the actual map: n connects to Crucible Court; s connects to Pilots Stair; e connects to Ash Dispatch; w connects to Rivet Gallery. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-f4a9b5fa-5e51-4023-a0b1-89cd2f31d56b.png"
+}

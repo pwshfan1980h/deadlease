@@ -68,3 +68,7 @@ Fishing predators `paintings/mudskipper-hound.png` and `paintings/pallid-bankmaw
 ## Stitch Drone and revival cue
 
 `items/stitch-drone.png` is original generated industrial-noir item art made with the built-in OpenAI image generation tool; exact prompt: `design/stitch-drone-prompt.json`, dimensions/hash: `run-art-provenance.json`. No bitmap edits. `sounds/attack-revive.wav` is original procedural synthesis from `scripts/build-combat-audio.mjs`; no external samples.
+
+## Complete location painting pass (September 2026)
+
+All 149 `locations/*.jpg` scenes were generated with OpenAI’s built-in image generation tool for FREEBORN. Individual full-scene paintings replace shared room backgrounds. Original PNGs were converted to JPEG at quality 84 for web delivery without cropping. Targeted generated edits remove misleading vertical passages, permanent encounter figures, and unwanted lettering. Exact prompts and edit references, dimensions, and SHA-256 hashes are recorded in `location-art-provenance.json`; source authoring catalog and per-room receipts are in `design/location-art/`.

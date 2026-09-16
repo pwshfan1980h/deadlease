@@ -1,0 +1,11 @@
+{
+  "id": "crown-17",
+  "name": "Cityward Lookout",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/crown-17.jpg",
+  "sha256": "0725214d2482f2732d1a9abf2a8234c9035af978178c019d790deff1e0116319",
+  "bytes": 553327,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Cityward Lookout. Region: The Survey Crown. Physical description for inspiration: Across the estuary, towers rise above the rain. Small aircraft drift between their lit windows. The city is real, and still impossibly far. West along the causeway, the receiver keeps the last ferry running. Visual continuity: One elevated storm-battered stone-and-steel causeway with triangular radio pylons, rain and distant estuary. The real city appears only in final northern views, far beyond the water. Adjacent places in the actual map: s connects to Revenant Roost; w connects to Interest Engine. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-33593e6a-1f35-4114-afc4-ddcf30418147.png"
+}

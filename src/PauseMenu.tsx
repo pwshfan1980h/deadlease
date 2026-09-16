@@ -59,7 +59,7 @@ export function PauseMenu({name,location,prefs,onPrefs,onResume,onTitle,onSave,o
    </section>}
    {page==='controls'&&<section className="pause-controls">
     <dl><dt>Enter</dt><dd>Submit a typed command.</dd><dt>Esc</dt><dd>Close an overlay, or pause / resume.</dd><dt>Tab</dt><dd>Open / close the map while exploring.</dd><dt>↑ / ↓</dt><dd>Recall commands. Choose menu options here.</dd><dt>Ctrl + Space</dt><dd>Complete a command.</dd><dt>PgUp / PgDn</dt><dd>Scroll the transcript.</dd></dl>
-    <p><code>north / south / east / west / up / down</code><br/>Follow the room’s listed exits.</p>
+    <p><code>north / south / east / west / up / down</code><br/>Use the map or look around to find exits.</p>
     <p><code>look · inspect … · talk … · read board · jobs</code><br/>Explore, talk, and find paid work. Board jobs are courier contracts; people offer missions. Type missions to check them.</p>
     <p><code>attack · aim · brace · cover · heal · flee</code><br/>Fight using the actions and abilities below the transcript.</p>
     <p><code>fish · pick … · hack …</code><br/>Space handles timing. Fishing needs a hook and reel press; locks need three pins; terminals use short and long holds. Damaging special abilities offer a critical timing window.</p>

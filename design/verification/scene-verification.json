@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "Immediate plain grey ground inventory, grey transcript ground list, typed pickup updates without stale items",
+    "Detailed prose requires look around; actual item mentions highlighted green without revealing hidden objects on arrival",
+    "Adjacent outdoor and vertical travel arrives with decoded matching art; neutral inhabitants remain immediately visible",
+    "Delayed destination keeps the old scene; duplicate movement and map invocation blocked until decoded arrival",
+    "All 149 unique room paintings decode successfully in the production build",
+    "Scene, compact player strip, green terminal fit standard, short, ultrawide and mobile widths; full art preserved; visible mouse fallback",
+    "Largest text setting keeps input visible on a short desktop; terminal palette stays green when UI palette changes"
+  ],
+  "errors": []
+}

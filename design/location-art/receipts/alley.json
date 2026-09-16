@@ -1,0 +1,12 @@
+{
+  "id": "alley",
+  "name": "Scrap Alley",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/alley.jpg",
+  "sha256": "e6e26725e2623024d2df5b858090db56c4675d6451280e86e9a42740978cd4bb",
+  "bytes": 572948,
+  "prompt": "Precise object edit of the supplied FREEBORN room painting. Remove the rat/weasel animal perched at the base of the refrigerator. Preserve its abandoned fabric nest and all scrap objects, fridge, alley architecture, harbor view, rain and light. No creatures. Maintain landscape 16:9 size, industrial noir style, and every unrelated scene detail. No text, UI or borders.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-ee3d9ddf-46ea-47f1-af08-b9bf056dd610.png",
+  "reference": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-507d300f-9ca9-43c3-82b5-8bdf0042ca6a.png"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "quay-3",
+  "name": "Fish Exchange",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-3.jpg",
+  "sha256": "d2208c3386d0b2d189f604b12e124f67c7ef6e486d021d93790fec39515935b9",
+  "bytes": 643468,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Fish Exchange. Region: Salt Quay. Physical description for inspiration: The auction clock has stopped at a price nobody could afford. Salt rats nest in the insulated boxes beneath the buyers' gallery.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-9b28109d-511a-40bc-bc78-b703f7403b48.png"
+}

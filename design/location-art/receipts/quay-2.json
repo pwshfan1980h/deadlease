@@ -1,0 +1,11 @@
+{
+  "id": "quay-2",
+  "name": "Ropewalk",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-2.jpg",
+  "sha256": "864f29136a9ab6aea9d52c3700e27a9336d04fdd589a3758d15b6d89479a1a87",
+  "bytes": 629357,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Ropewalk. Region: Salt Quay. Physical description for inspiration: Miles of tarred rope dry between bent gantries. The knots mark boats that returned; the loose ends mark families still waiting.",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-7b42548b-cb4d-473c-a779-48564070f671.png"
+}

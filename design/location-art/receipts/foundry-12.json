@@ -1,0 +1,11 @@
+{
+  "id": "foundry-12",
+  "name": "Pattern Loft",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/foundry-12.jpg",
+  "sha256": "bc02a29d6f1ae81f04af56c20b8a8d14de328b941b8139409a7057a006aee190",
+  "bytes": 641480,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Pattern Loft. Region: Cinder Union. Physical description for inspiration: Wooden patterns hang from the rafters, each a negative of a useful thing. Someone has carved a tiny house among the machinery. Visual continuity: One massive red-brick industrial complex of rust gantries, pressure pipes and amber furnace glow against soot; exterior overcast dusk. Adjacent places in the actual map: s connects to Strike Memorial; e connects to Smelter Vein. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-5f16d632-89e9-4014-806f-af9b17afd159.png"
+}

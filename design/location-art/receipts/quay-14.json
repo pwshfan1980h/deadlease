@@ -1,0 +1,11 @@
+{
+  "id": "quay-14",
+  "name": "Dry Boat School",
+  "width": 1672,
+  "height": 941,
+  "file": "locations/quay-14.jpg",
+  "sha256": "4bf399d4bcdd7312e191aef7bb93be9eacc53df8ebf66312a59e4767ccf9960a",
+  "bytes": 635781,
+  "prompt": "Single complete landscape 16:9 location painting for FREEBORN, a dark text RPG. Immersive eye-level environmental view as if physically standing here, deep spatial perspective, readable silhouettes. Painterly industrial noir oil/gouache, textured but detailed, grounded retro-industrial science fiction. Restrained charcoal, bone, rust, cold steel blue and warm amber lamps; weather, wet surfaces and distinctive architecture, subtle unnatural estuary ecology. Strong place-specific focal point. No words, readable signs, labels, UI, borders, collage, logos or watermark. No prominent humans or monsters; occupants appear separately in the game. The world outside civilization can be wild and desolate. Do not paint quest instructions or numeric game statistics. Keep main features within central 85 percent for responsive fit. Every scene must depict this specific place, never a generic backdrop. Location: Dry Boat School. Region: Salt Quay. Physical description for inspiration: A grounded boat holds twelve school desks. Today's lesson on the blackboard is how to distinguish a rescue flare from a sales offer. Visual continuity: One continuous rain-dark stone seawall and timber harbor, weathered rope and steel mooring rings, slate estuary water, distant brick gantries; late overcast dusk. Adjacent places in the actual map: e connects to Net Chapel; w connects to Brine Lock. Depict logical connected paths or openings without signs, arrows or labels. ",
+  "source": "/Users/willm/.codex/generated_images/01a0a70b-32e3-7de3-811e-005581e1aaa8/exec-9d05b040-439f-498b-9a7d-f09ebf90e7dd.png"
+}
