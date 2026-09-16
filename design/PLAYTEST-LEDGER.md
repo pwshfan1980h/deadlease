@@ -1,8 +1,12 @@
 # FREEBORN — playtest accountability
 
+## Fresh-run button review — 16 September 2026
+
+Three fresh public sessions completed: Enforcer (40 turns), Street Medic (27 turns), Glassrunner (47 turns, ended). Mixed clicks/typing, pump progression, real fishing mission, injury and paid repair, retreat, and persistent death tested. One unavailable-action button issue found and fixed. See [full report](PLAYTEST-2026-09-16-BUTTONS.md). This is agent verification; human acceptance and full-run pacing remain pending.
+
 ## Current priority: transcript and lasting conditions
 
-Published candidate: Pages `21f64db`, implementation source `32be3bd`. 154 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+Published candidate: Pages `6732b09` (combat button availability fix). 154 unit tests, 14 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
 
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.

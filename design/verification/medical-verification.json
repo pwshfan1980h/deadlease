@@ -4,6 +4,7 @@
     "Room preview opens on hover/focus, closes on leave/blur/Escape, and Escape does not also open pause",
     "Visible conditions survive rest, paid individual treatment charges once, mission pays one free rank, credit upgrade and reload preserve body state",
     "Clickable travel/look and combat use the same engine as typing; enemy art and actions live in transcript; focus returns to input and resize follows latest entry",
+    "Combat buttons respect melee/firearm, Surveyor aim discount, stamina, missing health, bleeding and supply requirements",
     "Thumbnail and player data share the header; transcript stays at least 280px tall and input visible at desktop/short/ultrawide/mobile sizes"
   ],
   "errors": []

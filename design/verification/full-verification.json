@@ -1,6 +1,6 @@
 {
-  "started": "2026-09-16T16:50:17.301Z",
-  "finished": "2026-09-16T16:53:03.076Z",
+  "started": "2026-09-16T17:09:39.488Z",
+  "finished": "2026-09-16T17:12:24.348Z",
   "passed": true,
   "results": [
     {
@@ -81,7 +81,7 @@
     {
       "stage": "test:scenes",
       "passed": true,
-      "seconds": 2
+      "seconds": 3
     },
     {
       "stage": "test:medicine",

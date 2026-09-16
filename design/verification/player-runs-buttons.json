@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-16",
+  "playedPagesCommit": "21f64db8cfad32965dc8aaa79b7ab5cab410f2e4",
+  "method": "Three fresh isolated Chromium sessions on public Pages, UI actions only; no imported/injected progress. IndexedDB read only for recording. Fishing judged from rendered slider positions. Agent play, not human duration validation.",
+  "runs": [
+    {
+      "name": "Rook",
+      "className": "Enforcer",
+      "seed": 452740836,
+      "viewport": [
+        1440,
+        1000
+      ],
+      "recordedActions": 44,
+      "recordedButtonActions": 35,
+      "turns": 40,
+      "level": 3,
+      "status": "alive",
+      "kills": 4,
+      "room": "clinic",
+      "credits": 2,
+      "body": {
+        "ailments": [],
+        "implants": {
+          "dermal weave": 1
+        },
+        "commission": "active",
+        "voucher": false
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "Mire",
+      "className": "Street Medic",
+      "seed": 2125506224,
+      "viewport": [
+        1280,
+        800
+      ],
+      "recordedActions": 39,
+      "recordedButtonActions": 19,
+      "turns": 27,
+      "level": 1,
+      "status": "alive",
+      "kills": 1,
+      "room": "sewer-0",
+      "credits": 68,
+      "body": {
+        "ailments": [],
+        "implants": {},
+        "commission": "none",
+        "voucher": false
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "Vex",
+      "className": "Glassrunner",
+      "seed": 1051248101,
+      "viewport": [
+        1024,
+        720
+      ],
+      "recordedActions": 55,
+      "recordedButtonActions": 39,
+      "turns": 47,
+      "level": 2,
+      "status": "dead",
+      "kills": 3,
+      "room": "crown-1",
+      "credits": 1,
+      "body": {
+        "ailments": [],
+        "implants": {},
+        "commission": "none",
+        "voucher": false
+      },
+      "pageErrors": []
+    }
+  ],
+  "fix": "Disable aim for melee/insufficient stamina, cover without stamina, and heal without missing HP/bleeding and supplies. Preserve Surveyor discount.",
+  "fixedPagesCommit": "6732b09deea32eb1e9ed3d7da160a2e9ef90b86f"
+}
