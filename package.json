@@ -27,7 +27,8 @@
     "test:runs": "node --import ./scripts/register-ts.mjs scripts/verify-runs.mjs",
     "test:scenes": "node --import ./scripts/register-ts.mjs scripts/verify-scenes.mjs",
     "test:medicine": "node --import ./scripts/register-ts.mjs scripts/verify-medicine.mjs",
-    "test:feedback": "node --import ./scripts/register-ts.mjs scripts/verify-feedback.mjs"
+    "test:feedback": "node --import ./scripts/register-ts.mjs scripts/verify-feedback.mjs",
+    "test:minimap": "node --import ./scripts/register-ts.mjs scripts/verify-minimap.mjs"
   },
   "dependencies": {
     "react": "19.2.7",

@@ -305,7 +305,7 @@ html body .inventory-dialog .pack-item{cursor:grab!important}html body .inventor
 @media(max-width:520px){.minimap-dialog{padding:20px}.minimap-dialog>header{align-items:start;flex-direction:column;gap:6px}.minimap-dialog .geographic-map{height:330px}}
 /* A stationary atlas: a fixed frame and world extent; only the player marker changes. */
 .minimap-dialog[open]{display:flex;flex-direction:column;height:min(1100px,calc(100dvh - 48px));width:min(1080px,calc(100vw - 32px));overflow:hidden}
-.minimap-dialog>header{flex:none}.minimap-dialog>.atlas{flex:1;min-height:0;display:flex;flex-direction:column}.minimap-dialog .geographic-map{height:auto;flex:1;min-height:100px;border:1px solid #78664a30;background:#181819}.minimap-dialog .map-terrain{opacity:.65}.minimap-dialog .map-player{filter:drop-shadow(0 0 .07px var(--amber))}.minimap-dialog .map-location text{font-size:.27px}.minimap-dialog .map-legend{flex:none}.minimap-dialog .atlas>p{margin:5px 0}.minimap-dialog .toolbar,.minimap-dialog .map-options{flex:none}.minimap-dialog>p{flex:none;margin-bottom:0}.minimap-dialog .map-legend,.minimap-dialog .map-options{font-size:.62rem}.minimap-dialog .map-region{opacity:.8}
+.minimap-dialog>header{flex:none}.minimap-dialog>.atlas{flex:1;min-height:0;display:flex;flex-direction:column}.minimap-dialog .geographic-map{height:auto;flex:1;min-height:100px;border:1px solid #78664a30;background:#181819}.minimap-dialog .map-terrain{opacity:.85}.minimap-dialog .map-player{filter:drop-shadow(0 0 .07px var(--amber))}.minimap-dialog .map-place-label{pointer-events:none}.minimap-dialog .map-legend{flex:none}.minimap-dialog .atlas>p{margin:5px 0}.minimap-dialog .toolbar,.minimap-dialog .map-options{flex:none}.minimap-dialog>p{flex:none;margin-bottom:0}.minimap-dialog .map-legend,.minimap-dialog .map-options{font-size:.62rem}.minimap-dialog .map-region{opacity:.8}
 .inventory-dialog button.pack-item[aria-pressed=true]:hover:not(:disabled){background:linear-gradient(140deg,#80613444,#382e2144);color:var(--bone);border-color:#b08b5588}
 .minimap-dialog:focus-visible{outline:none}
 @media(min-width:801px){.playing .room-panel{flex:1.1}.playing .terminal{flex:.9}}
@@ -329,3 +329,12 @@ html body .inventory-dialog .pack-item{cursor:grab!important}html body .inventor
 .ending-dialog::backdrop{background:#000d}
 .ending-dialog>img{width:100%;aspect-ratio:16/7;object-fit:cover}
 .ending-copy{padding:28px 40px;max-width:840px;margin:auto}.ending-copy h2{font-size:48px;margin:8px 0 20px}.ending-copy hr{border:0;border-top:1px solid #ffffff14;margin:24px 0}
+
+/* Keep the atlas viewport steady while inspecting rooms with different exits. */
+.minimap-dialog .map-selection{flex:none;min-height:44px}
+.minimap-dialog .map-region{pointer-events:none}
+.minimap-dialog .map-player{pointer-events:none}
+.minimap-dialog .map-selection p{margin:0;line-height:1.65}
+/* HTML focus outlines use SVG map units and can cover entire neighborhoods. */
+.minimap-dialog .map-location:focus-visible{outline:none}
+.minimap-dialog .map-location:focus-visible .map-hit-target{stroke:var(--amber);stroke-width:2px}

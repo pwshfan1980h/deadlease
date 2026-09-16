@@ -1,5 +1,11 @@
 # FREEBORN — playtest accountability
 
+## Minimap rendering review
+
+Published candidate: Pages `9e8ea44`. 163 unit tests, 16 browser suites, build, asset audit and live smoke checks passed. Focused report: `verification/minimap.json`.
+
+Reproduced and corrected giant gold SVG focus outlines, undersized sewer framing, tiny labels/markers, player-marker click interception and inspection-driven viewport shifts. All 149 room markers and five window sizes passed the focused review. [Findings and retest steps](MINIMAP-REVIEW.md). Human visual acceptance remains pending; full release evidence is recorded in `verification/full-verification.json`.
+
 ## Conversation and level-up audio
 
 Published audio candidate: Pages `93af4f0`. 160 unit tests, 15 browser suites, build and asset audit passed. Report: `verification/feedback-audio.json`.
@@ -20,7 +26,7 @@ Three fresh public sessions completed: Enforcer (40 turns), Street Medic (27 tur
 
 ## Current priority: transcript and lasting conditions
 
-Published candidate: Pages `93af4f0` (NPC chirps and level-up fanfare; transcript styling retained). 160 unit tests, 15 browser suites, build, asset audit and public smoke checks passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
+Published candidate: Pages `9e8ea44` (minimap rendering fixes; audio and transcript styling retained). 163 unit tests, 16 browser suites, build and asset audit passed. Reports: `verification/medical-verification.json`, `verification/full-verification.json`, `verification/deployment.json`. A disposable [medical test save](playtest-saves/07-medical.json) is available; export a wanted character before importing any fixture.
 
 - [ ] Judge the compact room/player header and tall transcript at your normal window size.
 - [ ] Hover over the room image, leave it, then type `view` and Escape. Check that normal command input stays comfortable.

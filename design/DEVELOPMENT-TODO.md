@@ -22,6 +22,8 @@ User accepted the improved readability/art, then requested a transcript-led layo
 - [x] Audit 89 rendered transcript entries and screenshots across dialogue, jobs, exploration, combat, progression and injury; record category misses in [TRANSCRIPT-CATEGORY-AUDIT.md](TRANSCRIPT-CATEGORY-AUDIT.md).
 - [ ] Finish semantic transcript categories: non-Type control advice, system notices, stronger player-command separation and warning/refusal emphasis. Current audit is only a partial pass.
 - [x] NPC reply chirps and distinct level-up fanfare; verify dialogue routing, earned-level triggers, pause/mute/reload behavior and audio assets. See [AUDIO-FEEDBACK.md](AUDIO-FEEDBACK.md).
+- [x] Correct minimap SVG focus artifacts, floor framing, label/marker readability and room-inspection hit targets; verify all 149 markers and five window sizes. See [MINIMAP-REVIEW.md](MINIMAP-REVIEW.md).
+- [ ] Human visual acceptance of minimap rendering after fixes.
 - [ ] Human listening acceptance of reply chirps and level-up prominence. Music received positive feedback; preserve current mix.
 - [ ] Human acceptance of transcript height, hover behavior and injury frequency/treatment costs.
 
